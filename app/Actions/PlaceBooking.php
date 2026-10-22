@@ -36,7 +36,8 @@ final class PlaceBooking
 
     private function create(array $data, Package $package, Carbon $date): Booking
     {
-        $client = Client::updateOrCreate(
+        // Data klien lama tidak ditimpa dari form publik.
+        $client = Client::firstOrCreate(
             ['whatsapp' => Client::normalizePhone($data['whatsapp'])],
             Arr::only($data, ['name', 'email', 'instagram']),
         );

@@ -62,6 +62,29 @@ class PublicBookingTest extends TestCase
         Mail::assertQueued(BookingPlaced::class);
     }
 
+    public function test_checking_availability_does_not_use_up_the_booking_limit(): void
+    {
+        $package = Package::factory()->create(['duration_minutes' => 60]);
+
+        foreach (range(1, 12) as $_) {
+            $this->getJson("/availability?date={$this->date}&package={$package->id}")->assertOk();
+        }
+
+        $this->post('/booking', $this->payload($package))->assertRedirect();
+    }
+
+    public function test_public_booking_does_not_overwrite_existing_client(): void
+    {
+        $package = Package::factory()->create(['duration_minutes' => 60]);
+        $this->post('/booking', $this->payload($package))->assertRedirect();
+
+        $this->post('/booking', ['name' => 'Orang Lain', 'email' => 'lain@example.com', 'starts_at' => '13:00'] + $this->payload($package))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame(2, Booking::count());
+        $this->assertSame('thalia@example.com', Booking::first()->client->email);
+    }
+
     public function test_full_slot_and_blocked_date_are_rejected(): void
     {
         $package = Package::factory()->create(['duration_minutes' => 60]);

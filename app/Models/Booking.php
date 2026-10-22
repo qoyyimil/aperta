@@ -141,21 +141,6 @@ class Booking extends Model
         $this->transitionTo(BookingStatus::Selecting, "Kuota {$quota} foto, batas pilih {$deadline}");
     }
 
-    /** Ringkasan pilihan klien terhadap kuota (SEL-3). */
-    public function selectionSummary(): array
-    {
-        $selected = $this->selected()->count();
-        $extra = max(0, $selected - $this->edit_quota);
-
-        return [
-            'selected' => $selected,
-            'quota' => $this->edit_quota,
-            'extra' => $extra,
-            'extraCost' => $extra * $this->extra_photo_price,
-            'notes' => $this->selected()->whereNotNull('note')->count(),
-        ];
-    }
-
     /** Klien mengunci pilihannya dan editing dimulai (SEL-8, SEL-9). */
     public function submitSelection(): void
     {

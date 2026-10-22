@@ -51,7 +51,7 @@ class SelectionTest extends TestCase
         $this->patchJson($this->url("/{$b->id}"), ['selected' => true])->assertOk();
         $this->patchJson($this->url("/{$c->id}"), ['note' => 'Hapus orang di belakang'])->assertJsonPath('photo.selected', true);
 
-        $this->assertSame(['selected' => 3, 'quota' => 2, 'extra' => 1, 'extraCost' => 25_000, 'notes' => 1], $this->booking->selectionSummary());
+        $this->assertSame(1, $this->booking->extraPhotos());
         $this->assertSame(775_000, $this->booking->fresh()->price()->total());
     }
 
