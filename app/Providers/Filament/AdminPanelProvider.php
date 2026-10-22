@@ -33,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->darkModeBrandLogo(asset('aperta-logo-white.svg'))
             ->brandLogoHeight('2.5rem')
             ->renderHook(PanelsRenderHook::HEAD_START, fn () => view('partials.favicon'))
+            ->globalSearch(false)
             ->login()
             ->colors([
                 'primary' => Color::Indigo,
