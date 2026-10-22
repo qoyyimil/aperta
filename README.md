@@ -162,7 +162,7 @@ Akun tim berikutnya dibuat admin dari menu **Pengguna** di dashboard.
 
 ### Watermark (opsional)
 
-Ganti file PNG transparan di `resources/aperta.png`. Foto pratinjau untuk klien akan diberi watermark ini. Kalau file tidak ada, pratinjau tetap dibuat tanpa watermark. Hasil edit akhir tidak pernah diberi watermark.
+Ganti file PNG transparan di `resources/aperta.png`. Foto pratinjau untuk klien akan diberi watermark ini. Ini berlaku untuk proof dan pratinjau hasil edit. Kalau file tidak ada, pratinjau tetap dibuat tanpa watermark. File hasil edit yang diunduh klien setelah lunas tetap asli, tanpa watermark.
 
 ---
 

@@ -36,10 +36,9 @@ class EditedPhoto extends Model implements Renderable
         return $this;
     }
 
-    // --- Renderable: hasil edit tanpa watermark, file asli disimpan untuk diunduh (DLV-8) ---
+    // --- Renderable: pratinjau berwatermark, file asli tanpa watermark disimpan untuk diunduh (DLV-8) ---
 
     public function sourcePath(): string { return $this->path; }
-    public function watermark(): ?string { return null; }
     public function renderBase(): string { return "results/{$this->booking_id}/renders/{$this->id}"; }
 
     public function rendered(string $preview, string $thumb): void

@@ -39,11 +39,7 @@ class BookingResource extends Resource
     /** Fotografer & editor hanya melihat booking yang ditugaskan (BR-10). */
     public static function getEloquentQuery(): Builder
     {
-        $user = auth()->user();
-
-        return parent::getEloquentQuery()
-            ->with('client')
-            ->unless($user->isAdmin(), fn (Builder $q) => $q->whereRelation('crew', 'users.id', $user->id));
+        return parent::getEloquentQuery()->with('client')->visibleTo(auth()->user());
     }
 
     public static function getRelations(): array

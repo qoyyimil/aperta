@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\Enums\BookingStatus;
 use App\Enums\PaymentStatus;
+use App\Enums\UserRole;
 use App\Exceptions\InvalidStatusTransition;
 use App\Support\BookingCode;
 use App\Support\PriceBreakdown;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -188,7 +190,9 @@ class Booking extends Model
 
     public function extraPhotos(): int
     {
-        return max(0, $this->selected()->count() - $this->edit_quota);
+        $selected = $this->hasAttribute('selected_count') ? $this->selected_count : $this->selected()->count();
+
+        return max(0, $selected - $this->edit_quota);
     }
 
     public function price(): PriceBreakdown
@@ -205,7 +209,19 @@ class Booking extends Model
 
     public function paid(): int
     {
-        return (int) $this->payments()->sum('amount');
+        return (int) ($this->hasAttribute('payments_sum_amount') ? $this->payments_sum_amount : $this->payments()->sum('amount'));
+    }
+
+    /** Sisa seluruh tagihan, termasuk foto tambahan. */
+    public function balance(): int
+    {
+        return max(0, $this->price()->total() - $this->paid());
+    }
+
+    /** Total piutang booking aktif. shortcut: dijumlah di PHP, pindah ke SQL jika booking aktif ribuan. */
+    public static function receivables(): int
+    {
+        return static::active()->withBilling()->get()->sum->balance();
     }
 
     public function minDeposit(): int
@@ -247,5 +263,109 @@ class Booking extends Model
         if ($this->status === BookingStatus::New && $this->paymentStatus() !== PaymentStatus::Unpaid) {
             $this->transitionTo(BookingStatus::Confirmed, 'DP diterima');
         }
+    }
+
+    // --- kueri dashboard ---
+
+    /** Satu sumber aturan akses: admin semua, tim hanya yang ditugaskan (BR-10). */
+    public function scopeVisibleTo(Builder $query, User $user): void
+    {
+        $query->unless($user->isAdmin(), fn (Builder $query) => $query->whereRelation('crew', 'users.id', $user->id));
+    }
+
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('status', '!=', BookingStatus::Cancelled);
+    }
+
+    public function scopeThisMonth(Builder $query): void
+    {
+        $query->active()->whereBetween('session_date', [today()->startOfMonth(), today()->endOfMonth()]);
+    }
+
+    public function scopeUpcoming(Builder $query, int $days = 7): void
+    {
+        $query->active()
+            ->whereBetween('session_date', [today(), today()->addDays($days)])
+            ->orderBy('session_date')->orderBy('starts_at');
+    }
+
+    /** Menunggu admin: belum DP, lunas mendekati jatuh tempo, galeri belum dibuka, batas pilih dekat. */
+    public function scopeNeedsAction(Builder $query): void
+    {
+        $soon = today()->addDays(2);
+        // shortcut: lunas dicek di PHP; kandidatnya hanya Confirmed beberapa hari ke depan.
+        $unpaid = static::where('status', BookingStatus::Confirmed)
+            ->whereDate('session_date', '<=', $soon->copy()->addDays(config('aperta.full_payment_days_before')))
+            ->withBilling()->get()->reject->isSessionPaid()->modelKeys();
+
+        $query->where(fn (Builder $query) => $query
+            ->whereIn('status', [BookingStatus::New, BookingStatus::Shot])
+            ->orWhereKey($unpaid)
+            ->orWhere(fn (Builder $query) => $query
+                ->where('status', BookingStatus::Selecting)
+                ->whereDate('selection_deadline', '<=', $soon)))
+            ->orderBy('session_date');
+    }
+
+    public function scopeAwaitingProofs(Builder $query): void
+    {
+        $query->where('status', BookingStatus::Shot)->doesntHave('proofs')->orderBy('session_date');
+    }
+
+    public function scopeEditingQueue(Builder $query): void
+    {
+        $query->where('status', BookingStatus::Editing)->orderBy('selection_submitted_at');
+    }
+
+    /** Antrean dashboard sesuai peran, lengkap dengan hitungan untuk actionReason(). */
+    public function scopeQueueFor(Builder $query, User $user): void
+    {
+        match ($user->role) {
+            UserRole::Admin => $query->needsAction(),
+            UserRole::Photographer => $query->awaitingProofs(),
+            UserRole::Editor => $query->editingQueue(),
+        };
+
+        $query->visibleTo($user)->with('client')->withBilling();
+    }
+
+    /** Muat hitungan untuk paid(), extraPhotos(), dan actionReason() tanpa kueri per baris. */
+    public function scopeWithBilling(Builder $query): void
+    {
+        $selected = fn ($query) => $query->where('is_selected', true);
+
+        $query->with('addons')->withSum('payments', 'amount')->withCount([
+            'proofs',
+            'proofs as selected_count' => $selected,
+            'proofs as notes_count' => fn ($query) => $selected($query)->whereNotNull('note'),
+            'proofs as missing_results_count' => fn ($query) => $selected($query)->doesntHave('results'),
+        ]);
+    }
+
+    /** Alasan singkat di antrean dashboard. Butuh withBilling(). */
+    public function actionReason(): ?string
+    {
+        return match ($this->status) {
+            BookingStatus::New => 'Belum DP',
+            BookingStatus::Confirmed => ($this->isPaymentOverdue() ? 'Lewat jatuh tempo ' : 'Lunas jatuh tempo ')
+                . $this->paymentDueOn()->translatedFormat('j M'),
+            BookingStatus::Shot => $this->proofs_count ? 'Galeri belum dibuka' : 'Proof belum diunggah',
+            BookingStatus::Selecting => $this->selectionReason(),
+            BookingStatus::Editing => "{$this->selected_count} foto, {$this->notes_count} catatan, "
+                . "{$this->missing_results_count} belum ada hasil",
+            default => null,
+        };
+    }
+
+    private function selectionReason(): string
+    {
+        $days = (int) today()->diffInDays($this->selection_deadline, false);
+
+        return match (true) {
+            $days > 0 => "Batas pilih {$days} hari lagi",
+            $days === 0 => 'Batas pilih hari ini',
+            default => 'Batas pilih lewat ' . -$days . ' hari',
+        };
     }
 }

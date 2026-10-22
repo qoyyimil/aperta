@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,6 +22,11 @@ class Payment extends Model
     {
         static::creating(fn (self $p) => $p->recorded_by ??= auth()->id());
         static::created(fn (self $p) => $p->booking->confirmIfDeposited());
+    }
+
+    public function scopeThisMonth(Builder $query): void
+    {
+        $query->whereBetween('paid_on', [today()->startOfMonth(), today()->endOfMonth()]);
     }
 
     public function booking(): BelongsTo

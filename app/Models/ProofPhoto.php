@@ -28,7 +28,6 @@ class ProofPhoto extends Model implements Renderable
     // --- Renderable: proof diberi watermark, file asli dihapus setelah diolah (PRF-3) ---
 
     public function sourcePath(): string { return $this->source_path; }
-    public function watermark(): ?string { return config('aperta.watermark'); }
     public function renderBase(): string { return "proofs/{$this->booking_id}/{$this->frame}_{$this->basename()}"; }
 
     public function rendered(string $preview, string $thumb): void

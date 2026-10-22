@@ -24,7 +24,7 @@ class RenderPhoto implements ShouldQueue
     {
         $disk = Storage::disk(config('aperta.photo_disk'));
         $base = $this->photo->renderBase();
-        $images = ProofImages::make()->render($disk->get($this->photo->sourcePath()), $this->photo->watermark());
+        $images = ProofImages::make()->render($disk->get($this->photo->sourcePath()), config('aperta.watermark'));
 
         $disk->put("{$base}-preview.jpg", $images['preview']);
         $disk->put("{$base}-thumb.jpg", $images['thumb']);

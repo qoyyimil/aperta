@@ -8,6 +8,7 @@ use App\Jobs\RenderPhoto;
 use App\Models\Booking;
 use App\Models\EditedPhoto;
 use App\Models\Package;
+use App\Support\ProofImages;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Queue;
@@ -66,13 +67,25 @@ class ResultDeliveryTest extends TestCase
 
     public function test_render_job_keeps_original_for_download(): void
     {
-        $path = $this->upload('DSC_4513_edit.jpg');
+        // Gambar putih, karena watermark hitam tidak terlihat di gambar palsu yang hitam.
+        $image = imagecreatetruecolor(1200, 800);
+        imagefill($image, 0, 0, imagecolorallocate($image, 255, 255, 255));
+        ob_start();
+        imagejpeg($image);
+        $path = 'results/' . uniqid() . '/DSC_4513_edit.jpg';
+        Storage::disk('local')->put($path, ob_get_clean());
         $result = $this->booking->results()->create(['filename' => 'DSC_4513_edit.jpg', 'path' => $path, 'size' => 1]);
 
         (new RenderPhoto($result))->handle();
 
         $this->assertTrue($result->fresh()->isReady());
         Storage::disk('local')->assertExists($path);
+
+        // Pratinjau berwatermark agar tidak bisa disimpan gratis sebelum lunas.
+        $original = Storage::disk('local')->get($path);
+        $preview = Storage::disk('local')->get($result->fresh()->preview_path);
+        $this->assertSame(ProofImages::make()->render($original, config('aperta.watermark'))['preview'], $preview);
+        $this->assertNotSame(ProofImages::make()->render($original)['preview'], $preview);
     }
 
     public function test_results_are_visible_after_delivery_but_downloads_need_full_payment(): void
