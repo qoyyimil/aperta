@@ -8,7 +8,7 @@ export default function PublicLayout({ title, wide = false, children }) {
       <Head title={title} />
       <header className="border-b border-stone-200 bg-white">
         <div className={`mx-auto flex ${wide ? 'max-w-5xl' : 'max-w-3xl'} items-center justify-between px-4 py-4`}>
-          <Link href="/" className="text-lg font-bold tracking-tight">Aperta</Link>
+          <Link href="/"><img src="/aperta-logo.svg" alt="Aperta" className="h-10 w-auto" /></Link>
           <nav className="flex gap-5 text-sm text-stone-600">
             <Link href="/" className="hover:text-stone-900">Booking</Link>
             <Link href="/lacak" className="hover:text-stone-900">Lacak booking</Link>

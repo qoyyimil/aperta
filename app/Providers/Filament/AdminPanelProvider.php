@@ -10,6 +10,7 @@ use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -28,6 +29,10 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('studio')
             ->brandName('Aperta Studio')
+            ->brandLogo(asset('aperta-logo.svg'))
+            ->darkModeBrandLogo(asset('aperta-logo-white.svg'))
+            ->brandLogoHeight('2.5rem')
+            ->renderHook(PanelsRenderHook::HEAD_START, fn () => view('partials.favicon'))
             ->login()
             ->colors([
                 'primary' => Color::Indigo,
