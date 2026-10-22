@@ -26,6 +26,16 @@ class SessionPaymentTest extends TestCase
         $this->assertSame(today()->addDays(4)->toDateString(), $this->booking()->paymentDueOn()->toDateString());
     }
 
+    public function test_deposit_is_due_within_a_day_but_never_after_full_payment_due(): void
+    {
+        $this->travelTo('2026-11-05 20:00');
+
+        $this->assertSame('2026-11-06 20:00', $this->booking()->depositDueAt()->format('Y-m-d H:i'));
+
+        $tomorrow = Booking::factory()->create(['session_date' => '2026-11-06']);
+        $this->assertSame('2026-11-05 23:59', $tomorrow->depositDueAt()->format('Y-m-d H:i'));
+    }
+
     public function test_session_cannot_be_marked_done_until_session_bill_is_paid(): void
     {
         $booking = $this->booking();

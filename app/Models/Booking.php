@@ -240,6 +240,13 @@ class Booking extends Model
         return $this->session_date->copy()->subDays(config('aperta.full_payment_days_before'));
     }
 
+    /** Batas bayar DP sejak booking dibuat, tapi tidak melewati jatuh tempo pelunasan. */
+    public function depositDueAt(): Carbon
+    {
+        return $this->created_at->copy()->addHours(config('aperta.deposit_hours'))
+            ->min($this->paymentDueOn()->endOfDay());
+    }
+
     public function sessionBalance(): int
     {
         return max(0, $this->price()->sessionTotal() - $this->paid());
@@ -347,7 +354,8 @@ class Booking extends Model
     public function actionReason(): ?string
     {
         return match ($this->status) {
-            BookingStatus::New => 'Belum DP',
+            BookingStatus::New => ($this->depositDueAt()->isPast() ? 'DP lewat batas ' : 'Belum DP, batas ')
+                . $this->depositDueAt()->translatedFormat('j M H:i'),
             BookingStatus::Confirmed => ($this->isPaymentOverdue() ? 'Lewat jatuh tempo ' : 'Lunas jatuh tempo ')
                 . $this->paymentDueOn()->translatedFormat('j M'),
             BookingStatus::Shot => $this->proofs_count ? 'Galeri belum dibuka' : 'Proof belum diunggah',

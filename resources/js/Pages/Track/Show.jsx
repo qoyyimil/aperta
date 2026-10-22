@@ -1,8 +1,38 @@
+import { useState } from 'react';
 import Timeline from '../../Components/Timeline';
-import { Card, Row } from '../../Components/ui';
+import { Button, Card, Row } from '../../Components/ui';
 import PublicLayout from '../../Layouts/PublicLayout';
 import { rupiah } from '../../lib/format';
 import { Link } from '@inertiajs/react';
+
+function DepositCard({ deposit: d }) {
+  const [copied, setCopied] = useState(null);
+  const copy = (number) => navigator.clipboard?.writeText(number).then(() => setCopied(number));
+
+  return (
+    <Card tone="warning" className="mt-4">
+      <h2 className="font-semibold">Bayar DP untuk mengunci jadwal</h2>
+      <p className="mt-1 text-sm">Minimal <b>{rupiah(d.amount)}</b>, paling lambat <b>{d.dueAt}</b>.</p>
+      <ul className="mt-4 divide-y divide-ink/10 rounded-lg border border-ink/10 bg-white">
+        {d.accounts.map((a) => (
+          <li key={a.number} className="flex items-center justify-between gap-3 px-4 py-3">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-ash">{a.bank}</p>
+              <p className="font-mono text-base tracking-wide">{a.number}</p>
+              <p className="text-xs text-ash">a.n. {a.name}</p>
+            </div>
+            <Button variant="secondary" onClick={() => copy(a.number)}>{copied === a.number ? 'Tersalin' : 'Salin'}</Button>
+          </li>
+        ))}
+      </ul>
+      <a href={d.whatsappUrl} target="_blank" rel="noreferrer"
+        className="mt-4 block rounded-lg bg-amber px-4 py-2.5 text-center text-sm font-semibold text-ink hover:bg-brick hover:text-paper">
+        Sudah transfer? Konfirmasi via WhatsApp
+      </a>
+      <p className="mt-2 text-xs text-ash">Lampirkan foto bukti transfer di chat. Admin mengonfirmasi booking setelah DP diterima.</p>
+    </Card>
+  );
+}
 
 export default function Show({ booking: b }) {
   return (
@@ -24,6 +54,7 @@ export default function Show({ booking: b }) {
         <Card><Timeline steps={b.steps} /></Card>
       )}
 
+      {b.deposit ? <DepositCard deposit={b.deposit} /> : (
       <Card tone="info" className="mt-4 flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="text-sm font-semibold">Langkah berikutnya</p>
@@ -41,6 +72,7 @@ export default function Show({ booking: b }) {
           )}
         </div>
       </Card>
+      )}
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         <Card>

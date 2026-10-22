@@ -18,6 +18,15 @@ return [
         'Jakarta', 
         'Bandung'
     ],
+    'deposit_hours' => 24,         // batas bayar DP sejak booking dibuat
+    // Data contoh, ganti dengan rekening dan nomor WA admin studio.
+    'payment' => [
+        'whatsapp' => '6281234567890',
+        'accounts' => [
+            ['bank' => 'BCA', 'number' => '1234567890', 'name' => 'Aperta Studio'],
+            ['bank' => 'Mandiri', 'number' => '1370012345678', 'name' => 'Aperta Studio'],
+        ],
+    ],
     'photo_disk' => env('APERTA_PHOTO_DISK', 'local'),
     'watermark' => resource_path('aperta.png'),
 ];

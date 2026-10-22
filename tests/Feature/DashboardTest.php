@@ -134,7 +134,8 @@ class DashboardTest extends TestCase
             'proof_photo_id' => $editing->proofs()->where('frame', 1)->value('id')]);
 
         $cases = [
-            'Belum DP' => $this->booking(BookingStatus::New),
+            'Belum DP, batas 6 Nov 10:00' => $this->booking(BookingStatus::New),
+            'DP lewat batas 4 Nov 09:00' => $this->booking(BookingStatus::New, ['created_at' => '2026-11-03 09:00']),
             'Lunas jatuh tempo 7 Nov' => $this->booking(BookingStatus::Confirmed, ['session_date' => '2026-11-08']),
             'Lewat jatuh tempo 4 Nov' => $this->booking(BookingStatus::Confirmed, ['session_date' => '2026-11-05']),
             'Proof belum diunggah' => $this->booking(BookingStatus::Shot),

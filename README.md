@@ -160,6 +160,10 @@ php artisan aperta:admin EMAIL_TADI
 
 Akun tim berikutnya dibuat admin dari menu **Pengguna** di dashboard.
 
+### Rekening dan WhatsApp admin
+
+Setelah booking, klien melihat rekening tujuan DP dan tombol konfirmasi via WhatsApp di halaman lacak dan di email. Ganti data contoh di `config/aperta.php` bagian `payment`. Batas bayar DP diatur lewat `deposit_hours` (bawaan 24 jam). Booking yang lewat batas tidak dibatalkan otomatis, tapi muncul di antrean "Perlu tindakan" admin.
+
 ### Watermark (opsional)
 
 Ganti file PNG transparan di `resources/aperta.png`. Foto pratinjau untuk klien akan diberi watermark ini. Ini berlaku untuk proof dan pratinjau hasil edit. Kalau file tidak ada, pratinjau tetap dibuat tanpa watermark. File hasil edit yang diunduh klien setelah lunas tetap asli, tanpa watermark.

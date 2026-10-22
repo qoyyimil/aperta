@@ -129,6 +129,23 @@ class PublicBookingTest extends TestCase
             ->where('booking.steps.0.state', 'current'));
     }
 
+    public function test_new_booking_shows_where_and_until_when_to_pay_deposit(): void
+    {
+        $booking = Booking::factory()->create();
+
+        $this->get(route('track.show', $booking->access_token))->assertInertia(fn (Assert $page) => $page
+            ->where('booking.deposit.amount', $booking->minDeposit())
+            ->where('booking.deposit.accounts.0.number', config('aperta.payment.accounts.0.number'))
+            ->where('booking.deposit.whatsappUrl', fn (string $url) => str_contains($url, config('aperta.payment.whatsapp'))
+                && str_contains(urldecode($url), $booking->code)));
+
+        (new BookingPlaced($booking))->assertSeeInHtml(config('aperta.payment.accounts.0.number'));
+
+        $paid = Booking::factory()->paid()->create();
+        $this->get(route('track.show', $paid->access_token))
+            ->assertInertia(fn (Assert $page) => $page->where('booking.deposit', null));
+    }
+
     public function test_tracking_locks_after_five_failed_attempts(): void
     {
         $booking = Booking::factory()->create();

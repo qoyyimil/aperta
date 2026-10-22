@@ -42,6 +42,7 @@ final class TrackView
                 'open' => $b->status->selectionOpen(),
             ] : null,
             'resultsUrl' => $b->status === S::Delivered ? route('results.show', $b->access_token) : null,
+            'deposit' => $b->status === S::New ? self::deposit($b) : null,
             'steps' => self::steps($b->status),
             'next' => self::next($b),
         ];
@@ -64,10 +65,25 @@ final class TrackView
         ], array_keys(self::STEPS), self::STEPS, range(0, count(self::STEPS) - 1));
     }
 
+    /** Ke mana dan kapan bayar DP, plus tautan konfirmasi WhatsApp ke admin. */
+    private static function deposit(Booking $b): array
+    {
+        $text = "Halo admin, saya sudah transfer DP booking {$b->code} a.n. {$b->client->name} sebesar "
+            . Rupiah::format($b->minDeposit()) . '. Bukti transfer terlampir.';
+
+        return [
+            'amount' => $b->minDeposit(),
+            'dueAt' => $b->depositDueAt()->translatedFormat('d F Y, H:i'),
+            'accounts' => config('aperta.payment.accounts'),
+            'whatsappUrl' => 'https://wa.me/' . config('aperta.payment.whatsapp') . '?text=' . rawurlencode($text),
+        ];
+    }
+
     private static function next(Booking $b): string
     {
         return match ($b->status) {
-            S::New => 'Bayar DP minimal ' . Rupiah::format($b->minDeposit()) . ' agar jadwal terkunci. Admin akan mengonfirmasi setelah pembayaran diterima.',
+            S::New => 'Bayar DP minimal ' . Rupiah::format($b->minDeposit()) . ' paling lambat '
+                . $b->depositDueAt()->translatedFormat('d F Y, H:i') . ' agar jadwal terkunci. Admin akan mengonfirmasi setelah pembayaran diterima.',
             S::Confirmed => $b->isSessionPaid()
                 ? "Sampai jumpa di sesi foto pada {$b->session_date->translatedFormat('d F Y')} pukul " . substr($b->starts_at, 0, 5) . '.'
                 : 'Lunasi sisa tagihan ' . Rupiah::format($b->sessionBalance()) . ' paling lambat ' . $b->paymentDueOn()->translatedFormat('d F Y') . ' agar sesi bisa berjalan.',
