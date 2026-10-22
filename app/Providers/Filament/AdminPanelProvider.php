@@ -36,7 +36,8 @@ class AdminPanelProvider extends PanelProvider
             ->globalSearch(false)
             ->login()
             ->colors([
-                'primary' => Color::Indigo,
+                'primary' => Color::hex('#E8912D'),
+                'gray' => Color::Stone,
             ])
             ->navigationGroups(['Katalog', 'Pengaturan'])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')

@@ -1,6 +1,6 @@
 /** Tahap booking ala "Steps": horizontal (label di bawah) di layar lebar, vertikal di HP (TRK-5). */
 export default function Timeline({ steps }) {
-  const line = (step) => (step.state === 'done' ? 'bg-indigo-600' : 'bg-stone-200');
+  const line = (step) => (step.state === 'done' ? 'bg-amber' : 'bg-ink/10');
 
   return (
     <>
@@ -33,9 +33,9 @@ export default function Timeline({ steps }) {
 
 function Dot({ step, number, className = '' }) {
   const look = {
-    done: 'border-indigo-600 text-indigo-600',
-    current: 'border-indigo-600 bg-indigo-600 text-white',
-    todo: 'border-stone-300 bg-white text-stone-400',
+    done: 'border-amber text-brick',
+    current: 'border-amber bg-amber text-ink',
+    todo: 'border-ink/20 bg-white text-ash/70',
   }[step.state];
 
   return (
@@ -48,11 +48,11 @@ function Dot({ step, number, className = '' }) {
 function Text({ step, className = '' }) {
   return (
     <div className={`min-w-0 ${className}`}>
-      <p className={`text-sm ${step.state === 'todo' ? 'text-stone-400' : 'font-semibold text-stone-900'}`}>
+      <p className={`text-sm ${step.state === 'todo' ? 'text-ash/70' : 'font-semibold text-ink'}`}>
         {step.label}
         {step.state === 'current' && <span className="sr-only"> (tahap sekarang)</span>}
       </p>
-      <p className="mt-0.5 text-xs text-stone-500">{step.content}</p>
+      <p className="mt-0.5 text-xs text-ash">{step.content}</p>
     </div>
   );
 }

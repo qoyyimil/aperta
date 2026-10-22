@@ -13,12 +13,12 @@ export default function ExtrasStep({ form, addons, voucher }) {
     <div className="space-y-6">
       <div>
         <p className="mb-2 text-sm font-medium">Add-on (opsional)</p>
-        <ul className="divide-y divide-stone-200 rounded-lg border border-stone-200">
+        <ul className="divide-y divide-ink/10 rounded-lg border border-ink/10">
           {addons.map((a) => (
             <li key={a.id} className="flex items-center justify-between gap-3 px-3 py-2.5">
               <div className="min-w-0">
                 <p className="text-sm">{a.name}</p>
-                <p className="text-xs text-stone-500">{rupiah(a.price)}</p>
+                <p className="text-xs text-ash">{rupiah(a.price)}</p>
               </div>
               <div className="flex items-center gap-2">
                 <Button variant="ghost" className="px-2.5 py-1" aria-label={`Kurangi ${a.name}`} disabled={!qtyOf(a.id)} onClick={() => setQty(a, qtyOf(a.id) - 1)}>−</Button>

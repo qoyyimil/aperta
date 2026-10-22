@@ -30,15 +30,15 @@ export default function ScheduleStep({ form, packages, range }) {
         <legend className="mb-2 text-sm font-medium">Paket *</legend>
         <div className="grid gap-2 sm:grid-cols-2">
           {packages.map((p) => (
-            <label key={p.id} className={`cursor-pointer rounded-lg border p-3 ${data.package_id === p.id ? 'border-indigo-600 ring-2 ring-indigo-600/20' : 'border-stone-300 hover:border-stone-400'}`}>
+            <label key={p.id} className={`cursor-pointer rounded-lg border p-3 ${data.package_id === p.id ? 'border-amber ring-2 ring-amber/25' : 'border-ink/20 hover:border-ink/30'}`}>
               <input type="radio" name="package_id" className="sr-only" checked={data.package_id === p.id} onChange={() => setData('package_id', p.id)} />
-              <span className="block text-xs text-stone-500">{p.service} · {duration(p.duration_minutes)}</span>
+              <span className="block text-xs text-ash">{p.service} · {duration(p.duration_minutes)}</span>
               <span className="block font-medium">{p.name}</span>
-              <span className="block text-sm text-stone-600">{rupiah(p.price)} · edit {p.edit_quota} foto</span>
+              <span className="block text-sm text-ash">{rupiah(p.price)} · edit {p.edit_quota} foto</span>
             </label>
           ))}
         </div>
-        {errors.package_id && <p className="mt-2 text-xs text-red-600">{errors.package_id}</p>}
+        {errors.package_id && <p className="mt-2 text-xs text-brick">{errors.package_id}</p>}
       </fieldset>
 
       <Field label="Tanggal sesi *" error={errors.session_date} hint="Jika tanggal acara belum pasti, pilih perkiraan. Admin akan menghubungi kamu.">
@@ -49,20 +49,20 @@ export default function ScheduleStep({ form, packages, range }) {
         <div>
           <p className="mb-2 text-sm font-medium">Jam mulai *</p>
           {loading ? (
-            <p className="text-sm text-stone-500">Memuat jadwal…</p>
+            <p className="text-sm text-ash">Memuat jadwal…</p>
           ) : times.length ? (
             <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
               {times.map((t) => (
                 <button key={t} type="button" onClick={() => setData('starts_at', t)}
-                  className={`rounded-lg border py-2 text-sm tabular-nums ${data.starts_at === t ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-stone-300 hover:border-stone-500'}`}>
+                  className={`rounded-lg border py-2 text-sm tabular-nums ${data.starts_at === t ? 'border-amber bg-amber text-ink' : 'border-ink/20 hover:border-ink/40'}`}>
                   {t}
                 </button>
               ))}
             </div>
           ) : (
-            <p className="text-sm text-stone-500">Tidak ada jam tersedia di tanggal ini. Coba tanggal lain.</p>
+            <p className="text-sm text-ash">Tidak ada jam tersedia di tanggal ini. Coba tanggal lain.</p>
           )}
-          {errors.starts_at && <p className="mt-2 text-xs text-red-600">{errors.starts_at}</p>}
+          {errors.starts_at && <p className="mt-2 text-xs text-brick">{errors.starts_at}</p>}
         </div>
       )}
     </div>

@@ -21,10 +21,10 @@ export default function Lightbox({ photos, index, open, onIndex, onClose, onTogg
   if (!photo) return null;
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-black/85 p-3 sm:p-6" role="dialog" aria-modal="true" aria-label={photo.filename}
+    <div className="fixed inset-0 z-50 grid place-items-center bg-ink/85 p-3 sm:p-6" role="dialog" aria-modal="true" aria-label={photo.filename}
       onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="grid max-h-full w-full max-w-5xl overflow-auto rounded-xl bg-white md:grid-cols-[1fr_18rem]">
-        <div className="relative grid min-h-60 place-items-center bg-black"
+        <div className="relative grid min-h-60 place-items-center bg-ink"
           onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
           onTouchEnd={(e) => { const dx = e.changedTouches[0].clientX - touchX.current; if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1); }}>
           <img src={photo.preview} alt={`Frame ${photo.frame}`} className="max-h-[60vh] max-w-full object-contain md:max-h-[80vh]" />
@@ -34,7 +34,7 @@ export default function Lightbox({ photos, index, open, onIndex, onClose, onTogg
         <div className="flex flex-col gap-4 p-5">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-xs uppercase tracking-wider text-stone-500">Frame {photo.frame} · {index + 1} dari {photos.length}</p>
+              <p className="text-xs uppercase tracking-wider text-ash">Frame {photo.frame} · {index + 1} dari {photos.length}</p>
               <p className="truncate font-mono text-sm">{photo.filename}</p>
             </div>
             <Button variant="ghost" className="px-3 py-1.5" onClick={onClose}>Tutup</Button>
@@ -50,8 +50,8 @@ export default function Lightbox({ photos, index, open, onIndex, onClose, onTogg
             <span className="text-sm font-medium">Catatan untuk editor</span>
             <textarea rows={4} maxLength={300} readOnly={!open} value={photo.note ?? ''} onChange={(e) => onNote(photo, e.target.value)}
               placeholder="Mis. hapus jerawat, crop portrait, warna lebih hangat"
-              className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20" />
-            {open && <span className="block text-xs text-stone-500">Tersimpan otomatis. Menulis catatan otomatis memilih foto ini.</span>}
+              className="w-full rounded-lg border border-ink/20 px-3 py-2 text-sm focus:border-amber focus:outline-none focus:ring-2 focus:ring-amber/25" />
+            {open && <span className="block text-xs text-ash">Tersimpan otomatis. Menulis catatan otomatis memilih foto ini.</span>}
           </label>
         </div>
       </div>
@@ -63,7 +63,7 @@ function NavButton({ side, disabled, onClick }) {
   if (disabled) return null;
   return (
     <button type="button" onClick={onClick} aria-label={side === 'left' ? 'Foto sebelumnya' : 'Foto berikutnya'}
-      className={`absolute top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-white/15 text-2xl text-white hover:bg-white/25 ${side === 'left' ? 'left-3' : 'right-3'}`}>
+      className={`absolute top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full bg-paper/15 text-2xl text-paper hover:bg-paper/25 ${side === 'left' ? 'left-3' : 'right-3'}`}>
       {side === 'left' ? '‹' : '›'}
     </button>
   );

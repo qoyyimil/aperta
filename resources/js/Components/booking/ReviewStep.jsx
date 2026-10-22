@@ -15,10 +15,10 @@ export default function ReviewStep({ form, pkg }) {
         <Row label="Lokasi">{[data.location, data.institution, data.city].filter(Boolean).join(', ')}</Row>
       </div>
       <label className="flex items-start gap-3 text-sm">
-        <input type="checkbox" className="mt-0.5 size-4 accent-indigo-600" checked={data.consent} onChange={(e) => setData('consent', e.target.checked)} />
+        <input type="checkbox" className="mt-0.5 size-4 accent-brick" checked={data.consent} onChange={(e) => setData('consent', e.target.checked)} />
         <span>Saya menyetujui kebijakan privasi dan syarat layanan studio, termasuk penyimpanan data saya untuk keperluan booking.</span>
       </label>
-      {errors.consent && <p className="text-xs text-red-600">{errors.consent}</p>}
+      {errors.consent && <p className="text-xs text-brick">{errors.consent}</p>}
     </div>
   );
 }

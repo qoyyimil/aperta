@@ -10,7 +10,7 @@ export default function Find() {
     <PublicLayout title="Lacak booking">
       <Card className="mx-auto max-w-md">
         <h1 className="text-xl font-bold">Lacak booking</h1>
-        <p className="mt-1 text-sm text-stone-600">Masukkan kode booking dari email atau WhatsApp kamu.</p>
+        <p className="mt-1 text-sm text-ash">Masukkan kode booking dari email atau WhatsApp kamu.</p>
         <form onSubmit={submit} className="mt-5 space-y-4">
           <Field label="Kode booking" error={errors.code}>
             <Input value={data.code} placeholder="AP-XXXXXX" onChange={(e) => setData('code', e.target.value.toUpperCase())} />

@@ -40,11 +40,11 @@ export default function Create({ packages, addons, cities, window: range, deposi
   return (
     <PublicLayout title="Booking jadwal">
       <h1 className="text-2xl font-bold tracking-tight">Booking jadwal foto</h1>
-      <p className="mt-1 text-sm text-stone-600">Isi data singkat, pilih paket dan jam, lalu kirim.</p>
+      <p className="mt-1 text-sm text-ash">Isi data singkat, pilih paket dan jam, lalu kirim.</p>
 
       <ol className="my-6 grid grid-cols-4 gap-2 text-xs">
         {STEPS.map((s, i) => (
-          <li key={s.title} className={`border-t-2 pt-2 ${i <= step ? 'border-indigo-600 font-semibold text-stone-900' : 'border-stone-200 text-stone-400'}`}>
+          <li key={s.title} className={`border-t-2 pt-2 ${i <= step ? 'border-amber font-semibold text-ink' : 'border-ink/10 text-ash/70'}`}>
             <span className="tabular-nums">{i + 1}.</span> {s.title}
           </li>
         ))}
@@ -53,7 +53,7 @@ export default function Create({ packages, addons, cities, window: range, deposi
       <div className="grid gap-6 md:grid-cols-[1fr_17rem]">
         <Card>
           <Step {...{ form, packages, addons, cities, range, pkg, voucher }} />
-          <div className="mt-6 flex justify-between border-t border-stone-200 pt-4">
+          <div className="mt-6 flex justify-between border-t border-ink/10 pt-4">
             <Button variant="ghost" disabled={step === 0} onClick={() => setStep(step - 1)}>Kembali</Button>
             {last ? (
               <Button disabled={!ready || form.processing} onClick={submit}>{form.processing ? 'Mengirim…' : 'Kirim booking'}</Button>
