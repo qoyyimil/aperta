@@ -9,7 +9,7 @@ class EditBooking extends EditRecord
 {
     use GuardsSchedule;
     protected static string $resource = BookingResource::class;
-    protected static ?string $title = 'Ubah jadwal';
+    protected static ?string $title = 'Ubah booking';
 
     /** Pembayaran, proof, dan riwayat dikelola di halaman detail, bukan di sini. */
     public function getRelationManagers(): array

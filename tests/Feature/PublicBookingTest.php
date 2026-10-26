@@ -6,6 +6,7 @@ use App\Mail\BookingPlaced;
 use App\Models\Addon;
 use App\Models\BlockedDate;
 use App\Models\Booking;
+use App\Models\Client;
 use App\Models\Package;
 use App\Models\Voucher;
 use App\Support\Availability;
@@ -83,6 +84,16 @@ class PublicBookingTest extends TestCase
 
         $this->assertSame(2, Booking::count());
         $this->assertSame('thalia@example.com', Booking::first()->client->email);
+    }
+
+    public function test_phone_format_is_the_same_from_admin_and_public_form(): void
+    {
+        $client = Client::factory()->create(['whatsapp' => '+62 812-3456-7890']);
+        $this->assertSame('081234567890', $client->whatsapp);
+
+        $this->post('/booking', $this->payload(Package::factory()->create(['duration_minutes' => 60])))->assertRedirect();
+
+        $this->assertSame(1, Client::count());
     }
 
     public function test_full_slot_and_blocked_date_are_rejected(): void

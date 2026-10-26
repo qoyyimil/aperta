@@ -38,7 +38,7 @@ final class PlaceBooking
     {
         // Data klien lama tidak ditimpa dari form publik.
         $client = Client::firstOrCreate(
-            ['whatsapp' => Client::normalizePhone($data['whatsapp'])],
+            ['whatsapp' => $data['whatsapp']], // sudah 08xx dari StoreBookingRequest
             Arr::only($data, ['name', 'email', 'instagram']),
         );
 

@@ -5,7 +5,9 @@ namespace Tests\Feature;
 use App\Enums\BookingStatus;
 use App\Enums\UserRole;
 use App\Filament\Resources\Bookings\BookingResource;
+use App\Filament\Resources\Bookings\Pages\EditBooking;
 use App\Filament\Resources\Bookings\Pages\ListBookings;
+use Filament\Actions\Testing\TestAction;
 use App\Filament\Resources\Packages\PackageResource;
 use App\Models\Booking;
 use App\Models\User;
@@ -57,6 +59,22 @@ class StudioAccessTest extends TestCase
         $this->assertFalse($photographer->can('transition', [$booking, BookingStatus::Cancelled]));
         $this->assertFalse($this->user(UserRole::Editor)->can('transition', [$booking, BookingStatus::Shot]));
         $this->assertTrue($this->user(UserRole::Admin)->can('transition', [$booking, BookingStatus::Cancelled]));
+    }
+
+    public function test_admin_can_fix_client_details_from_booking_edit(): void
+    {
+        $booking = Booking::factory()->create();
+        $this->actingAs($this->user(UserRole::Admin));
+
+        Livewire::test(EditBooking::class, ['record' => $booking->getRouteKey()])
+            ->assertFormFieldVisible('client_id')
+            ->assertFormFieldHidden('package_id')
+            ->callAction(TestAction::make('editOption')->schemaComponent('client_id'), [
+                'name' => 'Thalia Putri', 'email' => 'benar@example.com', 'whatsapp' => '+62 812-3456-7890',
+            ])
+            ->assertHasNoErrors();
+
+        $this->assertSame('benar@example.com', $booking->client->fresh()->email);
     }
 
     public function test_reschedule_and_cancel_are_recorded(): void

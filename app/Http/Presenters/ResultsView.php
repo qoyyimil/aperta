@@ -22,7 +22,7 @@ final class ResultsView
                 'name' => strtok($b->client->name, ' '),
                 'deliveredAt' => $b->delivered_at?->translatedFormat('d F Y'),
                 'canDownload' => $canDownload,
-                'remaining' => $canDownload ? 0 : max(0, $b->price()->total() - $b->paid()),
+                'remaining' => $canDownload ? 0 : $b->balance(),
             ],
             'results' => $b->results()->whereNotNull('preview_path')->with('proof')->orderBy('id')->get()
                 ->map(fn (EditedPhoto $r) => [

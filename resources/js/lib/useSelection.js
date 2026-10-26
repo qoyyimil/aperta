@@ -14,7 +14,11 @@ export default function useSelection(booking, initialPhotos) {
 
   const save = (id, body, undo) =>
     sendJson(`/lacak/${booking.token}/foto/${id}`, 'PATCH', body)
-      .then(({ photo }) => { patch(id, { selected: photo.selected }); setError(null); })
+      .then(({ photo }) => {
+        // Hanya catatan yang bisa mengubah status pilih di server; jawaban toggle bisa datang tidak urut.
+        if ('note' in body) patch(id, { selected: photo.selected });
+        setError(null);
+      })
       .catch((e) => { if (undo) patch(id, undo); setError(e.message); });
 
   const toggle = (photo) => {

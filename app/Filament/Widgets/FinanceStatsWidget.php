@@ -13,6 +13,9 @@ class FinanceStatsWidget extends StatsOverviewWidget
 {
     protected static ?int $sort = 1;
 
+    // Angka cukup diperbarui saat halaman dimuat ulang.
+    protected ?string $pollingInterval = null;
+
     public static function canView(): bool
     {
         return auth()->user()->isAdmin();

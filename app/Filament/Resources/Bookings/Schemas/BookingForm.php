@@ -16,17 +16,21 @@ class BookingForm
     public static function configure(Schema $schema): Schema
     {
         return $schema->columns(1)->components([
-            Section::make('Klien & paket')->columns(2)->visibleOn('create')->schema([
+            Section::make(fn (string $operation) => $operation === 'create' ? 'Klien & paket' : 'Klien')->columns(2)->schema([
                 Select::make('client_id')
                     ->label('Klien')
                     ->relationship('client', 'name')
                     ->searchable(['name', 'whatsapp'])
                     ->preload()
                     ->createOptionForm(self::clientFields())
+                    ->editOptionForm(self::clientFields())
                     ->required(),
+                // Paket hanya dipilih saat dibuat, karena harganya disalin ke booking.
                 Select::make('package_id')
                     ->label('Paket')
-                    ->relationship('package', 'name', fn (Builder $query) => $query->where('is_active', true))                    ->helperText('Harga dan kuota disalin saat booking dibuat, tidak bisa diubah setelahnya.')
+                    ->relationship('package', 'name', fn (Builder $query) => $query->where('is_active', true))
+                    ->helperText('Harga dan kuota disalin saat booking dibuat, tidak bisa diubah setelahnya.')
+                    ->visibleOn('create')
                     ->required(),
             ]),
             Section::make('Jadwal & lokasi')->columns(3)->schema([
@@ -46,7 +50,8 @@ class BookingForm
         return [
             TextInput::make('name')->label('Nama')->required(),
             TextInput::make('email')->email()->required(),
-            TextInput::make('whatsapp')->tel()->regex('/^(\+62|0)8\d{8,13}$/')->required(),
+            // Spasi dan tanda hubung boleh, seperti salinan dari WhatsApp; model menyimpannya sebagai 08xx.
+            TextInput::make('whatsapp')->tel()->regex('/^(\+?62|0)\s?8[\d\s-]{8,16}$/')->required(),
             TextInput::make('instagram'),
         ];
     }
