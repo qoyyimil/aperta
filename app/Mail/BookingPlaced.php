@@ -14,9 +14,12 @@ use Illuminate\Queue\SerializesModels;
 /** Ringkasan booking untuk klien (BOOK-10). Dikirim lewat antrean agar halaman tidak menunggu. */
 class BookingPlaced extends Mailable implements ShouldQueue
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
-    public function __construct(public Booking $booking) {}
+    public function __construct(
+        public Booking $booking,
+    ) {}
 
     public function envelope(): Envelope
     {

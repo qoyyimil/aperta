@@ -51,12 +51,18 @@ class SelectionController extends Controller
             return back()->withErrors(['selection' => $e->getMessage()]);
         }
 
-        return to_route('track.show', $booking->access_token)
-            ->with('success', 'Pilihan terkirim! Fotografer akan mulai mengedit foto pilihanmu.');
+        return to_route('track.show', $booking->access_token)->with(
+            'success',
+            'Pilihan terkirim! Fotografer akan mulai mengedit foto pilihanmu.',
+        );
     }
 
     private function ensureOpen(Booking $booking): void
     {
-        abort_unless($booking->status->selectionOpen(), 409, 'Pilihan sudah dikirim dan dikunci. Hubungi admin jika ingin mengubah.');
+        abort_unless(
+            $booking->status->selectionOpen(),
+            409,
+            'Pilihan sudah dikirim dan dikunci. Hubungi admin jika ingin mengubah.',
+        );
     }
 }

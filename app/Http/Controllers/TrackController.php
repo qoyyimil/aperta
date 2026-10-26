@@ -30,12 +30,14 @@ class TrackController extends Controller
 
         if (RateLimiter::tooManyAttempts($key, self::MAX_FAILURES)) {
             $minutes = ceil(RateLimiter::availableIn($key) / 60);
-            throw ValidationException::withMessages(['code' => "Terlalu banyak percobaan. Coba lagi dalam {$minutes} menit."]);
+            throw ValidationException::withMessages([
+                'code' => "Terlalu banyak percobaan. Coba lagi dalam {$minutes} menit.",
+            ]);
         }
 
         $booking = Booking::with('client')->firstWhere('code', BookingCode::normalize($data['code']));
 
-        if (! $booking?->client->whatsappMatches($data['phone'])) {
+        if (!$booking?->client->whatsappMatches($data['phone'])) {
             RateLimiter::hit($key, self::LOCK_SECONDS);
             throw ValidationException::withMessages(['code' => 'Kode booking atau nomor tidak cocok.']);
         }

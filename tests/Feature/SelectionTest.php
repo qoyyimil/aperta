@@ -21,7 +21,14 @@ class SelectionTest extends TestCase
         $package = Package::factory()->create(['price' => 750_000, 'edit_quota' => 2, 'extra_photo_price' => 25_000]);
         $this->booking = Booking::factory()->forPackage($package)->paid()->create();
         foreach (range(1, 4) as $i) {
-            $this->booking->proofs()->create(['frame' => $i, 'filename' => "DSC_{$i}.JPG", 'preview_path' => "p{$i}", 'thumb_path' => "t{$i}"]);
+            $this->booking
+                ->proofs()
+                ->create([
+                    'frame' => $i,
+                    'filename' => "DSC_{$i}.JPG",
+                    'preview_path' => "p{$i}",
+                    'thumb_path' => "t{$i}",
+                ]);
         }
         $this->booking->transitionTo(BookingStatus::Shot);
         $this->booking->publishProofs(2, 25_000, today()->addWeek()->toDateString());
@@ -37,10 +44,9 @@ class SelectionTest extends TestCase
         $other = Booking::factory()->create();
 
         $this->get("/lacak/{$other->access_token}/foto")->assertNotFound();
-        $this->get($this->url())->assertInertia(fn (Assert $page) => $page
-            ->component('Gallery/Select')
-            ->where('booking.open', true)
-            ->has('photos', 4));
+        $this->get($this->url())->assertInertia(
+            fn(Assert $page) => $page->component('Gallery/Select')->where('booking.open', true)->has('photos', 4),
+        );
     }
 
     public function test_client_selects_and_notes_photos_and_extras_are_charged(): void
@@ -49,7 +55,9 @@ class SelectionTest extends TestCase
 
         $this->patchJson($this->url("/{$a->id}"), ['selected' => true])->assertJsonPath('photo.selected', true);
         $this->patchJson($this->url("/{$b->id}"), ['selected' => true])->assertOk();
-        $this->patchJson($this->url("/{$c->id}"), ['note' => 'Hapus orang di belakang'])->assertJsonPath('photo.selected', true);
+        $this->patchJson($this->url("/{$c->id}"), [
+            'note' => 'Hapus orang di belakang',
+        ])->assertJsonPath('photo.selected', true);
 
         $this->assertSame(1, $this->booking->extraPhotos());
         $this->assertSame(775_000, $this->booking->fresh()->price()->total());
@@ -75,6 +83,6 @@ class SelectionTest extends TestCase
         $this->assertSame(BookingStatus::Editing, $this->booking->status);
         $this->assertNotNull($this->booking->selection_submitted_at);
         $this->patchJson($this->url("/{$proof->id}"), ['selected' => false])->assertStatus(409);
-        $this->get($this->url())->assertInertia(fn (Assert $page) => $page->where('booking.open', false));
+        $this->get($this->url())->assertInertia(fn(Assert $page) => $page->where('booking.open', false));
     }
 }

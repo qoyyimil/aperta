@@ -18,7 +18,9 @@ class SessionPaymentTest extends TestCase
     {
         $package = Package::factory()->create(['price' => 1_000_000, 'edit_quota' => 1, 'extra_photo_price' => 25_000]);
 
-        return Booking::factory()->forPackage($package)->create(['session_date' => today()->addDays(5)]);
+        return Booking::factory()
+            ->forPackage($package)
+            ->create(['session_date' => today()->addDays(5)]);
     }
 
     public function test_due_date_is_one_day_before_session(): void
@@ -58,7 +60,14 @@ class SessionPaymentTest extends TestCase
 
     public function test_extra_photos_are_not_part_of_the_session_bill(): void
     {
-        $booking = Booking::factory()->forPackage(Package::factory()->create(['price' => 1_000_000, 'edit_quota' => 1, 'extra_photo_price' => 25_000]))->paid()->create();
+        $booking = Booking::factory()
+            ->forPackage(Package::factory()->create([
+                'price' => 1_000_000,
+                'edit_quota' => 1,
+                'extra_photo_price' => 25_000,
+            ]))
+            ->paid()
+            ->create();
         foreach ([1, 2, 3] as $i) {
             $booking->proofs()->create(['frame' => $i, 'filename' => "D{$i}.JPG", 'is_selected' => true]);
         }

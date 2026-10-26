@@ -14,7 +14,7 @@ class AgendaWidget extends TableWidget
 {
     protected static ?int $sort = 3;
 
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     public function table(Table $table): Table
     {
@@ -22,14 +22,22 @@ class AgendaWidget extends TableWidget
             ->heading('Agenda 7 hari')
             ->query(Booking::upcoming(7)->visibleTo(auth()->user())->with('client', 'crew'))
             ->columns([
-                TextColumn::make('session_date')->label('Jadwal')->date('D, d M')
-                    ->description(fn (Booking $record) => substr($record->starts_at, 0, 5) . '–' . substr($record->ends_at, 0, 5)),
-                TextColumn::make('service')->label('Layanan')->description(fn (Booking $record) => $record->package_name),
+                TextColumn::make('session_date')
+                    ->label('Jadwal')
+                    ->date('D, d M')
+                    ->description(
+                        fn(Booking $record) => substr($record->starts_at, 0, 5) . '–' . substr($record->ends_at, 0, 5),
+                    ),
+                TextColumn::make('service')
+                    ->label('Layanan')
+                    ->description(fn(Booking $record) => $record->package_name),
                 TextColumn::make('client.name')->label('Klien'),
-                TextColumn::make('city')->label('Lokasi')->description(fn (Booking $record) => $record->location),
+                TextColumn::make('city')
+                    ->label('Lokasi')
+                    ->description(fn(Booking $record) => $record->location),
                 TextColumn::make('crew.name')->label('Tim')->badge()->placeholder('Belum ada'),
             ])
-            ->recordUrl(fn (Booking $record) => BookingResource::getUrl('view', ['record' => $record]))
+            ->recordUrl(fn(Booking $record) => BookingResource::getUrl('view', ['record' => $record]))
             ->emptyStateIcon(Heroicon::OutlinedCalendar)
             ->emptyStateHeading('Belum ada sesi 7 hari ke depan');
     }

@@ -41,10 +41,14 @@ class DashboardTest extends TestCase
     private function proofs(Booking $booking, int $count, int $selected = 0, int $notes = 0): void
     {
         foreach (range(1, $count) as $i) {
-            $booking->proofs()->create([
-                'frame' => $i, 'filename' => "DSC_{$i}.jpg",
-                'is_selected' => $i <= $selected, 'note' => $i <= $notes ? 'Rapikan rambut' : null,
-            ]);
+            $booking
+                ->proofs()
+                ->create([
+                    'frame' => $i,
+                    'filename' => "DSC_{$i}.jpg",
+                    'is_selected' => $i <= $selected,
+                    'note' => $i <= $notes ? 'Rapikan rambut' : null,
+                ]);
         }
     }
 
@@ -56,7 +60,11 @@ class DashboardTest extends TestCase
     public function test_finance_widget_is_admin_only(): void
     {
         $this->booking(BookingStatus::New, ['session_date' => '2026-11-07']);
-        $headings = [UserRole::Admin->value => 'Perlu tindakan', UserRole::Photographer->value => 'Belum diunggah', UserRole::Editor->value => 'Antrean edit'];
+        $headings = [
+            UserRole::Admin->value => 'Perlu tindakan',
+            UserRole::Photographer->value => 'Belum diunggah',
+            UserRole::Editor->value => 'Antrean edit',
+        ];
 
         foreach (UserRole::cases() as $role) {
             $this->actingAs($this->user($role))->get('/studio')->assertOk();
@@ -130,8 +138,14 @@ class DashboardTest extends TestCase
         $this->proofs($uploaded, 2);
         $editing = $this->booking(BookingStatus::Editing);
         $this->proofs($editing, 5, selected: 3, notes: 1);
-        $editing->results()->create(['filename' => 'DSC_1_edit.jpg', 'path' => 'x', 'size' => 1,
-            'proof_photo_id' => $editing->proofs()->where('frame', 1)->value('id')]);
+        $editing
+            ->results()
+            ->create([
+                'filename' => 'DSC_1_edit.jpg',
+                'path' => 'x',
+                'size' => 1,
+                'proof_photo_id' => $editing->proofs()->where('frame', 1)->value('id'),
+            ]);
 
         $cases = [
             'Belum DP, batas 6 Nov 10:00' => $this->booking(BookingStatus::New),
@@ -140,9 +154,13 @@ class DashboardTest extends TestCase
             'Lewat jatuh tempo 4 Nov' => $this->booking(BookingStatus::Confirmed, ['session_date' => '2026-11-05']),
             'Proof belum diunggah' => $this->booking(BookingStatus::Shot),
             'Galeri belum dibuka' => $uploaded,
-            'Batas pilih 2 hari lagi' => $this->booking(BookingStatus::Selecting, ['selection_deadline' => '2026-11-07']),
+            'Batas pilih 2 hari lagi' => $this->booking(BookingStatus::Selecting, [
+                'selection_deadline' => '2026-11-07',
+            ]),
             'Batas pilih hari ini' => $this->booking(BookingStatus::Selecting, ['selection_deadline' => '2026-11-05']),
-            'Batas pilih lewat 1 hari' => $this->booking(BookingStatus::Selecting, ['selection_deadline' => '2026-11-04']),
+            'Batas pilih lewat 1 hari' => $this->booking(BookingStatus::Selecting, [
+                'selection_deadline' => '2026-11-04',
+            ]),
             '3 foto, 1 catatan, 2 belum ada hasil' => $editing,
         ];
 
@@ -154,8 +172,9 @@ class DashboardTest extends TestCase
     public function test_finance_numbers_match_payments_and_balances(): void
     {
         $package = Package::factory()->create(['price' => 1_000_000, 'edit_quota' => 2, 'extra_photo_price' => 50_000]);
-        $make = fn (string $date, BookingStatus $status = BookingStatus::New) => Booking::factory()
-            ->forPackage($package)->create(['session_date' => $date, 'status' => $status]);
+        $make = fn(string $date, BookingStatus $status = BookingStatus::New) => Booking::factory()
+            ->forPackage($package)
+            ->create(['session_date' => $date, 'status' => $status]);
 
         $deposit = $make('2026-11-12');
         $deposit->payments()->create(['amount' => 400_000, 'paid_on' => '2026-11-03', 'method' => 'cash']);
@@ -170,8 +189,6 @@ class DashboardTest extends TestCase
         $this->assertSame(2, Booking::thisMonth()->count());
 
         $this->actingAs($this->user(UserRole::Admin));
-        Livewire::test(FinanceStatsWidget::class)
-            ->assertSee('Rp400.000')
-            ->assertSee('Rp1.650.000');
+        Livewire::test(FinanceStatsWidget::class)->assertSee('Rp400.000')->assertSee('Rp1.650.000');
     }
 }

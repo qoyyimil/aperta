@@ -25,9 +25,6 @@ final class BookingCode
     {
         $max = strlen(self::ALPHABET) - 1;
 
-        return implode('', array_map(
-            fn () => self::ALPHABET[random_int(0, $max)],
-            range(1, $length),
-        ));
+        return implode('', array_map(fn() => self::ALPHABET[random_int(0, $max)], range(1, $length)));
     }
 }

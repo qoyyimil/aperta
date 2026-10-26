@@ -28,28 +28,32 @@ class UserResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->columns(2)->components([
-            TextInput::make('name')->label('Nama')->required(),
-            TextInput::make('email')->email()->required()->unique(ignoreRecord: true),
-            Select::make('role')->label('Peran')->options(UserRole::class)->required(),
-            TextInput::make('password')->label('Kata sandi')->password()->revealable()->minLength(10)
-                ->required(fn (string $operation) => $operation === 'create')
-                ->dehydrated(fn (?string $state) => filled($state))
-                ->helperText('Kosongkan jika tidak ingin mengganti.'),
-            Toggle::make('is_active')->label('Aktif')->default(true),
-        ]);
+        return $schema
+            ->columns(2)
+            ->components([
+                TextInput::make('name')->label('Nama')->required(),
+                TextInput::make('email')->email()->required()->unique(ignoreRecord: true),
+                Select::make('role')->label('Peran')->options(UserRole::class)->required(),
+                TextInput::make('password')
+                    ->label('Kata sandi')
+                    ->password()
+                    ->revealable()
+                    ->minLength(10)
+                    ->required(fn(string $operation) => $operation === 'create')
+                    ->dehydrated(fn(?string $state) => filled($state))
+                    ->helperText('Kosongkan jika tidak ingin mengganti.'),
+                Toggle::make('is_active')->label('Aktif')->default(true),
+            ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                TextColumn::make('name')->label('Nama')->searchable(),
-                TextColumn::make('email')->searchable(),
-                TextColumn::make('role')->label('Peran')->badge(),
-                IconColumn::make('is_active')->label('Aktif')->boolean(),
-            ])
-            ->recordActions([EditAction::make()]);
+        return $table->columns([
+            TextColumn::make('name')->label('Nama')->searchable(),
+            TextColumn::make('email')->searchable(),
+            TextColumn::make('role')->label('Peran')->badge(),
+            IconColumn::make('is_active')->label('Aktif')->boolean(),
+        ])->recordActions([EditAction::make()]);
     }
 
     public static function getPages(): array

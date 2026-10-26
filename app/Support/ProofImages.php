@@ -17,7 +17,9 @@ final class ProofImages
     public const PREVIEW = 2048;
     public const THUMB = 480;
 
-    public function __construct(private ImageManagerInterface $images) {}
+    public function __construct(
+        private ImageManagerInterface $images,
+    ) {}
 
     public static function make(): self
     {

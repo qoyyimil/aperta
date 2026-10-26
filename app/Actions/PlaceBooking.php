@@ -24,13 +24,17 @@ final class PlaceBooking
         $date = Carbon::parse($data['session_date']);
 
         // Kunci per tanggal: dua klien di slot yang sama diproses bergantian (BOOK-8).
-        return Cache::lock("booking-slot:{$date->toDateString()}", 10)->block(5, function () use ($data, $package, $date) {
+        return Cache::lock("booking-slot:{$date->toDateString()}", 10)->block(5, function () use (
+            $data,
+            $package,
+            $date,
+        ) {
             throw_unless(
                 Availability::make()->allows($date, $data['starts_at'], $package->duration_minutes),
                 SlotUnavailable::class,
             );
 
-            return DB::transaction(fn () => $this->create($data, $package, $date));
+            return DB::transaction(fn() => $this->create($data, $package, $date));
         });
     }
 
@@ -42,11 +46,27 @@ final class PlaceBooking
             Arr::only($data, ['name', 'email', 'instagram']),
         );
 
-        $booking = new Booking(Arr::only($data, ['session_date', 'starts_at', 'city', 'location', 'lat', 'lng', 'institution', 'notes']));
-        $booking->applyPackage($package)->fill([
-            'client_id' => $client->id,
-            'ends_at' => $date->copy()->setTimeFromTimeString($data['starts_at'])->addMinutes($package->duration_minutes)->format('H:i'),
-        ])->save();
+        $booking = new Booking(Arr::only($data, [
+            'session_date',
+            'starts_at',
+            'city',
+            'location',
+            'lat',
+            'lng',
+            'institution',
+            'notes',
+        ]));
+        $booking
+            ->applyPackage($package)
+            ->fill([
+                'client_id' => $client->id,
+                'ends_at' => $date
+                    ->copy()
+                    ->setTimeFromTimeString($data['starts_at'])
+                    ->addMinutes($package->duration_minutes)
+                    ->format('H:i'),
+            ])
+            ->save();
 
         $this->attachAddons($booking, $data['addons'] ?? []);
         $this->applyVoucher($booking, $data['voucher'] ?? null);
@@ -60,11 +80,13 @@ final class PlaceBooking
         $addons = Addon::active()->findMany(array_column($items, 'id'))->keyBy('id');
 
         $booking->addons()->attach(collect($items)
-            ->filter(fn (array $i) => $addons->has($i['id']))
-            ->mapWithKeys(fn (array $i) => [$i['id'] => [
-                'qty' => min((int) $i['qty'], $addons[$i['id']]->max_qty),
-                'price' => $addons[$i['id']]->price,
-            ]]));
+            ->filter(fn(array $i) => $addons->has($i['id']))
+            ->mapWithKeys(fn(array $i) => [
+                $i['id'] => [
+                    'qty' => min((int) $i['qty'], $addons[$i['id']]->max_qty),
+                    'price' => $addons[$i['id']]->price,
+                ],
+            ]));
     }
 
     private function applyVoucher(Booking $booking, ?string $code): void
@@ -73,7 +95,9 @@ final class PlaceBooking
             return;
         }
 
-        $voucher = Voucher::where('code', strtoupper(trim($code)))->lockForUpdate()->first();
+        $voucher = Voucher::where('code', strtoupper(trim($code)))
+            ->lockForUpdate()
+            ->first();
         $problem = $voucher ? $voucher->rejection() : 'Kode voucher tidak ditemukan.';
         if ($problem) {
             throw ValidationException::withMessages(['voucher' => $problem]);

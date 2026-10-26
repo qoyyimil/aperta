@@ -32,10 +32,13 @@ final class StatusActions
             ->icon($icon)
             ->color($to->getColor())
             ->requiresConfirmation()
-            ->visible(fn (Booking $record) => $record->status->canTransitionTo($to)
-                && auth()->user()->can('transition', [$record, $to]))
-            ->disabled(fn (Booking $record) => filled($record->transitionBlocker($to)))
-            ->tooltip(fn (Booking $record) => $record->transitionBlocker($to))
+            ->visible(
+                fn(Booking $record) => (
+                    $record->status->canTransitionTo($to) && auth()->user()->can('transition', [$record, $to])
+                ),
+            )
+            ->disabled(fn(Booking $record) => filled($record->transitionBlocker($to)))
+            ->tooltip(fn(Booking $record) => $record->transitionBlocker($to))
             ->schema($withReason ? [Textarea::make('reason')->label('Alasan')->required()->maxLength(255)] : [])
             ->action(function (Booking $record, array $data) use ($to) {
                 $record->transitionTo($to, $data['reason'] ?? null);

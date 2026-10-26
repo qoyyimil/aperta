@@ -12,7 +12,9 @@ use Carbon\CarbonInterface;
 /** Ketersediaan jadwal berdasarkan booking yang ada, tanggal diblokir, dan jendela booking. */
 final class Availability
 {
-    public function __construct(private SlotGrid $grid) {}
+    public function __construct(
+        private SlotGrid $grid,
+    ) {}
 
     /** Kapasitas per slot = jumlah fotografer aktif. */
     public static function make(): self
@@ -27,10 +29,13 @@ final class Availability
     {
         $date = $date->copy()->startOfDay();
 
-        return $date->betweenIncluded(
-            today()->addDays(config('aperta.min_lead_days')),
-            today()->addDays(config('aperta.booking_window_days')),
-        ) && ! BlockedDate::whereDate('date', $date)->exists();
+        return (
+            $date->betweenIncluded(
+                today()->addDays(config('aperta.min_lead_days')),
+                today()->addDays(config('aperta.booking_window_days')),
+            )
+            && !BlockedDate::whereDate('date', $date)->exists()
+        );
     }
 
     public function startTimes(CarbonInterface $date, int $duration): array
@@ -52,9 +57,9 @@ final class Availability
     {
         return Booking::whereDate('session_date', $date)
             ->where('status', '!=', BookingStatus::Cancelled)
-            ->when($ignore, fn ($q) => $q->whereKeyNot($ignore))
+            ->when($ignore, fn($q) => $q->whereKeyNot($ignore))
             ->get(['starts_at', 'ends_at'])
-            ->map(fn (Booking $b) => [$b->starts_at, $b->ends_at])
+            ->map(fn(Booking $b) => [$b->starts_at, $b->ends_at])
             ->all();
     }
 }

@@ -20,8 +20,8 @@ class Payment extends Model
 
     protected static function booted(): void
     {
-        static::creating(fn (self $p) => $p->recorded_by ??= auth()->id());
-        static::created(fn (self $p) => $p->booking->confirmIfDeposited());
+        static::creating(fn(self $p) => $p->recorded_by ??= auth()->id());
+        static::created(fn(self $p) => $p->booking->confirmIfDeposited());
     }
 
     public function scopeThisMonth(Builder $query): void

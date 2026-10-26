@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
-use App\Models\User;
 
 Artisan::command('aperta:admin {email}', function (string $email) {
     User::where('email', $email)->update(['role' => 'admin', 'is_active' => true])

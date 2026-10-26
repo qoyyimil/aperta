@@ -27,8 +27,13 @@ final class GalleryView
                 'overdue' => (bool) $b->selection_deadline?->endOfDay()->isPast(),
                 'submittedAt' => $b->selection_submitted_at?->translatedFormat('d F Y, H:i'),
             ],
-            'photos' => $b->proofs()->whereNotNull('preview_path')->orderBy('frame')->get()
-                ->map(fn (ProofPhoto $p) => self::photo($p))->values(),
+            'photos' => $b
+                ->proofs()
+                ->whereNotNull('preview_path')
+                ->orderBy('frame')
+                ->get()
+                ->map(fn(ProofPhoto $p) => self::photo($p))
+                ->values(),
         ];
     }
 

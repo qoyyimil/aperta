@@ -12,6 +12,13 @@ class BookingLog extends Model
 
     protected $guarded = ['id'];
 
-    public function booking(): BelongsTo { return $this->belongsTo(Booking::class); }
-    public function user(): BelongsTo { return $this->belongsTo(User::class); }
+    public function booking(): BelongsTo
+    {
+        return $this->belongsTo(Booking::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

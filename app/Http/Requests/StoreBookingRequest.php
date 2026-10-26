@@ -16,7 +16,7 @@ class StoreBookingRequest extends FormRequest
 
     public function rules(): array
     {
-        $active = fn (string $table) => Rule::exists($table, 'id')->where('is_active', true);
+        $active = fn(string $table) => Rule::exists($table, 'id')->where('is_active', true);
 
         return [
             'name' => ['required', 'string', 'max:100'],
@@ -52,9 +52,14 @@ class StoreBookingRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => 'nama lengkap', 'whatsapp' => 'nomor WhatsApp', 'city' => 'kota',
-            'package_id' => 'paket', 'session_date' => 'tanggal sesi', 'starts_at' => 'jam sesi',
-            'institution' => 'kampus / instansi', 'notes' => 'catatan',
+            'name' => 'nama lengkap',
+            'whatsapp' => 'nomor WhatsApp',
+            'city' => 'kota',
+            'package_id' => 'paket',
+            'session_date' => 'tanggal sesi',
+            'starts_at' => 'jam sesi',
+            'institution' => 'kampus / instansi',
+            'notes' => 'catatan',
         ];
     }
 }

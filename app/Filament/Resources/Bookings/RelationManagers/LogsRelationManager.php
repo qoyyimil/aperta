@@ -20,17 +20,15 @@ class LogsRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
-        $status = fn (?string $s) => BookingStatus::tryFrom((string) $s)?->getLabel() ?? $s;
+        $status = fn(?string $s) => BookingStatus::tryFrom((string) $s)?->getLabel() ?? $s;
 
-        return $table
-            ->columns([
-                TextColumn::make('created_at')->label('Waktu')->dateTime('d M Y H:i'),
-                TextColumn::make('user.name')->label('Oleh')->placeholder('Sistem / klien'),
-                TextColumn::make('action')->label('Aksi'),
-                TextColumn::make('from_status')->label('Dari')->formatStateUsing($status),
-                TextColumn::make('to_status')->label('Ke')->formatStateUsing($status),
-                TextColumn::make('reason')->label('Keterangan')->wrap(),
-            ])
-            ->defaultSort('id', 'desc');
+        return $table->columns([
+            TextColumn::make('created_at')->label('Waktu')->dateTime('d M Y H:i'),
+            TextColumn::make('user.name')->label('Oleh')->placeholder('Sistem / klien'),
+            TextColumn::make('action')->label('Aksi'),
+            TextColumn::make('from_status')->label('Dari')->formatStateUsing($status),
+            TextColumn::make('to_status')->label('Ke')->formatStateUsing($status),
+            TextColumn::make('reason')->label('Keterangan')->wrap(),
+        ])->defaultSort('id', 'desc');
     }
 }

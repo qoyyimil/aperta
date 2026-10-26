@@ -22,7 +22,7 @@ class DomainRulesTest extends TestCase
 
     public function test_selection_is_only_open_while_selecting(): void
     {
-        $open = array_filter(S::cases(), fn (S $s) => $s->selectionOpen());
+        $open = array_filter(S::cases(), fn(S $s) => $s->selectionOpen());
 
         $this->assertSame([S::Selecting], array_values($open));
     }
@@ -48,7 +48,7 @@ class DomainRulesTest extends TestCase
 
         $this->assertSame(890_000, $price->subtotal());
         $this->assertSame(840_000, $price->total());
-        $this->assertSame(0, (new PriceBreakdown(100, discount: 500))->total());
+        $this->assertSame(0, new PriceBreakdown(100, discount: 500)->total());
         $this->assertSame(765_000, $price->sessionTotal(), 'foto tambahan tidak ikut tagihan sesi');
     }
 
@@ -57,7 +57,9 @@ class DomainRulesTest extends TestCase
         $this->assertMatchesRegularExpression('/^AP-[A-HJ-NP-Z2-9]{6}$/', BookingCode::generate());
 
         $tries = 0;
-        BookingCode::generate(function () use (&$tries) { return ++$tries < 3; });
+        BookingCode::generate(function () use (&$tries) {
+            return ++$tries < 3;
+        });
         $this->assertSame(3, $tries);
 
         $this->assertSame('AP-ABC234', BookingCode::normalize('  ap-abc234 '));

@@ -16,7 +16,7 @@ class MyQueueWidget extends TableWidget
 {
     protected static ?int $sort = 2;
 
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     public function table(Table $table): Table
     {
@@ -32,12 +32,16 @@ class MyQueueWidget extends TableWidget
             ->columns([
                 TextColumn::make('code')->label('Kode')->fontFamily(FontFamily::Mono),
                 TextColumn::make('client.name')->label('Klien'),
-                TextColumn::make('session_date')->label('Jadwal')->date('d M Y')
-                    ->description(fn (Booking $record) => substr($record->starts_at, 0, 5)),
+                TextColumn::make('session_date')
+                    ->label('Jadwal')
+                    ->date('d M Y')
+                    ->description(fn(Booking $record) => substr($record->starts_at, 0, 5)),
                 TextColumn::make('status')->badge(),
-                TextColumn::make('reason')->label('Alasan')->state(fn (Booking $record) => $record->actionReason()),
+                TextColumn::make('reason')
+                    ->label('Alasan')
+                    ->state(fn(Booking $record) => $record->actionReason()),
             ])
-            ->recordUrl(fn (Booking $record) => BookingResource::getUrl('view', ['record' => $record]))
+            ->recordUrl(fn(Booking $record) => BookingResource::getUrl('view', ['record' => $record]))
             ->emptyStateIcon(Heroicon::OutlinedCheckCircle)
             ->emptyStateHeading('Tidak ada yang perlu ditindaklanjuti')
             ->emptyStateDescription('Semua beres untuk saat ini.');

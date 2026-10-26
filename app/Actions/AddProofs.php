@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-use App\Jobs\RenderPhoto; 
+use App\Jobs\RenderPhoto;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,13 +15,18 @@ final class AddProofs
      */
     public function handle(Booking $booking, array $paths): array
     {
-        $taken = $booking->proofs()->withTrashed()->pluck('filename')->map(fn ($n) => strtolower($n))->flip();
+        $taken = $booking
+            ->proofs()
+            ->withTrashed()
+            ->pluck('filename')
+            ->map(fn($n) => strtolower($n))
+            ->flip();
         $frame = (int) $booking->proofs()->withTrashed()->max('frame');
         $added = 0;
         $skipped = [];
 
         // Urutan frame mengikuti nama file kamera: DSC_0009 sebelum DSC_0010.
-        usort($paths, fn ($a, $b) => strnatcasecmp(basename($a), basename($b)));
+        usort($paths, fn($a, $b) => strnatcasecmp(basename($a), basename($b)));
 
         foreach ($paths as $path) {
             $name = basename($path);

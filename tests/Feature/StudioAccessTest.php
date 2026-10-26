@@ -7,10 +7,10 @@ use App\Enums\UserRole;
 use App\Filament\Resources\Bookings\BookingResource;
 use App\Filament\Resources\Bookings\Pages\EditBooking;
 use App\Filament\Resources\Bookings\Pages\ListBookings;
-use Filament\Actions\Testing\TestAction;
 use App\Filament\Resources\Packages\PackageResource;
 use App\Models\Booking;
 use App\Models\User;
+use Filament\Actions\Testing\TestAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -33,9 +33,7 @@ class StudioAccessTest extends TestCase
 
         $this->actingAs($me);
 
-        Livewire::test(ListBookings::class)
-            ->assertCanSeeTableRecords([$mine])
-            ->assertCanNotSeeTableRecords([$other]);
+        Livewire::test(ListBookings::class)->assertCanSeeTableRecords([$mine])->assertCanNotSeeTableRecords([$other]);
 
         $this->get(BookingResource::getUrl('view', ['record' => $other]))->assertNotFound();
         $this->get(BookingResource::getUrl('create'))->assertForbidden();
@@ -46,7 +44,10 @@ class StudioAccessTest extends TestCase
     {
         $this->actingAs($this->user(UserRole::Photographer))->get(PackageResource::getUrl())->assertForbidden();
         $this->actingAs($this->user(UserRole::Admin))->get(PackageResource::getUrl())->assertOk();
-        $this->actingAs($this->user(UserRole::Admin, ['is_active' => false]))->get(PackageResource::getUrl())->assertForbidden();
+        $this
+            ->actingAs($this->user(UserRole::Admin, ['is_active' => false]))
+            ->get(PackageResource::getUrl())
+            ->assertForbidden();
     }
 
     public function test_only_assigned_photographer_can_mark_session_done(): void
@@ -70,7 +71,9 @@ class StudioAccessTest extends TestCase
             ->assertFormFieldVisible('client_id')
             ->assertFormFieldHidden('package_id')
             ->callAction(TestAction::make('editOption')->schemaComponent('client_id'), [
-                'name' => 'Thalia Putri', 'email' => 'benar@example.com', 'whatsapp' => '+62 812-3456-7890',
+                'name' => 'Thalia Putri',
+                'email' => 'benar@example.com',
+                'whatsapp' => '+62 812-3456-7890',
             ])
             ->assertHasNoErrors();
 
@@ -84,7 +87,10 @@ class StudioAccessTest extends TestCase
         $booking->update(['session_date' => '2026-12-01', 'starts_at' => '13:00']);
         $booking->transitionTo(BookingStatus::Cancelled, 'Klien sakit');
 
-        $this->assertDatabaseHas('booking_logs', ['action' => 'reschedule', 'reason' => '2026-11-08 09:00 → 2026-12-01 13:00']);
+        $this->assertDatabaseHas('booking_logs', [
+            'action' => 'reschedule',
+            'reason' => '2026-11-08 09:00 → 2026-12-01 13:00',
+        ]);
         $this->assertSame('Klien sakit', $booking->fresh()->cancel_reason);
     }
 }

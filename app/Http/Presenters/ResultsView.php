@@ -24,8 +24,13 @@ final class ResultsView
                 'canDownload' => $canDownload,
                 'remaining' => $canDownload ? 0 : $b->balance(),
             ],
-            'results' => $b->results()->whereNotNull('preview_path')->with('proof')->orderBy('id')->get()
-                ->map(fn (EditedPhoto $r) => [
+            'results' => $b
+                ->results()
+                ->whereNotNull('preview_path')
+                ->with('proof')
+                ->orderBy('id')
+                ->get()
+                ->map(fn(EditedPhoto $r) => [
                     'id' => $r->id,
                     'filename' => $r->filename,
                     'thumb' => $r->url('thumb', self::URL_MINUTES),
@@ -33,7 +38,8 @@ final class ResultsView
                     'before' => $r->proof?->url('preview', self::URL_MINUTES),
                     'frame' => $r->proof?->frame,
                     'note' => $r->proof?->note,
-                ])->values(),
+                ])
+                ->values(),
         ];
     }
 }

@@ -26,37 +26,53 @@ class ProofsRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
-        $editable = fn () => $this->getOwnerRecord()->status === BookingStatus::Shot;
+        $editable = fn() => $this->getOwnerRecord()->status === BookingStatus::Shot;
 
         return $table
             ->columns([
-                ImageColumn::make('thumb')->label('')->state(fn (ProofPhoto $record) => $record->url())->imageHeight(56),
+                ImageColumn::make('thumb')
+                    ->label('')
+                    ->state(fn(ProofPhoto $record) => $record->url())
+                    ->imageHeight(56),
                 TextColumn::make('frame')->label('Frame')->sortable(),
                 TextColumn::make('filename')->label('Nama file')->searchable(),
-                TextColumn::make('state')->label('Status')->badge()
-                    ->state(fn (ProofPhoto $record) => match (true) {
+                TextColumn::make('state')
+                    ->label('Status')
+                    ->badge()
+                    ->state(fn(ProofPhoto $record) => match (true) {
                         filled($record->error) => 'Gagal',
                         $record->isReady() => 'Siap',
                         default => 'Memproses',
                     })
-                    ->color(fn (string $state) => ['Gagal' => 'danger', 'Siap' => 'success'][$state] ?? 'warning')
-                    ->tooltip(fn (ProofPhoto $record) => $record->error),
-                IconColumn::make('is_selected')->label('Dipilih klien')->boolean()
-                    ->visible(fn () => ! $editable()),
-                TextColumn::make('note')->label('Catatan klien')->wrap()->placeholder('-')
-                    ->visible(fn () => ! $editable()),
+                    ->color(fn(string $state) => ['Gagal' => 'danger', 'Siap' => 'success'][$state] ?? 'warning')
+                    ->tooltip(fn(ProofPhoto $record) => $record->error),
+                IconColumn::make('is_selected')
+                    ->label('Dipilih klien')
+                    ->boolean()
+                    ->visible(fn() => !$editable()),
+                TextColumn::make('note')
+                    ->label('Catatan klien')
+                    ->wrap()
+                    ->placeholder('-')
+                    ->visible(fn() => !$editable()),
             ])
             ->defaultSort('frame')
             ->paginated([50, 100, 'all'])
             // Segarkan otomatis selama masih ada foto yang diproses (yang gagal tidak ditunggu).
-            ->poll(fn () => $this->getOwnerRecord()->proofs()->whereNull('preview_path')->whereNull('error')->exists() ? '5s' : null)
+            ->poll(fn() => $this->getOwnerRecord()->proofs()->whereNull('preview_path')->whereNull('error')->exists()
+                ? '5s'
+                : null)
             ->emptyStateHeading('Belum ada foto proof')
             ->emptyStateDescription('Gunakan tombol "Unggah proof" setelah sesi foto selesai.')
             ->recordActions([
-                DeleteAction::make()->visible($editable)->using(fn (ProofPhoto $record) => $record->discard()),
+                DeleteAction::make()
+                    ->visible($editable)
+                    ->using(fn(ProofPhoto $record) => $record->discard()),
             ])
             ->toolbarActions([
-                DeleteBulkAction::make()->visible($editable)->using(fn (Collection $records) => $records->each->discard()),
+                DeleteBulkAction::make()
+                    ->visible($editable)
+                    ->using(fn(Collection $records) => $records->each->discard()),
             ]);
     }
 }

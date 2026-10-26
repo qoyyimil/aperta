@@ -28,8 +28,18 @@ class AddonResource extends Resource
     {
         return $schema->components([
             TextInput::make('name')->label('Nama')->required(),
-            TextInput::make('price')->label('Harga')->numeric()->minValue(0)->prefix('Rp')->required(),
-            TextInput::make('max_qty')->label('Jumlah maksimal per booking')->numeric()->minValue(1)->default(10)->required(),
+            TextInput::make('price')
+                ->label('Harga')
+                ->numeric()
+                ->minValue(0)
+                ->prefix('Rp')
+                ->required(),
+            TextInput::make('max_qty')
+                ->label('Jumlah maksimal per booking')
+                ->numeric()
+                ->minValue(1)
+                ->default(10)
+                ->required(),
             Toggle::make('is_active')->label('Aktif')->default(true),
         ]);
     }

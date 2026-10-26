@@ -26,22 +26,50 @@ class PackageResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->columns(2)->components([
-            TextInput::make('service')->label('Layanan')->datalist(['Wisuda', 'Couple', 'Event', 'Studio'])->required(),
-            TextInput::make('name')->label('Nama paket')->required(),
-            TextInput::make('duration_minutes')->label('Durasi')->numeric()->minValue(15)->suffix('menit')->required(),
-            TextInput::make('price')->label('Harga')->numeric()->minValue(0)->prefix('Rp')->required(),
-            TextInput::make('edit_quota')->label('Kuota edit')->numeric()->minValue(0)->suffix('foto')->required(),
-            TextInput::make('extra_photo_price')->label('Harga foto tambahan')->numeric()->minValue(0)->prefix('Rp')->required(),
-            Toggle::make('is_active')->label('Aktif')->default(true),
-        ]);
+        return $schema
+            ->columns(2)
+            ->components([
+                TextInput::make('service')
+                    ->label('Layanan')
+                    ->datalist(['Wisuda', 'Couple', 'Event', 'Studio'])
+                    ->required(),
+                TextInput::make('name')->label('Nama paket')->required(),
+                TextInput::make('duration_minutes')
+                    ->label('Durasi')
+                    ->numeric()
+                    ->minValue(15)
+                    ->suffix('menit')
+                    ->required(),
+                TextInput::make('price')
+                    ->label('Harga')
+                    ->numeric()
+                    ->minValue(0)
+                    ->prefix('Rp')
+                    ->required(),
+                TextInput::make('edit_quota')
+                    ->label('Kuota edit')
+                    ->numeric()
+                    ->minValue(0)
+                    ->suffix('foto')
+                    ->required(),
+                TextInput::make('extra_photo_price')
+                    ->label('Harga foto tambahan')
+                    ->numeric()
+                    ->minValue(0)
+                    ->prefix('Rp')
+                    ->required(),
+                Toggle::make('is_active')->label('Aktif')->default(true),
+            ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label('Paket')->description(fn (Package $record) => $record->service)->searchable(),
+                TextColumn::make('name')
+                    ->label('Paket')
+                    ->description(fn(Package $record) => $record->service)
+                    ->searchable(),
                 TextColumn::make('duration_minutes')->label('Durasi')->suffix(' menit'),
                 TextColumn::make('price')->label('Harga')->money('IDR', locale: 'id')->sortable(),
                 TextColumn::make('edit_quota')->label('Kuota')->suffix(' foto'),

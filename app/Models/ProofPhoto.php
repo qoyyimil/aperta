@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProofPhoto extends Model implements Renderable
 {
-    use HasRenderedImages, SoftDeletes;
+    use HasRenderedImages;
+    use SoftDeletes;
 
     protected $guarded = ['id'];
 
@@ -22,13 +23,27 @@ class ProofPhoto extends Model implements Renderable
         return ['is_selected' => 'boolean'];
     }
 
-    public function booking(): BelongsTo { return $this->belongsTo(Booking::class); }
-    public function results(): HasMany { return $this->hasMany(EditedPhoto::class); }
+    public function booking(): BelongsTo
+    {
+        return $this->belongsTo(Booking::class);
+    }
+
+    public function results(): HasMany
+    {
+        return $this->hasMany(EditedPhoto::class);
+    }
 
     // --- Renderable: proof diberi watermark, file asli dihapus setelah diolah (PRF-3) ---
 
-    public function sourcePath(): string { return $this->source_path; }
-    public function renderBase(): string { return "proofs/{$this->booking_id}/{$this->frame}_{$this->basename()}"; }
+    public function sourcePath(): string
+    {
+        return $this->source_path;
+    }
+
+    public function renderBase(): string
+    {
+        return "proofs/{$this->booking_id}/{$this->frame}_{$this->basename()}";
+    }
 
     public function rendered(string $preview, string $thumb): void
     {

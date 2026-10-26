@@ -29,7 +29,9 @@ class BookingLifecycleTest extends TestCase
 
     public function test_deposit_confirms_booking_and_is_logged(): void
     {
-        $booking = Booking::factory()->forPackage(Package::factory()->create(['price' => 1_000_000]))->create();
+        $booking = Booking::factory()
+            ->forPackage(Package::factory()->create(['price' => 1_000_000]))
+            ->create();
 
         $booking->payments()->create(['amount' => 400_000, 'paid_on' => today(), 'method' => 'transfer']);
         $this->assertSame(BookingStatus::New, $booking->fresh()->status);

@@ -26,7 +26,7 @@ final readonly class SlotGrid
     public function startTimes(int $duration, array $booked = []): array
     {
         $times = [];
-        for ($t = self::min($this->open); $t + $duration <= self::min($this->close); $t += $this->step) {
+        for ($t = self::min($this->open); ($t + $duration) <= self::min($this->close); $t += $this->step) {
             if ($this->fitsAt($t, $duration, $booked)) {
                 $times[] = self::time($t);
             }
@@ -49,9 +49,9 @@ final readonly class SlotGrid
 
     private function fitsAt(int $start, int $duration, array $booked): bool
     {
-        for ($t = $start; $t < $start + $duration; $t += $this->step) {
+        for ($t = $start; $t < ($start + $duration); $t += $this->step) {
             $end = min($t + $this->step, $start + $duration);
-            $used = count(array_filter($booked, fn (array $b) => self::min($b[0]) < $end && self::min($b[1]) > $t));
+            $used = count(array_filter($booked, fn(array $b) => self::min($b[0]) < $end && self::min($b[1]) > $t));
             if ($used >= $this->capacity) {
                 return false;
             }
@@ -64,7 +64,7 @@ final readonly class SlotGrid
     {
         [$h, $m] = explode(':', $time);
 
-        return (int) $h * 60 + (int) $m;
+        return ((int) $h * 60) + (int) $m;
     }
 
     public static function time(int $minutes): string

@@ -32,15 +32,23 @@ class PublicBookingTest extends TestCase
     private function payload(Package $package, array $override = []): array
     {
         return [
-            'name' => 'Thalia Putri', 'email' => 'thalia@example.com', 'whatsapp' => '+62 812-3456-7890',
-            'city' => 'Surabaya', 'package_id' => $package->id, 'session_date' => $this->date,
-            'starts_at' => '09:00', 'consent' => true,
+            'name' => 'Thalia Putri',
+            'email' => 'thalia@example.com',
+            'whatsapp' => '+62 812-3456-7890',
+            'city' => 'Surabaya',
+            'package_id' => $package->id,
+            'session_date' => $this->date,
+            'starts_at' => '09:00',
+            'consent' => true,
         ] + $override;
     }
 
     public function test_booking_page_loads(): void
     {
-        $this->get('/')->assertOk()->assertInertia(fn (Assert $page) => $page->component('Booking/Create'));
+        $this
+            ->get('/')
+            ->assertOk()
+            ->assertInertia(fn(Assert $page) => $page->component('Booking/Create'));
     }
 
     public function test_client_books_with_addons_and_voucher(): void
@@ -79,8 +87,8 @@ class PublicBookingTest extends TestCase
         $package = Package::factory()->create(['duration_minutes' => 60]);
         $this->post('/booking', $this->payload($package))->assertRedirect();
 
-        $this->post('/booking', ['name' => 'Orang Lain', 'email' => 'lain@example.com', 'starts_at' => '13:00'] + $this->payload($package))
-            ->assertSessionHasNoErrors();
+        $this->post('/booking', ['name' => 'Orang Lain', 'email' => 'lain@example.com', 'starts_at' => '13:00']
+        + $this->payload($package))->assertSessionHasNoErrors();
 
         $this->assertSame(2, Booking::count());
         $this->assertSame('thalia@example.com', Booking::first()->client->email);
@@ -91,7 +99,10 @@ class PublicBookingTest extends TestCase
         $client = Client::factory()->create(['whatsapp' => '+62 812-3456-7890']);
         $this->assertSame('081234567890', $client->whatsapp);
 
-        $this->post('/booking', $this->payload(Package::factory()->create(['duration_minutes' => 60])))->assertRedirect();
+        $this->post(
+            '/booking',
+            $this->payload(Package::factory()->create(['duration_minutes' => 60])),
+        )->assertRedirect();
 
         $this->assertSame(1, Client::count());
     }
@@ -113,14 +124,19 @@ class PublicBookingTest extends TestCase
     {
         $package = Package::factory()->create(['duration_minutes' => 120]);
 
-        $this->getJson("/availability?date={$this->date}&package={$package->id}")
+        $this
+            ->getJson("/availability?date={$this->date}&package={$package->id}")
             ->assertJsonCount(9, 'times')
             ->assertJsonPath('times.0', '07:00');
     }
 
     public function test_admin_reschedule_check_ignores_the_booking_itself(): void
     {
-        $booking = Booking::factory()->create(['session_date' => $this->date, 'starts_at' => '09:00', 'ends_at' => '10:00']);
+        $booking = Booking::factory()->create([
+            'session_date' => $this->date,
+            'starts_at' => '09:00',
+            'ends_at' => '10:00',
+        ]);
         $date = Carbon::parse($this->date);
 
         $this->assertFalse(Availability::make()->fits($date, '09:30', 60));
@@ -131,30 +147,40 @@ class PublicBookingTest extends TestCase
     {
         $booking = Booking::factory()->create();
 
-        $this->post('/lacak', ['code' => strtolower($booking->code), 'phone' => substr($booking->client->whatsapp, -4)])
-            ->assertRedirect(route('track.show', $booking->access_token));
+        $this->post('/lacak', [
+            'code' => strtolower($booking->code),
+            'phone' => substr($booking->client->whatsapp, -4),
+        ])->assertRedirect(route('track.show', $booking->access_token));
 
-        $this->get(route('track.show', $booking->access_token))->assertInertia(fn (Assert $page) => $page
-            ->component('Track/Show')
-            ->where('booking.code', $booking->code)
-            ->where('booking.steps.0.state', 'current'));
+        $this->get(route('track.show', $booking->access_token))->assertInertia(
+            fn(Assert $page) => $page
+                ->component('Track/Show')
+                ->where('booking.code', $booking->code)
+                ->where('booking.steps.0.state', 'current'),
+        );
     }
 
     public function test_new_booking_shows_where_and_until_when_to_pay_deposit(): void
     {
         $booking = Booking::factory()->create();
 
-        $this->get(route('track.show', $booking->access_token))->assertInertia(fn (Assert $page) => $page
+        $this->get(route('track.show', $booking->access_token))->assertInertia(fn(Assert $page) => $page
             ->where('booking.deposit.amount', $booking->minDeposit())
             ->where('booking.deposit.accounts.0.number', config('aperta.payment.accounts.0.number'))
-            ->where('booking.deposit.whatsappUrl', fn (string $url) => str_contains($url, config('aperta.payment.whatsapp'))
-                && str_contains(urldecode($url), $booking->code)));
+            ->where(
+                'booking.deposit.whatsappUrl',
+                fn(string $url) => (
+                    str_contains($url, config('aperta.payment.whatsapp'))
+                    && str_contains(urldecode($url), $booking->code)
+                ),
+            ));
 
-        (new BookingPlaced($booking))->assertSeeInHtml(config('aperta.payment.accounts.0.number'));
+        new BookingPlaced($booking)->assertSeeInHtml(config('aperta.payment.accounts.0.number'));
 
         $paid = Booking::factory()->paid()->create();
-        $this->get(route('track.show', $paid->access_token))
-            ->assertInertia(fn (Assert $page) => $page->where('booking.deposit', null));
+        $this->get(route('track.show', $paid->access_token))->assertInertia(
+            fn(Assert $page) => $page->where('booking.deposit', null),
+        );
     }
 
     public function test_tracking_locks_after_five_failed_attempts(): void
@@ -163,8 +189,9 @@ class PublicBookingTest extends TestCase
         $valid = ['code' => $booking->code, 'phone' => substr($booking->client->whatsapp, -4)];
 
         foreach (range(1, 5) as $_) {
-            $this->post('/lacak', ['code' => $booking->code, 'phone' => '0000'])
-                ->assertSessionHasErrors(['code' => 'Kode booking atau nomor tidak cocok.']);
+            $this->post('/lacak', ['code' => $booking->code, 'phone' => '0000'])->assertSessionHasErrors([
+                'code' => 'Kode booking atau nomor tidak cocok.',
+            ]);
         }
 
         $this->post('/lacak', $valid)->assertSessionHasErrors('code');

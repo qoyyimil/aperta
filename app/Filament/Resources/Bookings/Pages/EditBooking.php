@@ -8,6 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditBooking extends EditRecord
 {
     use GuardsSchedule;
+
     protected static string $resource = BookingResource::class;
     protected static ?string $title = 'Ubah booking';
 
@@ -16,7 +17,7 @@ class EditBooking extends EditRecord
     {
         return [];
     }
-    
+
     protected function beforeSave(): void
     {
         $this->guardSchedule($this->record->id);

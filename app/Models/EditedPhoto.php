@@ -11,13 +11,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EditedPhoto extends Model implements Renderable
 {
-    use HasRenderedImages, SoftDeletes;
+    use HasRenderedImages;
+    use SoftDeletes;
 
     protected $guarded = ['id'];
 
-    public function booking(): BelongsTo { return $this->belongsTo(Booking::class); }
-    public function proof(): BelongsTo { return $this->belongsTo(ProofPhoto::class, 'proof_photo_id'); }
-    public function uploader(): BelongsTo { return $this->belongsTo(User::class, 'uploaded_by'); }
+    public function booking(): BelongsTo
+    {
+        return $this->belongsTo(Booking::class);
+    }
+
+    public function proof(): BelongsTo
+    {
+        return $this->belongsTo(ProofPhoto::class, 'proof_photo_id');
+    }
+
+    public function uploader(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'uploaded_by');
+    }
 
     /**
      * Cari foto pilihan yang namanya termuat di nama file hasil (DLV-2).
@@ -27,8 +39,8 @@ class EditedPhoto extends Model implements Renderable
     {
         $name = strtolower($this->filename);
         $proof = ($selected ?? $this->booking->selected()->get())
-            ->filter(fn (ProofPhoto $p) => str_contains($name, strtolower($p->basename())))
-            ->sortByDesc(fn (ProofPhoto $p) => strlen($p->basename()))
+            ->filter(fn(ProofPhoto $p) => str_contains($name, strtolower($p->basename())))
+            ->sortByDesc(fn(ProofPhoto $p) => strlen($p->basename()))
             ->first();
 
         $this->proof()->associate($proof);
@@ -38,8 +50,15 @@ class EditedPhoto extends Model implements Renderable
 
     // --- Renderable: pratinjau berwatermark, file asli tanpa watermark disimpan untuk diunduh (DLV-8) ---
 
-    public function sourcePath(): string { return $this->path; }
-    public function renderBase(): string { return "results/{$this->booking_id}/renders/{$this->id}"; }
+    public function sourcePath(): string
+    {
+        return $this->path;
+    }
+
+    public function renderBase(): string
+    {
+        return "results/{$this->booking_id}/renders/{$this->id}";
+    }
 
     public function rendered(string $preview, string $thumb): void
     {

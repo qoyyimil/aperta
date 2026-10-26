@@ -30,7 +30,15 @@ class ResultDeliveryTest extends TestCase
         $package = Package::factory()->create(['price' => 1_000_000, 'edit_quota' => 5]);
         $this->booking = Booking::factory()->forPackage($package)->create();
         foreach (['DSC_45', 'DSC_4512', 'DSC_4513'] as $i => $name) {
-            $this->booking->proofs()->create(['frame' => $i + 1, 'filename' => "{$name}.JPG", 'preview_path' => "p{$i}", 'thumb_path' => "t{$i}", 'is_selected' => true]);
+            $this->booking
+                ->proofs()
+                ->create([
+                    'frame' => $i + 1,
+                    'filename' => "{$name}.JPG",
+                    'preview_path' => "p{$i}",
+                    'thumb_path' => "t{$i}",
+                    'is_selected' => true,
+                ]);
         }
         $this->booking->forceFill(['status' => BookingStatus::Editing])->save(); // langsung ke tahap editing
     }
@@ -46,7 +54,7 @@ class ResultDeliveryTest extends TestCase
     private function deliver(): EditedPhoto
     {
         Queue::fake();
-        (new AddResults)->handle($this->booking, [$this->upload('DSC_4512_edit.jpg')]);
+        new AddResults()->handle($this->booking, [$this->upload('DSC_4512_edit.jpg')]);
         $result = $this->booking->results()->sole();
         $result->update(['preview_path' => 'x', 'thumb_path' => 'y']);
         $this->booking->deliverResults();
@@ -57,11 +65,25 @@ class ResultDeliveryTest extends TestCase
     public function test_results_match_the_longest_selected_name_and_track_missing(): void
     {
         Queue::fake();
-        $result = (new AddResults)->handle($this->booking, [$this->upload('DSC_4512_edit.jpg'), $this->upload('lainnya.jpg')]);
+        $result = new AddResults()->handle($this->booking, [
+            $this->upload('DSC_4512_edit.jpg'),
+            $this->upload('lainnya.jpg'),
+        ]);
 
         $this->assertSame(['added' => 2, 'matched' => 1], $result);
-        $this->assertSame('DSC_4512.JPG', $this->booking->results()->where('filename', 'DSC_4512_edit.jpg')->sole()->proof->filename);
-        $this->assertSame(['DSC_45.JPG', 'DSC_4513.JPG'], $this->booking->missingResults()->orderBy('frame')->pluck('filename')->all());
+        $this->assertSame(
+            'DSC_4512.JPG',
+            $this->booking
+                ->results()
+                ->where('filename', 'DSC_4512_edit.jpg')
+                ->sole()
+                ->proof
+                ->filename,
+        );
+        $this->assertSame(
+            ['DSC_45.JPG', 'DSC_4513.JPG'],
+            $this->booking->missingResults()->orderBy('frame')->pluck('filename')->all(),
+        );
         Queue::assertPushed(RenderPhoto::class, 2);
     }
 
@@ -76,7 +98,7 @@ class ResultDeliveryTest extends TestCase
         Storage::disk('local')->put($path, ob_get_clean());
         $result = $this->booking->results()->create(['filename' => 'DSC_4513_edit.jpg', 'path' => $path, 'size' => 1]);
 
-        (new RenderPhoto($result))->handle();
+        new RenderPhoto($result)->handle();
 
         $this->assertTrue($result->fresh()->isReady());
         Storage::disk('local')->assertExists($path);
@@ -94,18 +116,20 @@ class ResultDeliveryTest extends TestCase
         $base = "/lacak/{$this->booking->access_token}/hasil";
 
         $this->assertSame(BookingStatus::Delivered, $this->booking->fresh()->status);
-        $this->get($base)->assertInertia(fn (Assert $page) => $page
-            ->component('Gallery/Results')
-            ->where('booking.canDownload', false)
-            ->where('booking.remaining', 1_000_000)
-            ->where('results.0.frame', 2));
+        $this->get($base)->assertInertia(
+            fn(Assert $page) => $page
+                ->component('Gallery/Results')
+                ->where('booking.canDownload', false)
+                ->where('booking.remaining', 1_000_000)
+                ->where('results.0.frame', 2),
+        );
         $this->get("{$base}/{$result->id}/unduh")->assertForbidden();
 
         $this->booking->payments()->create(['amount' => 1_000_000, 'paid_on' => today(), 'method' => 'transfer']);
 
         $this->get("{$base}/{$result->id}/unduh")->assertOk()->assertDownload('DSC_4512_edit.jpg');
         $zip = $this->get("{$base}/zip")->assertOk();
-        $archive = new ZipArchive;
+        $archive = new ZipArchive();
         $archive->open($zip->baseResponse->getFile()->getPathname());
         $this->assertSame('DSC_4512_edit.jpg', $archive->getNameIndex(0));
     }

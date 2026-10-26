@@ -17,7 +17,9 @@ class BookingController extends Controller
     public function create(): Response
     {
         return Inertia::render('Booking/Create', [
-            'packages' => Package::active()->orderBy('service')->orderBy('price')
+            'packages' => Package::active()
+                ->orderBy('service')
+                ->orderBy('price')
                 ->get(['id', 'service', 'name', 'duration_minutes', 'price', 'edit_quota']),
             'addons' => Addon::active()->orderBy('name')->get(['id', 'name', 'price', 'max_qty']),
             'cities' => config('aperta.cities'),
@@ -35,7 +37,9 @@ class BookingController extends Controller
         $booking = $place->handle($request->validated());
         Mail::to($booking->client)->send(new BookingPlaced($booking));
 
-        return to_route('track.show', $booking->access_token)
-            ->with('success', "Booking terkirim! Kode booking kamu {$booking->code}, simpan untuk melacak status.");
+        return to_route('track.show', $booking->access_token)->with(
+            'success',
+            "Booking terkirim! Kode booking kamu {$booking->code}, simpan untuk melacak status.",
+        );
     }
 }

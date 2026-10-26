@@ -13,10 +13,33 @@ class AdminOnlyPolicy
     }
 
     // Filament hanya bertanya ke Gate jika method ability-nya ada. Keputusan tetap di before().
-    public function viewAny(): bool { return false; }
-    public function view(): bool { return false; }
-    public function create(): bool { return false; }
-    public function update(): bool { return false; }
-    public function delete(): bool { return false; }
-    public function deleteAny(): bool { return false; }
+    public function viewAny(): bool
+    {
+        return false;
+    }
+
+    public function view(): bool
+    {
+        return false;
+    }
+
+    public function create(): bool
+    {
+        return false;
+    }
+
+    public function update(): bool
+    {
+        return false;
+    }
+
+    public function delete(): bool
+    {
+        return false;
+    }
+
+    public function deleteAny(): bool
+    {
+        return false;
+    }
 }

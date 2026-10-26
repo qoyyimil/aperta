@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Client extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = ['id'];
 
@@ -22,7 +23,7 @@ class Client extends Model
     /** Dari form mana pun, nomor selalu tersimpan sebagai 08xx. */
     protected function whatsapp(): Attribute
     {
-        return Attribute::set(fn (string $value) => self::normalizePhone($value));
+        return Attribute::set(fn(string $value) => self::normalizePhone($value));
     }
 
     /** Simpan nomor dalam satu format (08xx) agar klien yang sama dikenali. */

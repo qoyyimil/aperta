@@ -15,34 +15,40 @@ class BookingForm
 {
     public static function configure(Schema $schema): Schema
     {
-        return $schema->columns(1)->components([
-            Section::make(fn (string $operation) => $operation === 'create' ? 'Klien & paket' : 'Klien')->columns(2)->schema([
-                Select::make('client_id')
-                    ->label('Klien')
-                    ->relationship('client', 'name')
-                    ->searchable(['name', 'whatsapp'])
-                    ->preload()
-                    ->createOptionForm(self::clientFields())
-                    ->editOptionForm(self::clientFields())
-                    ->required(),
-                // Paket hanya dipilih saat dibuat, karena harganya disalin ke booking.
-                Select::make('package_id')
-                    ->label('Paket')
-                    ->relationship('package', 'name', fn (Builder $query) => $query->where('is_active', true))
-                    ->helperText('Harga dan kuota disalin saat booking dibuat, tidak bisa diubah setelahnya.')
-                    ->visibleOn('create')
-                    ->required(),
-            ]),
-            Section::make('Jadwal & lokasi')->columns(3)->schema([
-                DatePicker::make('session_date')->label('Tanggal sesi')->required(),
-                TimePicker::make('starts_at')->label('Mulai')->seconds(false)->required(),
-                TimePicker::make('ends_at')->label('Selesai')->seconds(false)->after('starts_at')->required(),
-                TextInput::make('city')->label('Kota')->required(),
-                TextInput::make('location')->label('Lokasi'),
-                TextInput::make('institution')->label('Kampus / instansi'),
-                Textarea::make('notes')->label('Catatan')->columnSpanFull(),
-            ]),
-        ]);
+        return $schema
+            ->columns(1)
+            ->components([
+                Section::make(fn(string $operation) => $operation === 'create' ? 'Klien & paket' : 'Klien')
+                    ->columns(2)
+                    ->schema([
+                        Select::make('client_id')
+                            ->label('Klien')
+                            ->relationship('client', 'name')
+                            ->searchable(['name', 'whatsapp'])
+                            ->preload()
+                            ->createOptionForm(self::clientFields())
+                            ->editOptionForm(self::clientFields())
+                            ->required(),
+                        // Paket hanya dipilih saat dibuat, karena harganya disalin ke booking.
+                        Select::make('package_id')
+                            ->label('Paket')
+                            ->relationship('package', 'name', fn(Builder $query) => $query->where('is_active', true))
+                            ->helperText('Harga dan kuota disalin saat booking dibuat, tidak bisa diubah setelahnya.')
+                            ->visibleOn('create')
+                            ->required(),
+                    ]),
+                Section::make('Jadwal & lokasi')
+                    ->columns(3)
+                    ->schema([
+                        DatePicker::make('session_date')->label('Tanggal sesi')->required(),
+                        TimePicker::make('starts_at')->label('Mulai')->seconds(false)->required(),
+                        TimePicker::make('ends_at')->label('Selesai')->seconds(false)->after('starts_at')->required(),
+                        TextInput::make('city')->label('Kota')->required(),
+                        TextInput::make('location')->label('Lokasi'),
+                        TextInput::make('institution')->label('Kampus / instansi'),
+                        Textarea::make('notes')->label('Catatan')->columnSpanFull(),
+                    ]),
+            ]);
     }
 
     private static function clientFields(): array

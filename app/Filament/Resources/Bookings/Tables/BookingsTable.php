@@ -23,18 +23,26 @@ class BookingsTable
             ->columns([
                 TextColumn::make('code')->label('Kode')->fontFamily(FontFamily::Mono)->searchable()->copyable(),
                 TextColumn::make('client.name')->label('Klien')->searchable(),
-                TextColumn::make('client.whatsapp')->label('WhatsApp')->searchable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('client.whatsapp')
+                    ->label('WhatsApp')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('service')->label('Layanan'),
-                TextColumn::make('session_date')->label('Tanggal')->date('d M Y')->sortable()
-                    ->description(fn (Booking $record) => substr($record->starts_at, 0, 5)),
+                TextColumn::make('session_date')
+                    ->label('Tanggal')
+                    ->date('d M Y')
+                    ->sortable()
+                    ->description(fn(Booking $record) => substr($record->starts_at, 0, 5)),
                 TextColumn::make('package_name')->label('Paket')->toggleable(),
                 TextColumn::make('status')->badge(),
             ])
             ->defaultSort('session_date', 'desc')
             ->filters([
                 SelectFilter::make('status')->options(BookingStatus::class)->multiple(),
-                SelectFilter::make('crew')->label('Tim')->relationship('crew', 'name')
-                    ->visible(fn () => auth()->user()->isAdmin()),
+                SelectFilter::make('crew')
+                    ->label('Tim')
+                    ->relationship('crew', 'name')
+                    ->visible(fn() => auth()->user()->isAdmin()),
                 self::periodFilter(),
             ])
             ->recordActions([
@@ -50,8 +58,10 @@ class BookingsTable
                 DatePicker::make('from')->label('Dari tanggal'),
                 DatePicker::make('until')->label('Sampai tanggal'),
             ])
-            ->query(fn (Builder $query, array $data) => $query
-                ->when($data['from'], fn ($q, $d) => $q->whereDate('session_date', '>=', $d))
-                ->when($data['until'], fn ($q, $d) => $q->whereDate('session_date', '<=', $d)));
+            ->query(fn(Builder $query, array $data) => $query->when($data['from'], fn($q, $d) => $q->whereDate(
+                'session_date',
+                '>=',
+                $d,
+            ))->when($data['until'], fn($q, $d) => $q->whereDate('session_date', '<=', $d)));
     }
 }

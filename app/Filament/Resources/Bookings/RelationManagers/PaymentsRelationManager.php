@@ -24,11 +24,20 @@ class PaymentsRelationManager extends RelationManager
     public function form(Schema $schema): Schema
     {
         return $schema->components([
-            TextInput::make('amount')->label('Jumlah')->numeric()->minValue(1)->prefix('Rp')->required(),
+            TextInput::make('amount')
+                ->label('Jumlah')
+                ->numeric()
+                ->minValue(1)
+                ->prefix('Rp')
+                ->required(),
             DatePicker::make('paid_on')->label('Tanggal bayar')->default(now())->required(),
             Select::make('method')->label('Metode')->options(self::METHODS)->required(),
-            FileUpload::make('proof_path')->label('Bukti transfer')->image()
-                ->disk('local')->directory('payment-proofs')->visibility('private'),
+            FileUpload::make('proof_path')
+                ->label('Bukti transfer')
+                ->image()
+                ->disk('local')
+                ->directory('payment-proofs')
+                ->visibility('private'),
         ]);
     }
 
@@ -38,7 +47,9 @@ class PaymentsRelationManager extends RelationManager
             ->columns([
                 TextColumn::make('paid_on')->label('Tanggal')->date('d M Y'),
                 TextColumn::make('amount')->label('Jumlah')->money('IDR', locale: 'id'),
-                TextColumn::make('method')->label('Metode')->formatStateUsing(fn (string $state) => self::METHODS[$state] ?? $state),
+                TextColumn::make('method')
+                    ->label('Metode')
+                    ->formatStateUsing(fn(string $state) => self::METHODS[$state] ?? $state),
                 TextColumn::make('recorder.name')->label('Dicatat oleh')->placeholder('-'),
             ])
             ->defaultSort('paid_on')

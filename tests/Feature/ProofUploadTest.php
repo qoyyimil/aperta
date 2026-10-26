@@ -37,12 +37,15 @@ class ProofUploadTest extends TestCase
         Storage::fake('local');
         Queue::fake();
         $booking = $this->shotBooking();
-        $add = new AddProofs;
+        $add = new AddProofs();
 
         $add->handle($booking, [$this->upload('DSC_0010.JPG'), $this->upload('DSC_0009.JPG')]);
         $result = $add->handle($booking, [$dup = $this->upload('dsc_0009.jpg'), $this->upload('DSC_0011.JPG')]);
 
-        $this->assertSame(['DSC_0009.JPG', 'DSC_0010.JPG', 'DSC_0011.JPG'], $booking->proofs()->orderBy('frame')->pluck('filename')->all());
+        $this->assertSame(
+            ['DSC_0009.JPG', 'DSC_0010.JPG', 'DSC_0011.JPG'],
+            $booking->proofs()->orderBy('frame')->pluck('filename')->all(),
+        );
         $this->assertSame(['added' => 1, 'skipped' => ['dsc_0009.jpg']], $result);
         Storage::disk('local')->assertMissing($dup);
         Queue::assertPushed(RenderPhoto::class, 3);
@@ -55,7 +58,7 @@ class ProofUploadTest extends TestCase
         $source = $this->upload('DSC_4512.JPG');
         $proof = $booking->proofs()->create(['frame' => 1, 'filename' => 'DSC_4512.JPG', 'source_path' => $source]);
 
-        (new RenderPhoto($proof))->handle();
+        new RenderPhoto($proof)->handle();
 
         $proof->refresh();
         $this->assertTrue($proof->isReady());
@@ -75,7 +78,11 @@ class ProofUploadTest extends TestCase
 
         $booking->refresh();
         $this->assertSame(BookingStatus::Selecting, $booking->status);
-        $this->assertSame([25, 30_000, '2026-12-01'], [$booking->edit_quota, $booking->extra_photo_price, $booking->selection_deadline->toDateString()]);
+        $this->assertSame([25, 30_000, '2026-12-01'], [
+            $booking->edit_quota,
+            $booking->extra_photo_price,
+            $booking->selection_deadline->toDateString(),
+        ]);
     }
 
     public function test_cannot_publish_before_session_is_done(): void

@@ -26,10 +26,25 @@ class BookingPolicy
     }
 
     /** Membuat, mengubah, dan menghapus booking hanya untuk admin (lewat before()). */
-    public function create(): bool { return false; }
-    public function update(): bool { return false; }
-    public function delete(): bool { return false; }
-    public function deleteAny(): bool { return false; }
+    public function create(): bool
+    {
+        return false;
+    }
+
+    public function update(): bool
+    {
+        return false;
+    }
+
+    public function delete(): bool
+    {
+        return false;
+    }
+
+    public function deleteAny(): bool
+    {
+        return false;
+    }
 
     /** Unggah & publikasi proof: fotografer yang ditugaskan (PRF). */
     public function manageProofs(User $user, Booking $booking): bool
@@ -46,8 +61,6 @@ class BookingPolicy
     /** Selain admin, hanya fotografer yang ditugaskan boleh menandai sesi selesai. */
     public function transition(User $user, Booking $booking, BookingStatus $to): bool
     {
-        return $to === BookingStatus::Shot
-            && $user->role === UserRole::Photographer
-            && $this->view($user, $booking);
+        return $to === BookingStatus::Shot && $user->role === UserRole::Photographer && $this->view($user, $booking);
     }
 }

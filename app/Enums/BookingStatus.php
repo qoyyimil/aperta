@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Enums;
+
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
@@ -27,7 +28,7 @@ enum BookingStatus: string implements HasLabel, HasColor
         };
     }
 
-     public function getColor(): string
+    public function getColor(): string
     {
         return match ($this) {
             self::New => 'gray',

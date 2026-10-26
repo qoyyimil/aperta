@@ -8,6 +8,7 @@ use App\Enums\UserRole;
 use App\Exceptions\InvalidStatusTransition;
 use App\Support\BookingCode;
 use App\Support\PriceBreakdown;
+use DomainException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,11 +17,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
-use DomainException;
 
 class Booking extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     /** Kolom ini hanya berubah lewat method di model, bukan dari input form. */
     protected $guarded = ['id', 'code', 'access_token', 'status'];
@@ -40,7 +41,7 @@ class Booking extends Model
     protected static function booted(): void
     {
         static::creating(function (self $b) {
-            $b->code ??= BookingCode::generate(fn ($c) => static::withTrashed()->where('code', $c)->exists());
+            $b->code ??= BookingCode::generate(fn($c) => static::withTrashed()->where('code', $c)->exists());
             $b->access_token ??= bin2hex(random_bytes(24));
             $b->status ??= BookingStatus::New;
         });
@@ -55,20 +56,47 @@ class Booking extends Model
     /** Jadwal sebagai teks "2026-11-08 09:00", untuk log (MGT-3). */
     public function schedule(bool $original = false): string
     {
-        $get = fn (string $key) => $original ? $this->getRawOriginal($key) : $this->getAttributes()[$key];
+        $get = fn(string $key) => $original ? $this->getRawOriginal($key) : $this->getAttributes()[$key];
 
         return Carbon::parse($get('session_date'))->format('Y-m-d') . ' ' . substr($get('starts_at'), 0, 5);
     }
 
     // --- relasi ---
 
-    public function client(): BelongsTo { return $this->belongsTo(Client::class); }
-    public function package(): BelongsTo { return $this->belongsTo(Package::class); }
-    public function payments(): HasMany { return $this->hasMany(Payment::class); }
-    public function proofs(): HasMany { return $this->hasMany(ProofPhoto::class); }
-    public function results(): HasMany { return $this->hasMany(EditedPhoto::class); }
-    public function logs(): HasMany { return $this->hasMany(BookingLog::class); }
-    public function crew(): BelongsToMany { return $this->belongsToMany(User::class); }
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function package(): BelongsTo
+    {
+        return $this->belongsTo(Package::class);
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function proofs(): HasMany
+    {
+        return $this->hasMany(ProofPhoto::class);
+    }
+
+    public function results(): HasMany
+    {
+        return $this->hasMany(EditedPhoto::class);
+    }
+
+    public function logs(): HasMany
+    {
+        return $this->hasMany(BookingLog::class);
+    }
+
+    public function crew(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     public function addons(): BelongsToMany
     {
@@ -84,7 +112,7 @@ class Booking extends Model
 
     public function transitionTo(BookingStatus $to, ?string $reason = null): static
     {
-        if (! $this->status->canTransitionTo($to)) {
+        if (!$this->status->canTransitionTo($to)) {
             throw new InvalidStatusTransition($this->status, $to);
         }
 
@@ -93,7 +121,8 @@ class Booking extends Model
         }
 
         $from = $this->status;
-        $this->forceFill(['status' => $to])
+        $this
+            ->forceFill(['status' => $to])
             ->fill($to === BookingStatus::Cancelled ? ['cancel_reason' => $reason] : [])
             ->save();
         $this->log('status', $from->value, $to->value, $reason);
@@ -105,8 +134,9 @@ class Booking extends Model
     public function transitionBlocker(BookingStatus $to): ?string
     {
         return match (true) {
-            $to === BookingStatus::Shot && ! $this->isSessionPaid() => 'Tagihan sesi belum lunas (jatuh tempo '
-                . $this->paymentDueOn()->translatedFormat('d M Y') . '). Catat pelunasan dulu di tab Pembayaran.',
+            $to === BookingStatus::Shot && !$this->isSessionPaid() => 'Tagihan sesi belum lunas (jatuh tempo '
+                . $this->paymentDueOn()->translatedFormat('d M Y')
+                . '). Catat pelunasan dulu di tab Pembayaran.',
             default => null,
         };
     }
@@ -139,7 +169,11 @@ class Booking extends Model
     /** Buka galeri untuk klien dengan kuota & batas waktu final (PRF-6, PRF-7). */
     public function publishProofs(int $quota, int $extraPrice, string $deadline): void
     {
-        $this->forceFill(['edit_quota' => $quota, 'extra_photo_price' => $extraPrice, 'selection_deadline' => $deadline]);
+        $this->forceFill([
+            'edit_quota' => $quota,
+            'extra_photo_price' => $extraPrice,
+            'selection_deadline' => $deadline,
+        ]);
         $this->transitionTo(BookingStatus::Selecting, "Kuota {$quota} foto, batas pilih {$deadline}");
     }
 
@@ -168,7 +202,10 @@ class Booking extends Model
     /** Kirim hasil ke klien (DLV-6). */
     public function deliverResults(): void
     {
-        throw_if($this->results()->doesntExist(), new DomainException('Unggah minimal satu hasil edit sebelum mengirim.'));
+        throw_if(
+            $this->results()->doesntExist(),
+            new DomainException('Unggah minimal satu hasil edit sebelum mengirim.'),
+        );
 
         $this->forceFill(['delivered_at' => now()]);
         $this->transitionTo(BookingStatus::Delivered, $this->results()->count() . ' hasil edit dikirim');
@@ -199,7 +236,7 @@ class Booking extends Model
     {
         return new PriceBreakdown(
             package: $this->package_price,
-            addons: $this->addons->sum(fn ($a) => $a->pivot->qty * $a->pivot->price),
+            addons: $this->addons->sum(fn($a) => $a->pivot->qty * $a->pivot->price),
             extras: $this->extraPhotos() * $this->extra_photo_price,
             discount: $this->discount,
         );
@@ -209,7 +246,9 @@ class Booking extends Model
 
     public function paid(): int
     {
-        return (int) ($this->hasAttribute('payments_sum_amount') ? $this->payments_sum_amount : $this->payments()->sum('amount'));
+        return (int) (
+            $this->hasAttribute('payments_sum_amount') ? $this->payments_sum_amount : $this->payments()->sum('amount')
+        );
     }
 
     /** Sisa seluruh tagihan, termasuk foto tambahan. */
@@ -243,7 +282,9 @@ class Booking extends Model
     /** Batas bayar DP sejak booking dibuat, tapi tidak melewati jatuh tempo pelunasan. */
     public function depositDueAt(): Carbon
     {
-        return $this->created_at->copy()->addHours(config('aperta.deposit_hours'))
+        return $this->created_at
+            ->copy()
+            ->addHours(config('aperta.deposit_hours'))
             ->min($this->paymentDueOn()->endOfDay());
     }
 
@@ -260,10 +301,13 @@ class Booking extends Model
     /** Sesi belum berlangsung, jatuh tempo lewat, dan tagihan sesi belum lunas. */
     public function isPaymentOverdue(): bool
     {
-        return in_array($this->status, [BookingStatus::New, BookingStatus::Confirmed], true)
+        return (
+            in_array($this->status, [BookingStatus::New, BookingStatus::Confirmed], true)
             && today()->gt($this->paymentDueOn())
-            && ! $this->isSessionPaid();
+            && !$this->isSessionPaid()
+        );
     }
+
     /** Booking baru otomatis terkonfirmasi saat DP cukup (PAY-3). */
     public function confirmIfDeposited(): void
     {
@@ -277,7 +321,7 @@ class Booking extends Model
     /** Satu sumber aturan akses: admin semua, tim hanya yang ditugaskan (BR-10). */
     public function scopeVisibleTo(Builder $query, User $user): void
     {
-        $query->unless($user->isAdmin(), fn (Builder $query) => $query->whereRelation('crew', 'users.id', $user->id));
+        $query->unless($user->isAdmin(), fn(Builder $query) => $query->whereRelation('crew', 'users.id', $user->id));
     }
 
     public function scopeActive(Builder $query): void
@@ -292,9 +336,11 @@ class Booking extends Model
 
     public function scopeUpcoming(Builder $query, int $days = 7): void
     {
-        $query->active()
+        $query
+            ->active()
             ->whereBetween('session_date', [today(), today()->addDays($days)])
-            ->orderBy('session_date')->orderBy('starts_at');
+            ->orderBy('session_date')
+            ->orderBy('starts_at');
     }
 
     /** Menunggu admin: belum DP, lunas mendekati jatuh tempo, galeri belum dibuka, batas pilih dekat. */
@@ -304,15 +350,22 @@ class Booking extends Model
         // shortcut: lunas dicek di PHP; kandidatnya hanya Confirmed beberapa hari ke depan.
         $unpaid = static::where('status', BookingStatus::Confirmed)
             ->whereDate('session_date', '<=', $soon->copy()->addDays(config('aperta.full_payment_days_before')))
-            ->withBilling()->get()->reject->isSessionPaid()->modelKeys();
+            ->withBilling()
+            ->get()
+            ->reject
+            ->isSessionPaid()
+            ->modelKeys();
 
-        $query->where(fn (Builder $query) => $query
+        $query->where(fn(Builder $query) => $query
             ->whereIn('status', [BookingStatus::New, BookingStatus::Shot])
             ->orWhereKey($unpaid)
-            ->orWhere(fn (Builder $query) => $query
-                ->where('status', BookingStatus::Selecting)
-                ->whereDate('selection_deadline', '<=', $soon)))
-            ->orderBy('session_date');
+            ->orWhere(
+                fn(Builder $query) => $query->where('status', BookingStatus::Selecting)->whereDate(
+                    'selection_deadline',
+                    '<=',
+                    $soon,
+                ),
+            ))->orderBy('session_date');
     }
 
     public function scopeAwaitingProofs(Builder $query): void
@@ -340,14 +393,17 @@ class Booking extends Model
     /** Muat hitungan untuk paid(), extraPhotos(), dan actionReason() tanpa kueri per baris. */
     public function scopeWithBilling(Builder $query): void
     {
-        $selected = fn ($query) => $query->where('is_selected', true);
+        $selected = fn($query) => $query->where('is_selected', true);
 
-        $query->with('addons')->withSum('payments', 'amount')->withCount([
-            'proofs',
-            'proofs as selected_count' => $selected,
-            'proofs as notes_count' => fn ($query) => $selected($query)->whereNotNull('note'),
-            'proofs as missing_results_count' => fn ($query) => $selected($query)->doesntHave('results'),
-        ]);
+        $query
+            ->with('addons')
+            ->withSum('payments', 'amount')
+            ->withCount([
+                'proofs',
+                'proofs as selected_count' => $selected,
+                'proofs as notes_count' => fn($query) => $selected($query)->whereNotNull('note'),
+                'proofs as missing_results_count' => fn($query) => $selected($query)->doesntHave('results'),
+            ]);
     }
 
     /** Alasan singkat di antrean dashboard. Butuh withBilling(). */

@@ -24,8 +24,9 @@ class FinanceStatsWidget extends StatsOverviewWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Uang masuk bulan ini', Rupiah::format((int) Payment::thisMonth()->sum('amount')))
-                ->icon(Heroicon::OutlinedBanknotes),
+            Stat::make('Uang masuk bulan ini', Rupiah::format((int) Payment::thisMonth()->sum('amount')))->icon(
+                Heroicon::OutlinedBanknotes,
+            ),
             Stat::make('Piutang', Rupiah::format(Booking::receivables()))
                 ->description('Sisa tagihan booking aktif')
                 ->icon(Heroicon::OutlinedClock),

@@ -30,7 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('aperta-logo.svg'))
             ->darkModeBrandLogo(asset('aperta-logo-white.svg'))
             ->brandLogoHeight('2.5rem')
-            ->renderHook(PanelsRenderHook::HEAD_START, fn () => view('partials.favicon'))
+            ->renderHook(PanelsRenderHook::HEAD_START, fn() => view('partials.favicon'))
             ->globalSearch(false)
             ->login()
             ->colors([
@@ -58,8 +58,8 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->sidebarCollapsibleOnDesktop()   // tombol ☰ untuk menyusutkan sidebar jadi ikon saja
-            ->sidebarWidth('16rem')           // lebar saat terbuka (bawaan 20rem)
+            ->sidebarCollapsibleOnDesktop() // tombol ☰ untuk menyusutkan sidebar jadi ikon saja
+            ->sidebarWidth('16rem') // lebar saat terbuka (bawaan 20rem)
             ->collapsedSidebarWidth('4.5rem'); // lebar saat disusutkan
     }
 }

@@ -39,7 +39,7 @@ class ResultController extends Controller
         $file = tempnam(sys_get_temp_dir(), 'aperta');
         $temps = [];
         $names = [];
-        $zip = new ZipArchive;
+        $zip = new ZipArchive();
         $zip->open($file, ZipArchive::OVERWRITE);
 
         foreach ($booking->results()->orderBy('id')->get() as $result) {
@@ -71,7 +71,9 @@ class ResultController extends Controller
     {
         $count = $seen[$name] = ($seen[$name] ?? 0) + 1;
 
-        return $count === 1 ? $name : pathinfo($name, PATHINFO_FILENAME) . "-{$count}." . pathinfo($name, PATHINFO_EXTENSION);
+        return $count === 1
+            ? $name
+            : pathinfo($name, PATHINFO_FILENAME) . "-{$count}." . pathinfo($name, PATHINFO_EXTENSION);
     }
 
     private function ensurePaid(Booking $booking): void

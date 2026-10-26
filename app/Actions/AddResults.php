@@ -20,12 +20,15 @@ final class AddResults
         $matched = 0;
 
         foreach ($paths as $path) {
-            $result = $booking->results()->make([
-                'filename' => basename($path),
-                'path' => $path,
-                'size' => $disk->size($path),
-                'uploaded_by' => auth()->id(),
-            ])->matchProof($selected);
+            $result = $booking
+                ->results()
+                ->make([
+                    'filename' => basename($path),
+                    'path' => $path,
+                    'size' => $disk->size($path),
+                    'uploaded_by' => auth()->id(),
+                ])
+                ->matchProof($selected);
 
             $result->save();
             RenderPhoto::dispatch($result);

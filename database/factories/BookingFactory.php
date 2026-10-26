@@ -23,16 +23,18 @@ class BookingFactory extends Factory
     /** Booking selalu memakai salinan paket, sama seperti di aplikasi. */
     public function configure(): static
     {
-        return $this->afterMaking(
-            fn (Booking $b) => $b->package_name ?? $b->applyPackage(Package::factory()->create()),
-        );
+        return $this->afterMaking(fn(Booking $b) => $b->package_name ?? $b->applyPackage(Package::factory()->create()));
     }
 
     /** Tagihan sesi dibayar penuh, sehingga otomatis terkonfirmasi dan boleh ditandai sesi selesai. */
     public function paid(): static
     {
         return $this->afterCreating(function (Booking $b) {
-            $b->payments()->create(['amount' => $b->price()->sessionTotal(), 'paid_on' => today(), 'method' => 'transfer']);
+            $b->payments()->create([
+                'amount' => $b->price()->sessionTotal(),
+                'paid_on' => today(),
+                'method' => 'transfer',
+            ]);
             $b->refresh(); // status sudah Confirmed di database, segarkan objek ini
         });
     }

@@ -33,29 +33,43 @@ class ResultsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->description(fn () => $this->progress())
+            ->description(fn() => $this->progress())
             ->columns([
-                ImageColumn::make('thumb')->label('')->state(fn (EditedPhoto $record) => $record->url())->imageHeight(56),
+                ImageColumn::make('thumb')
+                    ->label('')
+                    ->state(fn(EditedPhoto $record) => $record->url())
+                    ->imageHeight(56),
                 TextColumn::make('filename')->label('Nama file')->searchable(),
-                TextColumn::make('proof.frame')->label('Untuk foto')->badge()
-                    ->formatStateUsing(fn ($state) => 'Frame ' . str_pad($state, 2, '0', STR_PAD_LEFT))
+                TextColumn::make('proof.frame')
+                    ->label('Untuk foto')
+                    ->badge()
+                    ->formatStateUsing(fn($state) => 'Frame ' . str_pad($state, 2, '0', STR_PAD_LEFT))
                     ->placeholder('Tambahan'),
-                TextColumn::make('size')->label('Ukuran')->formatStateUsing(fn (int $state) => number_format($state / 1048576, 1, ',', '.') . ' MB'),
-                TextColumn::make('state')->label('Status')->badge()
-                    ->state(fn (EditedPhoto $record) => match (true) {
+                TextColumn::make('size')
+                    ->label('Ukuran')
+                    ->formatStateUsing(fn(int $state) => number_format($state / 1048576, 1, ',', '.') . ' MB'),
+                TextColumn::make('state')
+                    ->label('Status')
+                    ->badge()
+                    ->state(fn(EditedPhoto $record) => match (true) {
                         $record->failed() => 'Gagal',
                         $record->isReady() => 'Siap',
                         default => 'Memproses',
                     })
-                    ->color(fn (string $state) => ['Gagal' => 'danger', 'Siap' => 'success'][$state] ?? 'warning')
-                    ->tooltip(fn (EditedPhoto $record) => $record->error),
+                    ->color(fn(string $state) => ['Gagal' => 'danger', 'Siap' => 'success'][$state] ?? 'warning')
+                    ->tooltip(fn(EditedPhoto $record) => $record->error),
             ])
             ->defaultSort('id')
             ->paginated([50, 100, 'all'])
-            ->poll(fn () => $this->getOwnerRecord()->results()->whereNull('preview_path')->whereNull('error')->exists() ? '5s' : null)
+            ->poll(fn() => $this->getOwnerRecord()->results()->whereNull('preview_path')->whereNull('error')->exists()
+                ? '5s'
+                : null)
             ->emptyStateHeading('Belum ada hasil edit')
             ->emptyStateDescription('Gunakan tombol "Unggah hasil edit" di atas.')
-            ->recordActions([self::linkAction(), DeleteAction::make()->using(fn (EditedPhoto $record) => $record->discard())]);
+            ->recordActions([
+                self::linkAction(),
+                DeleteAction::make()->using(fn(EditedPhoto $record) => $record->discard()),
+            ]);
     }
 
     /** "18 dari 25 foto pilihan sudah ada hasil. Belum: DSC_4512, ..." */
@@ -67,7 +81,9 @@ class ResultsRelationManager extends RelationManager
         $missing = $booking->missingResults()->orderBy('frame')->pluck('filename');
         $text = ($selected - $missing->count()) . " dari {$selected} foto pilihan sudah ada hasil.";
 
-        return $missing->isEmpty() ? $text : $text . ' Belum: ' . $missing->map(fn ($f) => pathinfo($f, PATHINFO_FILENAME))->join(', ');
+        return $missing->isEmpty()
+            ? $text
+            : $text . ' Belum: ' . $missing->map(fn($f) => pathinfo($f, PATHINFO_FILENAME))->join(', ');
     }
 
     /** Hubungkan manual jika nama file hasil tidak cocok otomatis. */
@@ -77,13 +93,21 @@ class ResultsRelationManager extends RelationManager
             ->label('Hubungkan')
             ->icon(Heroicon::OutlinedLink)
             ->color('gray')
-            ->fillForm(fn (EditedPhoto $record) => ['proof_photo_id' => $record->proof_photo_id])
+            ->fillForm(fn(EditedPhoto $record) => ['proof_photo_id' => $record->proof_photo_id])
             ->schema([
-                Select::make('proof_photo_id')->label('Foto pilihan klien')->searchable()
-                    ->options(fn (EditedPhoto $record) => $record->booking->selected()->orderBy('frame')->get()
-                        ->mapWithKeys(fn ($p) => [$p->id => "Frame {$p->frame} · {$p->filename}"]))
+                Select::make('proof_photo_id')
+                    ->label('Foto pilihan klien')
+                    ->searchable()
+                    ->options(fn(EditedPhoto $record) => $record
+                        ->booking
+                        ->selected()
+                        ->orderBy('frame')
+                        ->get()
+                        ->mapWithKeys(fn($p) => [$p->id => "Frame {$p->frame} · {$p->filename}"]))
                     ->placeholder('Tambahan (tidak terhubung)'),
             ])
-            ->action(fn (EditedPhoto $record, array $data) => $record->update(['proof_photo_id' => $data['proof_photo_id']]));
+            ->action(fn(EditedPhoto $record, array $data) => $record->update([
+                'proof_photo_id' => $data['proof_photo_id'],
+            ]));
     }
 }

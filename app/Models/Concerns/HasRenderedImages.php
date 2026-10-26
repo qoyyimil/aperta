@@ -31,7 +31,7 @@ trait HasRenderedImages
     /** Hapus permanen beserta semua filenya. */
     public function discard(): void
     {
-        self::disk()->delete(array_filter(array_map(fn (string $column) => $this->{$column}, $this->fileColumns())));
+        self::disk()->delete(array_filter(array_map(fn(string $column) => $this->{$column}, $this->fileColumns())));
         $this->forceDelete();
     }
 

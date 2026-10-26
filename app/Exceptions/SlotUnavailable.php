@@ -10,8 +10,10 @@ class SlotUnavailable extends DomainException
 {
     public function render(): RedirectResponse
     {
-        return back()->withInput()->withErrors([
-            'starts_at' => 'Jadwal ini baru saja penuh atau tidak tersedia. Silakan pilih jam atau tanggal lain.',
-        ]);
+        return back()
+            ->withInput()
+            ->withErrors([
+                'starts_at' => 'Jadwal ini baru saja penuh atau tidak tersedia. Silakan pilih jam atau tanggal lain.',
+            ]);
     }
 }
