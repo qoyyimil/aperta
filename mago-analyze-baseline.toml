@@ -1,0 +1,4123 @@
+variant = "loose"
+
+[[issues]]
+file = "app/Actions/AddProofs.php"
+code = "invalid-array-access-assignment-value"
+message = "Invalid value type for `ArrayAccess` assignment: expected `array-key`, got `true`."
+count = 1
+
+[[issues]]
+file = "app/Actions/AddProofs.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Support\Facades\Storage::disk`: expected `UnitEnum|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/AddProofs.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `strtolower`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Actions/AddResults.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Support\Facades\Storage::disk`: expected `UnitEnum|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/AddResults.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "app/Actions/AddResults.php"
+code = "mixed-method-access"
+message = "Attempting to call method `save()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/AddResults.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$proof_photo_id` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/AddResults.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `matchProof` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/AddResults.php"
+code = "non-existent-method"
+message = 'Method `id` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Model::__construct`: expected `array<string, mixed>`, but provided type `array<array-key, mixed>` is less specific.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "less-specific-nested-argument-type"
+message = 'Argument type mismatch for argument #1 of `Illuminate\Support\Collection::filter`: expected `(callable(mixed, array-key): bool)|null`, but provided type `(closure(array<array-key, mixed>): mixed)` is less specific.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "less-specific-nested-argument-type"
+message = "Argument type mismatch for argument #1 of `array_column`: expected `array<array-key, array<string('id'), ('V.array_column() extends mixed)>|object>|list<array<string('id'), ('V.array_column() extends mixed)>|object>`, but provided type `array<array-key, mixed>` is less specific."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Carbon::addMinutes`: expected `float|int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Traits\Creator::parse`: expected `DateTimeInterface|enum(Carbon\Month)|enum(Carbon\WeekDay)|float|int|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Traits\Date::setTimeFromTimeString`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Actions\PlaceBooking::applyVoucher`: expected `null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Actions\PlaceBooking::attachAddons`: expected `array<array-key, mixed>`, but found `nonnull`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Actions\PlaceBooking::create`: expected `App\Models\Package`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Support\Availability::allows`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #3 of `App\Support\Availability::allows`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-array-access"
+message = "Unsafe array access on type `mixed`."
+count = 2
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-array-index"
+message = "Possibly invalid array key type."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 5
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `discountFor()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `findMany()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `findOrFail()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `first()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `has()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `increment()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `keyBy()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `lockForUpdate()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `rejection()` on a non-object type (`truthy-mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$code` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$duration_minutes` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$id` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$max_qty` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$price` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Actions\PlaceBooking::handle`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `active` on class `App\Models\Addon`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `active` on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `firstOrCreate` on class `App\Models\Client`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `where` on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $duration_minutes on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "implicit-to-string-cast"
+message = 'Implicit conversion to `string` for right operand via `Symfony\Component\Uid\Ulid::__toString()`.'
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Models\Booking::assignCrew`: expected `array<array-key, mixed>`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Carbon::addDays`: expected `float|int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Filament\Forms\Components\BaseFileUpload::disk`: expected `(closure(...mixed=): mixed)|null|string`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Actions\AddProofs::handle`: expected `array<array-key, string>`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Actions\AddResults::handle`: expected `array<array-key, string>`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #3 of `App\Models\Booking::publishProofs`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-method-access"
+message = "Attempting to call method `can()` on a non-object type (`mixed`)."
+count = 4
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-method-access"
+message = "Attempting to call method `hasResults()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isAdmin()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-method-access"
+message = "Attempting to call method `modelKeys()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-method-access"
+message = "Attempting to call method `pluck()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-method-access"
+message = "Attempting to call method `where()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-operand"
+message = "Left operand in `&&` operation has `mixed` type."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "mixed-operand"
+message = "Right operand in `&&` operation has `mixed` type."
+count = 4
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `where` on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $crew on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $edit_quota on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $extra_photo_price on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 4
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "non-existent-method"
+message = 'Method `user` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 5
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Models\Booking::transitionTo`: expected `null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "mixed-method-access"
+message = "Attempting to call method `can()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "mixed-method-access"
+message = "Attempting to call method `canTransitionTo()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "mixed-operand"
+message = "Left operand in `&&` operation has `mixed` type."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "mixed-operand"
+message = "Right operand in `&&` operation has `mixed` type."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "non-existent-method"
+message = 'Method `user` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/BookingResource.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Filament\Resources\Bookings\BookingResource::getEloquentQuery`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/BookingResource.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `visibleTo` on class `Illuminate\Database\Eloquent\Builder`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/BookingResource.php"
+code = "non-existent-method"
+message = 'Method `user` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/CreateBooking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `snapshot()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/CreateBooking.php"
+code = "mixed-operand"
+message = "Left operand in binary operation has type `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/CreateBooking.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Filament\Resources\Bookings\Pages\CreateBooking::mutateFormDataBeforeCreate`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/CreateBooking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `findOrFail` on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/EditBooking.php"
+code = "invalid-property-access"
+message = "Attempting to access property `$id` on a non-object type (`int`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/EditBooking.php"
+code = "invalid-property-access"
+message = "Attempting to access property `$id` on a non-object type (`string`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/EditBooking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Filament\Resources\Bookings\Pages\GuardsSchedule::guardSchedule`: expected `int|null`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/EditBooking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/EditBooking.php"
+code = "possibly-null-property-access"
+message = "Attempting to access a property on a possibly `null` value."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/GuardsSchedule.php"
+code = "invalid-destructuring-source"
+message = "Invalid destructuring assignment: Cannot unpack type `mixed` into variables."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/GuardsSchedule.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Support\SlotGrid::min`: expected `string`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/GuardsSchedule.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Traits\Creator::parse`: expected `DateTimeInterface|enum(Carbon\Month)|enum(Carbon\WeekDay)|float|int|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/GuardsSchedule.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Support\Availability::fits`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/GuardsSchedule.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 3
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/GuardsSchedule.php"
+code = "non-existent-method"
+message = 'Method `halt` does not exist on type `App\Filament\Resources\Bookings\Pages\GuardsSchedule`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/GuardsSchedule.php"
+code = "non-existent-property"
+message = 'Property `$data` does not exist on trait `App\Filament\Resources\Bookings\Pages\GuardsSchedule`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ProofsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `exists()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ProofsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `whereNull()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ProofsRelationManager.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `discard` on class `Illuminate\Support\HigherOrderCollectionProxy`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ProofsRelationManager.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `proofs` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ProofsRelationManager.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $error on class `App\Models\ProofPhoto`.'
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ProofsRelationManager.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `pathinfo`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `str_pad`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-array-index"
+message = "Possibly invalid array key type."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `exists()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `get()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `hasResults()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `mapWithKeys()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `orderBy()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `selected()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-method-access"
+message = "Attempting to call method `whereNull()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$filename` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$frame` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$id` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Filament\Resources\Bookings\RelationManagers\ResultsRelationManager::canViewForRecord`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `results` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $booking on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $error on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $proof_photo_id on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingForm.php"
+code = "less-specific-nested-argument-type"
+message = 'Argument type mismatch for argument #1 of `Filament\Forms\Components\Select::createOptionForm`: expected `(closure(...mixed): mixed)|array<array-key, Filament\Actions\Action|Filament\Actions\ActionGroup|Filament\Schemas\Components\Component>|null`, but provided type `array<array-key, mixed>` is less specific.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingForm.php"
+code = "less-specific-nested-argument-type"
+message = 'Argument type mismatch for argument #1 of `Filament\Forms\Components\Select::editOptionForm`: expected `(closure(...mixed): mixed)|array<array-key, Filament\Actions\Action|Filament\Actions\ActionGroup|Filament\Schemas\Components\Component>|null`, but provided type `array<array-key, mixed>` is less specific.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $cancel_reason on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $city on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $ends_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $institution on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $location on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $starts_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #3 of `Illuminate\Database\Query\Builder::whereDate`: expected `DateTimeInterface|null|string`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isAdmin()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $starts_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "non-existent-method"
+message = 'Method `user` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Packages/PackageResource.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $service on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `number_format`: expected `float`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "mixed-operand"
+message = "Invalid left operand: type `mixed` cannot be reliably used in string concatenation."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "mixed-operand"
+message = "Invalid right operand: type `nonnull` cannot be reliably used in string concatenation."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $quota on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $type on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $used on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $value on class `App\Models\Voucher`.'
+count = 2
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Filament\Tables\Table\Concerns\HasQuery::query`: expected `(closure(...mixed=): mixed)|Illuminate\Database\Eloquent\Builder<Illuminate\Database\Eloquent\Model>|null`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
+count = 2
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "mixed-method-access"
+message = "Attempting to call method `visibleTo()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "mixed-method-access"
+message = "Attempting to call method `with()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `upcoming` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $ends_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $location on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $package_name on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $starts_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "non-existent-method"
+message = 'Method `user` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `Filament\Widgets\StatsOverviewWidget\Stat::make`: expected `(closure(...mixed): mixed)|Illuminate\Contracts\Support\Htmlable|null|scalar`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "mixed-method-access"
+message = "Attempting to call method `count()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isAdmin()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "mixed-method-access"
+message = "Attempting to call method `sum()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Filament\Widgets\FinanceStatsWidget::canView`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `thisMonth` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `thisMonth` on class `App\Models\Payment`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "non-existent-method"
+message = 'Method `user` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "match-not-exhaustive"
+message = "Non-exhaustive `match` expression: subject of type `mixed` is not fully handled."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Filament\Tables\Table\Concerns\HasQuery::query`: expected `(closure(...mixed=): mixed)|Illuminate\Database\Eloquent\Builder<Illuminate\Database\Eloquent\Model>|null`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$role` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `queueFor` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $starts_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "non-existent-method"
+message = 'Method `user` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/AvailabilityController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Traits\Creator::parse`: expected `DateTimeInterface|enum(Carbon\Month)|enum(Carbon\WeekDay)|float|int|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/AvailabilityController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Support\Availability::startTimes`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/AvailabilityController.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/AvailabilityController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `findOrFail()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/AvailabilityController.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$duration_minutes` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/AvailabilityController.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `active` on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Actions\PlaceBooking::handle`: expected `array<array-key, mixed>`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Carbon::addDays`: expected `float|int`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `get()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `orderBy()` on a non-object type (`mixed`)."
+count = 3
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `active` on class `App\Models\Addon`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `active` on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Http\Controllers\ResultController::uniqueName`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Support\Facades\Storage::disk`: expected `UnitEnum|null|string`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Http\Controllers\ResultController::localPath`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `path()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `readStream()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-operand"
+message = "Invalid middle operand: type `mixed` cannot be reliably used in string concatenation."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-operand"
+message = "Left operand in binary operation has type `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Http\Controllers\ResultController::download`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Http\Controllers\ResultController::localPath`. Saw type `mixed`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $filename on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $filename on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $path on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $path on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "non-existent-method"
+message = 'Method `download` does not exist on type `Illuminate\Contracts\Filesystem\Filesystem`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "possibly-false-argument"
+message = "Argument #1 of function `file_put_contents` is possibly `false`, but parameter type `string` does not accept it."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "possibly-false-argument"
+message = 'Argument #1 of method `Illuminate\Contracts\Routing\ResponseFactory::download` is possibly `false`, but parameter type `SplFileInfo|string` does not accept it.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "possibly-false-argument"
+message = "Argument #1 of method `ZipArchive::open` is possibly `false`, but parameter type `string` does not accept it."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Models\ProofPhoto::annotate`: expected `null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `abort_unless`: expected `bool`, but found `mixed`."
+count = 2
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `hasGallery()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `selectionOpen()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Controllers/TrackController.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Support\BookingCode::normalize`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/TrackController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `whatsappMatches()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/TrackController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/TrackController.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/TrackController.php"
+code = "possibly-null-operand"
+message = "Possibly null right operand used in string concatenation (type `null|string`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/VoucherCheckController.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `trim`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/VoucherCheckController.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 2
+
+[[issues]]
+file = "app/Http/Controllers/VoucherCheckController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `discountFor()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/VoucherCheckController.php"
+code = "mixed-method-access"
+message = "Attempting to call method `rejection()` on a non-object type (`truthy-mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/VoucherCheckController.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$code` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/VoucherCheckController.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `firstWhere` on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "invalid-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Database\Eloquent\Collection::map`: expected `(callable(Illuminate\Database\Eloquent\Model, int): array<array-key, mixed>)`, but found `(closure(App\Models\ProofPhoto): array<array-key, mixed>)`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `strtok`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `endOfDay()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isPast()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `selectionOpen()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `translatedFormat()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "mixed-operand"
+message = "Casting `mixed` to `bool`."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$name` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $edit_quota on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $extra_photo_price on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $filename on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $frame on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $is_selected on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $note on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $selection_deadline on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $selection_submitted_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "invalid-argument"
+message = '''Invalid argument type for argument #1 of `Illuminate\Database\Eloquent\Collection::map`: expected `(callable(Illuminate\Database\Eloquent\Model, int): array{'before': mixed, 'filename': mixed, 'frame': mixed, 'id': mixed, 'note': mixed, 'preview': null|string, 'thumb': null|string})`, but found `(closure(App\Models\EditedPhoto): array{'before': mixed, 'filename': mixed, 'frame': mixed, 'id': mixed, 'note': mixed, 'preview': null|string, 'thumb': null|string})`.'''
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `strtok`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `translatedFormat()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `url()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$frame` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$name` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$note` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $delivered_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $filename on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $proof on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "invalid-argument"
+message = "Invalid argument type for argument #1 of `array_map`: expected `(callable(string('Booking diterima')|string('Editing')|string('Hasil dikirim')|string('Pilih foto')|string('Sesi foto')|string('Terkonfirmasi')): array{'content': string, 'label': string, 'state': string('current')|string('done')|string('todo')})|(callable(string('Booking diterima')|string('Editing')|string('Hasil dikirim')|string('Pilih foto')|string('Sesi foto')|string('Terkonfirmasi'), int|string('DP diterima, lunas H-1 sesi')|string('Data dan jadwal tercatat')|string('Foto pilihanmu diedit')|string('Pemotretan di lokasi')|string('Pilih foto untuk diedit')|string('Unduh hasil akhir')): array{'content': string, 'label': string, 'state': string('current')|string('done')|string('todo')})|null`, but found `(closure(string, string, int): array{'content': string, 'label': string, 'state': string('current')|string('done')|string('todo')})`."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "match-not-exhaustive"
+message = "Non-exhaustive `match` expression: subject of type `mixed` is not fully handled."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Http\Presenters\TrackView::steps`: expected `enum(App\Enums\BookingStatus)`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
+count = 3
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `hasGallery()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `map()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `selectionOpen()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-method-access"
+message = "Attempting to call method `translatedFormat()` on a non-object type (`mixed`)."
+count = 3
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-operand"
+message = "Invalid middle operand: type `mixed` cannot be reliably used in string concatenation."
+count = 2
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-operand"
+message = "Left operand in binary operation has type `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-operand"
+message = "Right operand in binary operation has type `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$name` on a non-object type (`mixed`)."
+count = 3
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$pivot` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$price` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$qty` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $addons on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $cancel_reason on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $city on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $ends_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $institution on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $location on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $package_name on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $selection_deadline on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $service on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $session_date on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $starts_at on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Http/Requests/StoreBookingRequest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Validation\Rule::in`: expected `Illuminate\Contracts\Support\Arrayable<array-key, mixed>|UnitEnum|array<array-key, mixed>|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Http/Requests/StoreBookingRequest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $whatsapp on class `App\Http\Requests\StoreBookingRequest`.'
+count = 1
+
+[[issues]]
+file = "app/Jobs/RenderPhoto.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Support\Facades\Storage::disk`: expected `UnitEnum|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Jobs/RenderPhoto.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Support\ProofImages::render`: expected `null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Jobs/RenderPhoto.php"
+code = "possibly-null-argument"
+message = 'Argument #1 of method `App\Support\ProofImages::render` is possibly `null`, but parameter type `string` does not accept it.'
+count = 1
+
+[[issues]]
+file = "app/Mail/BookingPlaced.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Mail/BookingPlaced.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Model::fill`: expected `array<string, mixed>`, but provided type `array<array-key, mixed>` is less specific.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "match-not-exhaustive"
+message = "Non-exhaustive `match` expression: subject of type `mixed` is not fully handled."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "missing-template-parameter"
+message = 'Too few template arguments for `Illuminate\Database\Eloquent\Factories\HasFactory`: expected at least 1, but found 0.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Exceptions\InvalidStatusTransition::__construct`: expected `enum(App\Enums\BookingStatus)`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Support\PriceBreakdown::__construct`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Carbon::addDays`: expected `float|int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Traits\Creator::parse`: expected `DateTimeInterface|enum(Carbon\Month)|enum(Carbon\WeekDay)|float|int|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Traits\Difference::diffInDays`: expected `Carbon\CarbonInterface|DateTimeInterface|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `intdiv`: expected `int`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Models\Booking::log`: expected `null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Models\Booking::log`: expected `null|string`, but found `truthy-mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Support\PriceBreakdown::__construct`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #3 of `App\Support\PriceBreakdown::__construct`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #4 of `App\Support\PriceBreakdown::__construct`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 3
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `addHours()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `balance()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `canTransitionTo()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `copy()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `doesntHave()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `get()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isSessionPaid()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `join()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `min()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `modelKeys()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `orderBy()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `pluck()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `subDays()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `sum()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `where()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `whereBetween()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `whereDate()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `whereNotNull()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `with()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-method-access"
+message = "Attempting to call method `withBilling()` on a non-object type (`mixed`)."
+count = 3
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-operand"
+message = "Left operand in binary operation has type `mixed`."
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-operand"
+message = "Right operand in binary operation has type `mixed`."
+count = 4
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$pivot` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$price` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$qty` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$reject` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$sum` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$value` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\Booking::depositDueAt`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\Booking::extraPhotos`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\Booking::paymentDueOn`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\Booking::receivables`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `active` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `active` on class `Illuminate\Database\Eloquent\Builder`.'
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `awaitingProofs` on class `Illuminate\Database\Eloquent\Builder`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `editingQueue` on class `Illuminate\Database\Eloquent\Builder`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `needsAction` on class `Illuminate\Database\Eloquent\Builder`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `visibleTo` on class `Illuminate\Database\Eloquent\Builder`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `whereKey` on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `where` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $addons on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $created_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $discount on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $edit_quota on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $extra_photo_price on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $missing_results_count on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $notes_count on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $package_price on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $payments_sum_amount on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $proofs_count on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $role on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $selected_count on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $selection_deadline on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $session_date on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 8
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "non-existent-method"
+message = 'Method `id` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "unevaluated-code"
+message = "Unreachable code detected."
+count = 4
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `App\Models\Client::normalizePhone`: expected `string`, but found `null|string`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "missing-template-parameter"
+message = 'Too few template arguments for `Illuminate\Database\Eloquent\Factories\HasFactory`: expected at least 1, but found 0.'
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #3 of `preg_replace`: expected `array<('K.preg_replace() extends array-key), string>|string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $whatsapp on class `App\Models\Client`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "nullable-return-statement"
+message = 'Function `App\Models\Client::normalizePhone` is declared to return `string` but possibly returns a nullable value (inferred as `null|string`).'
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "possibly-invalid-argument"
+message = "Possible argument type mismatch for argument #1 of `str_ends_with`: expected `string`, but possibly received `array<array-key, string>|null|string`."
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "possibly-null-argument"
+message = "Argument #1 of function `str_ends_with` is possibly `null`, but parameter type `string` does not accept it."
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "possibly-null-argument"
+message = "Argument #1 of function `str_starts_with` is possibly `null`, but parameter type `string` does not accept it."
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "possibly-null-argument"
+message = "Argument #1 of function `substr` is possibly `null`, but parameter type `string` does not accept it."
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Support\Facades\Storage::disk`: expected `UnitEnum|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "mixed-method-access"
+message = "Attempting to call method `delete()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "mixed-method-access"
+message = "Attempting to call method `temporaryUrl()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\Concerns\HasRenderedImages::url`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "non-existent-method"
+message = 'Method `forceDelete` does not exist on type `App\Models\Concerns\HasRenderedImages`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "non-existent-property"
+message = 'Property `$error` does not exist on trait `App\Models\Concerns\HasRenderedImages`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "non-existent-property"
+message = 'Property `$preview_path` does not exist on trait `App\Models\Concerns\HasRenderedImages`.'
+count = 2
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "non-existent-property"
+message = 'Property `$thumb_path` does not exist on trait `App\Models\Concerns\HasRenderedImages`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "string-member-selector"
+message = "This member selector uses a non-literal string type (`string`); its specific value cannot be statically determined."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Database\Eloquent\Relations\BelongsTo::associate`: expected `Illuminate\Database\Eloquent\Model|int|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `strtolower`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-method-access"
+message = "Attempting to call method `filter()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-method-access"
+message = "Attempting to call method `first()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-method-access"
+message = "Attempting to call method `get()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-method-access"
+message = "Attempting to call method `selected()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-method-access"
+message = "Attempting to call method `sortByDesc()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\EditedPhoto::sourcePath`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $booking on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $booking_id on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $filename on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $path on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Package.php"
+code = "missing-template-parameter"
+message = 'Too few template arguments for `Illuminate\Database\Eloquent\Factories\HasFactory`: expected at least 1, but found 0.'
+count = 1
+
+[[issues]]
+file = "app/Models/Package.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $edit_quota on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Package.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $extra_photo_price on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Package.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Package.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $name on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Package.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $price on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Package.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $service on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Payment.php"
+code = "mixed-method-access"
+message = "Attempting to call method `confirmIfDeposited()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Payment.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $booking on class `App\Models\Payment`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Payment.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $recorded_by on class `App\Models\Payment`.'
+count = 2
+
+[[issues]]
+file = "app/Models/Payment.php"
+code = "non-existent-method"
+message = 'Method `id` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `pathinfo`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "mixed-method-access"
+message = "Attempting to call method `delete()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "mixed-operand"
+message = "Left operand in `||` operation has `mixed` type."
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\ProofPhoto::sourcePath`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `update` on class `Illuminate\Support\HigherOrderTapProxy`.'
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $booking_id on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $filename on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $frame on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $is_selected on class `App\Models\ProofPhoto`.'
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $source_path on class `App\Models\ProofPhoto`.'
+count = 2
+
+[[issues]]
+file = "app/Models/User.php"
+code = "missing-template-parameter"
+message = 'Too few template arguments for `Illuminate\Database\Eloquent\Factories\HasFactory`: expected at least 1, but found 0.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\User::canAccessPanel`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $is_active on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $role on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "mixed-method-access"
+message = "Attempting to call method `apply()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "mixed-method-access"
+message = "Attempting to call method `endOfDay()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isFuture()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isPast()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "mixed-operand"
+message = "Left operand in `>=` comparison has `mixed` type."
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "mixed-operand"
+message = "Right operand in `>=` comparison has `mixed` type."
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\Voucher::discountFor`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $ends_on on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $quota on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $starts_on on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $type on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $used on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $value on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "app/Policies/BookingPolicy.php"
+code = "mixed-method-access"
+message = "Attempting to call method `contains()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Policies/BookingPolicy.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Policies\BookingPolicy::view`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Policies/BookingPolicy.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $crew on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Policies/BookingPolicy.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $role on class `App\Models\User`.'
+count = 2
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Support\SlotGrid::fromConfig`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Carbon\Carbon::addDays`: expected `float|int`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-method-access"
+message = "Attempting to call method `all()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-method-access"
+message = "Attempting to call method `count()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-method-access"
+message = "Attempting to call method `exists()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-method-access"
+message = "Attempting to call method `get()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-method-access"
+message = "Attempting to call method `map()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-method-access"
+message = "Attempting to call method `when()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-method-access"
+message = "Attempting to call method `where()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-method-access"
+message = "Attempting to call method `whereKeyNot()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Support\Availability::booked`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `whereDate` on class `App\Models\BlockedDate`.'
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `whereDate` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `where` on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $ends_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $starts_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "app/Support/BookingCode.php"
+code = "mixed-operand"
+message = "Right operand in `&&` operation has `mixed` type."
+count = 1
+
+[[issues]]
+file = "app/Support/ProofImages.php"
+code = "mixed-method-access"
+message = "Attempting to call method `encodeUsingFormat()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "invalid-destructuring-source"
+message = "Invalid destructuring assignment: Cannot unpack type `mixed` into variables."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Support\SlotGrid::__construct`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Support\SlotGrid::min`: expected `string`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Support\SlotGrid::__construct`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #3 of `App\Support\SlotGrid::__construct`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 3
+
+[[issues]]
+file = "config/app.php"
+code = "mixed-operand"
+message = "Casting `mixed` to `bool`."
+count = 1
+
+[[issues]]
+file = "config/filesystems.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `rtrim`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "mixed-operand"
+message = "Invalid middle operand: type `mixed` cannot be reliably used in string concatenation."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "mixed-operand"
+message = "Invalid right operand: type `mixed` cannot be reliably used in string concatenation."
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "invalid-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Database\Eloquent\Factories\Factory::afterCreating`: expected `(closure(Illuminate\Database\Eloquent\Model, Illuminate\Database\Eloquent\Model|null): mixed)`, but found `(closure(App\Models\Booking): void)`.'
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `App\Models\Booking::applyPackage`: expected `App\Models\Package`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific.'
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "less-specific-nested-argument-type"
+message = 'Argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Factories\Factory::state`: expected `(callable(array<string, mixed>, Illuminate\Database\Eloquent\Model|null): array<string, mixed>)|array<string, mixed>`, but provided type `array<array-key, mixed>` is less specific.'
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "missing-template-parameter"
+message = 'Too few template arguments for `Illuminate\Database\Eloquent\Factories\Factory`: expected at least 1, but found 0.'
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $package_name on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "possibly-invalid-argument"
+message = 'Possible argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Factories\Factory::afterMaking`: expected `(closure(Illuminate\Database\Eloquent\Model): mixed)`, but possibly received `(closure(App\Models\Booking): nonnull)`.'
+count = 1
+
+[[issues]]
+file = "database/factories/ClientFactory.php"
+code = "missing-template-parameter"
+message = 'Too few template arguments for `Illuminate\Database\Eloquent\Factories\Factory`: expected at least 1, but found 0.'
+count = 1
+
+[[issues]]
+file = "database/factories/PackageFactory.php"
+code = "missing-template-parameter"
+message = 'Too few template arguments for `Illuminate\Database\Eloquent\Factories\Factory`: expected at least 1, but found 0.'
+count = 1
+
+[[issues]]
+file = "routes/console.php"
+code = "mixed-method-access"
+message = "Attempting to call method `error()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "routes/console.php"
+code = "mixed-method-access"
+message = "Attempting to call method `info()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "routes/console.php"
+code = "mixed-method-access"
+message = "Attempting to call method `update()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "routes/console.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `where` on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "routes/console.php"
+code = "undefined-variable"
+message = "Undefined variable: `$this`."
+count = 2
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `strlen`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `PHPUnit\Framework\Assert::assertMatchesRegularExpression`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 4
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `annotate()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `create()` on a non-object type (`mixed`)."
+count = 7
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `extraPhotos()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `fresh()` on a non-object type (`mixed`)."
+count = 3
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `is()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `payments()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `price()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `proofs()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `total()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$access_token` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$code` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$id` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$is_selected` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$package_price` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$status` on a non-object type (`mixed`)."
+count = 3
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `forPackage` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 3
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `proofs` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `proofs` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `transitionTo` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `transitionTo` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `update` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $proof on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "possibly-invalid-argument"
+message = 'Possible argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Relations\BelongsTo::associate`: expected `Illuminate\Database\Eloquent\Model|int|null|string`, but possibly received `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "template-constraint-violation"
+message = "Argument type mismatch for template `TRelatedModel`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "less-specific-nested-argument-type"
+message = '''Argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Factories\Factory::create`: expected `(callable(array<string, mixed>): array<string, mixed>)|array<string, mixed>`, but provided type `array{'status': enum(App\Enums\BookingStatus), ...}` is less specific.'''
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "less-specific-return-statement"
+message = 'Returned type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific than the declared return type `App\Models\Booking` for function `Tests\Feature\DashboardTest::booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "less-specific-return-statement"
+message = 'Returned type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific than the declared return type `App\Models\User` for function `Tests\Feature\DashboardTest::user`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Tests\Feature\DashboardTest::proofs`: expected `App\Models\Booking`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `PHPUnit\Framework\Assert::assertCount`: expected `Countable|iterable<mixed, mixed>`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 3
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `actionReason()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `all()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `attach()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `count()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `create()` on a non-object type (`mixed`)."
+count = 4
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `findOrFail()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `get()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `payments()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `pluck()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-operand"
+message = "Right operand in `&&` operation has `mixed` type."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$status` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Tests\Feature\DashboardTest::reason`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `assertSee` on class `Livewire\Features\SupportTesting\Testable`.'
+count = 4
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `crew` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `crew` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `forPackage` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `needsAction` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `paid` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `thisMonth` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `visibleTo` on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `withBilling` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\Booking`.'
+count = 6
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "invalid-destructuring-source"
+message = "Invalid destructuring assignment: Cannot unpack type `array{0: int, 1: int, 2: int, 3: string, 'bits': int, 'channels': int, 'mime': string}|false` into variables."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Contracts\Filesystem\Filesystem::get`: expected `string`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 2
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `create()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `toDateString()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `transitionTo()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Tests\Feature\ProofUploadTest::shotBooking`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `assignCrew` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `assignCrew` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `can` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 3
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `can` on class `Illuminate\Database\Eloquent\Model`.'
+count = 3
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `isReady` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `paid` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `publishProofs` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `publishProofs` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $edit_quota on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $extra_photo_price on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Collection`.'
+count = 3
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Model`.'
+count = 3
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $preview_path on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $selection_deadline on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $thumb_path on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-existent-method"
+message = 'Method `assertMissing` does not exist on type `Illuminate\Contracts\Filesystem\Filesystem`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "possibly-false-array-access"
+message = "Cannot perform array access on possibly `false` value."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "possibly-invalid-argument"
+message = 'Possible argument type mismatch for argument #1 of `App\Jobs\RenderPhoto::__construct`: expected `Illuminate\Database\Eloquent\Model&App\Models\Contracts\Renderable`, but possibly received `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "possibly-null-argument"
+message = "Argument #1 of function `getimagesizefromstring` is possibly `null`, but parameter type `string` does not accept it."
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `App\Mail\BookingPlaced::__construct`: expected `App\Models\Booking`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `Tests\Feature\PublicBookingTest::payload`: expected `App\Models\Package`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific.'
+count = 6
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Mail\Mailable::assertSeeInHtml`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `strtolower`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
+count = 3
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #2 of `str_contains`: expected `string`, but found `mixed`."
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #4 of `App\Support\Availability::fits`: expected `int|null`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 3
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `create()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `price()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `total()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$access_token` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$client` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$discount` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$email` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$ends_at` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$id` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$used` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$whatsapp` on a non-object type (`mixed`)."
+count = 3
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `assertInertia` on class `Illuminate\Testing\TestResponse`.'
+count = 4
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `count` on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `count` on class `App\Models\Client`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `create` on class `App\Models\Addon`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `create` on class `App\Models\BlockedDate`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `create` on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `first` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `minDeposit` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `minDeposit` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `paid` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `sole` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `sole` on class `App\Models\Voucher`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `Illuminate\Database\Eloquent\Collection`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `Illuminate\Database\Eloquent\Model`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Collection`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Model`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `Illuminate\Database\Eloquent\Collection`.'
+count = 4
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $code on class `Illuminate\Database\Eloquent\Model`.'
+count = 4
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\Package`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Collection`.'
+count = 4
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Model`.'
+count = 4
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $whatsapp on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $whatsapp on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "less-specific-return-statement"
+message = 'Returned type `Illuminate\Database\Eloquent\Model` is less specific than the declared return type `App\Models\EditedPhoto` for function `Tests\Feature\ResultDeliveryTest::deliver`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Contracts\Filesystem\Filesystem::get`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `ZipArchive::open`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `App\Support\ProofImages::render`: expected `null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `create()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `getPathname()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$filename` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$id` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "mixed-property-type-coercion"
+message = 'A value with a less specific type `mixed` is being assigned to property `$booking` (App\Models\Booking).'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `assertInertia` on class `Illuminate\Testing\TestResponse`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `forPackage` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `isReady` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `results` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `results` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\EditedPhoto`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $preview_path on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $proof on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-existent-method"
+message = 'Method `assertExists` does not exist on type `Illuminate\Contracts\Filesystem\Filesystem`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "non-existent-method"
+message = 'Method `getFile` does not exist on type `Symfony\Component\HttpFoundation\Response`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "possibly-false-argument"
+message = 'Argument #2 of method `Illuminate\Contracts\Filesystem\Filesystem::put` is possibly `false`, but parameter type `Illuminate\Http\File|Illuminate\Http\UploadedFile|Psr\Http\Message\StreamInterface|resource|string` does not accept it.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "possibly-false-argument"
+message = "Argument #4 of function `imagefill` is possibly `false`, but parameter type `int` does not accept it."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "possibly-invalid-argument"
+message = 'Possible argument type mismatch for argument #1 of `App\Jobs\RenderPhoto::__construct`: expected `Illuminate\Database\Eloquent\Model&App\Models\Contracts\Renderable`, but possibly received `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "possibly-null-argument"
+message = 'Argument #1 of method `App\Support\ProofImages::render` is possibly `null`, but parameter type `string` does not accept it.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "possibly-null-property-access"
+message = "Attempting to access a property on a possibly `null` value."
+count = 2
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `create()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `fresh()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `paid()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$id` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$is_selected` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "mixed-property-type-coercion"
+message = 'A value with a less specific type `mixed` is being assigned to property `$booking` (App\Models\Booking).'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `assertInertia` on class `Illuminate\Testing\TestResponse`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `forPackage` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `proofs` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `proofs` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $access_token on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Model`.'
+count = 4
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $selection_submitted_at on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 2
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "possibly-null-property-access"
+message = "Attempting to access a property on a possibly `null` value."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `create()` on a non-object type (`mixed`)."
+count = 3
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `format()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isSessionPaid()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `paid()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `price()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `proofs()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `total()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Tests\Feature\SessionPaymentTest::booking`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `depositDueAt` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `depositDueAt` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `forPackage` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $status on class `App\Models\Booking`.'
+count = 3
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "possibly-null-property-access"
+message = "Attempting to access a property on a possibly `null` value."
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "deprecated-method"
+message = 'Call to deprecated method: `Livewire\Features\SupportTesting\Testable::assertFormFieldHidden`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "deprecated-method"
+message = 'Call to deprecated method: `Livewire\Features\SupportTesting\Testable::assertFormFieldVisible`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "less-specific-nested-argument-type"
+message = '''Argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Factories\Factory::create`: expected `(callable(array<string, mixed>): array<string, mixed>)|array<string, mixed>`, but provided type `array{'role': enum(App\Enums\UserRole), ...}` is less specific.'''
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "less-specific-return-statement"
+message = 'Returned type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific than the declared return type `App\Models\User` for function `Tests\Feature\StudioAccessTest::user`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `attach()` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `fresh()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$email` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `assertHasNoErrors` on class `Livewire\Features\SupportTesting\Testable`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `crew` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `crew` on class `Illuminate\Database\Eloquent\Model`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `getRouteKey` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `transitionTo` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `transitionTo` on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `update` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $cancel_reason on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $cancel_reason on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "possibly-null-property-access"
+message = "Attempting to access a property on a possibly `null` value."
+count = 1

@@ -1,0 +1,26 @@
+# Mago: format, lint, analyze, guard. Dokumentasi: https://mago.carthage.software
+php-version = "8.5"
+
+[source]
+paths = ["app", "config", "database", "routes", "tests"]
+includes = ["vendor"]   # dibaca untuk mengenali kelas Laravel/Filament, tidak ikut dicek
+excludes = ["storage", "bootstrap/cache"]
+
+# Baseline = temuan lama yang diterima; CI hanya gagal untuk temuan baru.
+[linter]
+integrations = ["laravel", "phpunit"]
+baseline = "mago-lint-baseline.toml"
+
+[analyzer]
+baseline = "mago-analyze-baseline.toml"
+
+# Logika bisnis tidak boleh bergantung pada tampilan admin atau lapisan HTTP.
+[[guard.perimeter.restrictions]]
+dependency = "App\\Filament\\**"
+deny-from = ["App\\Models\\**", "App\\Support\\**", "App\\Actions\\**", "App\\Enums\\**"]
+reason = "Domain tidak boleh memakai kelas Filament."
+
+[[guard.perimeter.restrictions]]
+dependency = "App\\Http\\**"
+deny-from = ["App\\Models\\**", "App\\Support\\**", "App\\Actions\\**", "App\\Enums\\**"]
+reason = "Domain tidak boleh memakai controller atau presenter."

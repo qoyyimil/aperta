@@ -1,0 +1,2131 @@
+variant = "loose"
+
+[[issues]]
+file = "app/Actions/AddProofs.php"
+code = "no-isset"
+message = "Use of the `isset` construct."
+count = 1
+
+[[issues]]
+file = "app/Actions/AddProofs.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "app/Actions/AddProofs.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Actions/AddResults.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "no-implicit-model-query"
+message = "Query-builder methods on a model should be reached through an explicit `query()` call."
+count = 1
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "app/Actions/PlaceBooking.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Enums/BookingStatus.php"
+code = "literal-named-argument"
+message = "Literal argument `true` should be passed as a named argument for clarity."
+count = 3
+
+[[issues]]
+file = "app/Enums/BookingStatus.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Enums/DiscountType.php"
+code = "literal-named-argument"
+message = "Literal argument `100` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Enums/DiscountType.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Enums/PaymentStatus.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Enums/UserRole.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Exceptions/InvalidStatusTransition.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Exceptions/SlotUnavailable.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Addons/AddonResource.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Addons/Pages/ManageAddons.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/BlockedDates/BlockedDateResource.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/BlockedDates/Pages/ManageBlockedDates.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "no-implicit-model-query"
+message = "Query-builder methods on a model should be reached through an explicit `query()` call."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 14
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 6
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/BookingActions.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 3
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Actions/StatusActions.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/BookingResource.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/CreateBooking.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/EditBooking.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/GuardsSchedule.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/ListBookings.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Pages/ViewBooking.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/LogsRelationManager.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/LogsRelationManager.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/PaymentsRelationManager.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/PaymentsRelationManager.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ProofsRelationManager.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 8
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ProofsRelationManager.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "literal-named-argument"
+message = "Literal argument `','` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "literal-named-argument"
+message = "Literal argument `'.'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "literal-named-argument"
+message = "Literal argument `'0'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "literal-named-argument"
+message = "Literal argument `1` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "literal-named-argument"
+message = "Literal argument `2` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "prefer-first-class-callable"
+message = "Use first-class callable syntax `...` instead of a arrow function."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 12
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "readable-literal"
+message = "Numeric literal could use underscore separators for readability."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/RelationManagers/ResultsRelationManager.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingForm.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingForm.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 10
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Schemas/BookingInfolist.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 5
+
+[[issues]]
+file = "app/Filament/Resources/Bookings/Tables/BookingsTable.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Packages/PackageResource.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Packages/PackageResource.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Packages/Pages/ManagePackages.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Users/Pages/ManageUsers.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Users/UserResource.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "app/Filament/Resources/Users/UserResource.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/Pages/ManageVouchers.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "literal-named-argument"
+message = "Literal argument `','` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "literal-named-argument"
+message = "Literal argument `'.'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "literal-named-argument"
+message = "Literal argument `true` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 7
+
+[[issues]]
+file = "app/Filament/Resources/Vouchers/VoucherResource.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 4
+
+[[issues]]
+file = "app/Filament/Widgets/AgendaWidget.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/FinanceStatsWidget.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 3
+
+[[issues]]
+file = "app/Filament/Widgets/MyQueueWidget.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/AvailabilityController.php"
+code = "final-controller"
+message = "Controller classes should be declared as `final`."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/AvailabilityController.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "final-controller"
+message = "Controller classes should be declared as `final`."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/BookingController.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/Controller.php"
+code = "no-empty-comment"
+message = "Empty comments are not allowed."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/Controller.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "final-controller"
+message = "Controller classes should be declared as `final`."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "literal-named-argument"
+message = "Literal argument `'Hasil bisa diunduh setelah tagihan lunas.'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "literal-named-argument"
+message = "Literal argument `'aperta'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "literal-named-argument"
+message = "Literal argument `403` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "literal-named-argument"
+message = "Literal argument `404` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "no-multi-assignments"
+message = "Avoid multiple assignments in a single statement."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/ResultController.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "final-controller"
+message = "Controller classes should be declared as `final`."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "literal-named-argument"
+message = "Literal argument `'Pilihan sudah dikirim dan dikunci. Hubungi admin jika ingin mengubah.'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "literal-named-argument"
+message = "Literal argument `404` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "literal-named-argument"
+message = "Literal argument `409` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/SelectionController.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/TrackController.php"
+code = "final-controller"
+message = "Controller classes should be declared as `final`."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/TrackController.php"
+code = "no-implicit-model-query"
+message = "Query-builder methods on a model should be reached through an explicit `query()` call."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/TrackController.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/VoucherCheckController.php"
+code = "final-controller"
+message = "Controller classes should be declared as `final`."
+count = 1
+
+[[issues]]
+file = "app/Http/Controllers/VoucherCheckController.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Middleware/HandleInertiaRequests.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Http/Middleware/HandleInertiaRequests.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "literal-named-argument"
+message = "Literal argument `' '` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "prefer-first-class-callable"
+message = "Use first-class callable syntax `...` instead of a arrow function."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/GalleryView.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "literal-named-argument"
+message = "Literal argument `' '` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/ResultsView.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 3
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 3
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "literal-named-argument"
+message = "Literal argument `true` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 3
+
+[[issues]]
+file = "app/Http/Presenters/TrackView.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Http/Requests/StoreBookingRequest.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Http/Requests/StoreBookingRequest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Jobs/RenderPhoto.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Mail/BookingPlaced.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Addon.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/BlockedDate.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "cyclomatic-complexity"
+message = "Class has high complexity."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "literal-named-argument"
+message = "Literal argument `100` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "literal-named-argument"
+message = "Literal argument `true` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "no-assign-in-condition"
+message = "Avoid assignments in conditions."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "no-shorthand-ternary"
+message = "Use of the shorthand ternary operator."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 8
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Booking.php"
+code = "too-many-methods"
+message = "Class has too many methods."
+count = 1
+
+[[issues]]
+file = "app/Models/BookingLog.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "literal-named-argument"
+message = "Literal argument `''` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "literal-named-argument"
+message = "Literal argument `2` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "prefer-first-class-callable"
+message = "Use first-class callable syntax `...` instead of a arrow function."
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Models/Client.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Concerns/HasRenderedImages.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Contracts/Renderable.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "app/Models/EditedPhoto.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Package.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Payment.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "app/Models/Payment.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "no-shorthand-ternary"
+message = "Use of the shorthand ternary operator."
+count = 1
+
+[[issues]]
+file = "app/Models/ProofPhoto.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "no-literal-password"
+message = "Literal passwords or sensitive data should not be stored in code."
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Models/Voucher.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Policies/AdminOnlyPolicy.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Policies/BookingPolicy.php"
+code = "no-shorthand-ternary"
+message = "Use of the shorthand ternary operator."
+count = 1
+
+[[issues]]
+file = "app/Policies/BookingPolicy.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Providers/AppServiceProvider.php"
+code = "no-empty-comment"
+message = "Empty comments are not allowed."
+count = 1
+
+[[issues]]
+file = "app/Providers/AppServiceProvider.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Providers/Filament/AdminPanelProvider.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Providers/Filament/AdminPanelProvider.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "no-implicit-model-query"
+message = "Query-builder methods on a model should be reached through an explicit `query()` call."
+count = 3
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "app/Support/Availability.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Support/BookingCode.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Support/BookingCode.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Support/PriceBreakdown.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Support/ProofImages.php"
+code = "literal-named-argument"
+message = "Literal argument `4` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Support/ProofImages.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Support/Rupiah.php"
+code = "literal-named-argument"
+message = "Literal argument `','` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Support/Rupiah.php"
+code = "literal-named-argument"
+message = "Literal argument `'.'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Support/Rupiah.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Support/Rupiah.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "literal-named-argument"
+message = "Literal argument `60` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "literal-named-argument"
+message = "Literal argument `true` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "prefer-early-continue"
+message = "Consider using early continue pattern to reduce nesting."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "app/Support/SlotGrid.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/aperta.php"
+code = "literal-named-argument"
+message = "Literal argument `'local'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/aperta.php"
+code = "literal-named-argument"
+message = "Literal argument `1` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/aperta.php"
+code = "literal-named-argument"
+message = "Literal argument `50` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/aperta.php"
+code = "literal-named-argument"
+message = "Literal argument `7` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/aperta.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `''` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `'Laravel'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `'database'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `'en'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `'en_US'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `'file'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `'http://localhost'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `'production'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "literal-named-argument"
+message = "Literal argument `false` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/app.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/auth.php"
+code = "literal-named-argument"
+message = "Literal argument `'password_reset_tokens'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/auth.php"
+code = "literal-named-argument"
+message = "Literal argument `'users'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/auth.php"
+code = "literal-named-argument"
+message = "Literal argument `'web'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/auth.php"
+code = "literal-named-argument"
+message = "Literal argument `10800` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/auth.php"
+code = "readable-literal"
+message = "Numeric literal could use underscore separators for readability."
+count = 1
+
+[[issues]]
+file = "config/auth.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/cache.php"
+code = "literal-named-argument"
+message = "Literal argument `'127.0.0.1'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/cache.php"
+code = "literal-named-argument"
+message = "Literal argument `'cache'` should be passed as a named argument for clarity."
+count = 3
+
+[[issues]]
+file = "config/cache.php"
+code = "literal-named-argument"
+message = "Literal argument `'database'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/cache.php"
+code = "literal-named-argument"
+message = "Literal argument `'default'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/cache.php"
+code = "literal-named-argument"
+message = "Literal argument `'laravel'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/cache.php"
+code = "literal-named-argument"
+message = "Literal argument `'us-east-1'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/cache.php"
+code = "literal-named-argument"
+message = "Literal argument `11211` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/cache.php"
+code = "readable-literal"
+message = "Numeric literal could use underscore separators for readability."
+count = 1
+
+[[issues]]
+file = "config/cache.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `''` should be passed as a named argument for clarity."
+count = 6
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'0'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'1'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'127.0.0.1'` should be passed as a named argument for clarity."
+count = 5
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'1433'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'3306'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'5432'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'6379'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'decorrelated_jitter'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'laravel'` should be passed as a named argument for clarity."
+count = 5
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'localhost'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'phpredis'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'prefer'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'redis'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'root'` should be passed as a named argument for clarity."
+count = 4
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'sqlite'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'utf8'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'utf8mb4'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `'utf8mb4_unicode_ci'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `1000` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `100` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `3` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `false` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "literal-named-argument"
+message = "Literal argument `true` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/database.php"
+code = "readable-literal"
+message = "Numeric literal could use underscore separators for readability."
+count = 2
+
+[[issues]]
+file = "config/database.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/filesystems.php"
+code = "literal-named-argument"
+message = "Literal argument `'/'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/filesystems.php"
+code = "literal-named-argument"
+message = "Literal argument `'http://localhost'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/filesystems.php"
+code = "literal-named-argument"
+message = "Literal argument `'local'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/filesystems.php"
+code = "literal-named-argument"
+message = "Literal argument `false` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/filesystems.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/livewire.php"
+code = "no-literal-password"
+message = "Literal passwords or sensitive data should not be stored in code."
+count = 1
+
+[[issues]]
+file = "config/livewire.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `':boom:'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `'Laravel'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `'critical'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `'debug'` should be passed as a named argument for clarity."
+count = 6
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `'null'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `'single'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `'stack'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `14` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "literal-named-argument"
+message = "Literal argument `false` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/logging.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/mail.php"
+code = "literal-named-argument"
+message = "Literal argument `'/usr/sbin/sendmail -bs -i'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/mail.php"
+code = "literal-named-argument"
+message = "Literal argument `'127.0.0.1'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/mail.php"
+code = "literal-named-argument"
+message = "Literal argument `'Laravel'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/mail.php"
+code = "literal-named-argument"
+message = "Literal argument `'hello@example.com'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/mail.php"
+code = "literal-named-argument"
+message = "Literal argument `'http://localhost'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/mail.php"
+code = "literal-named-argument"
+message = "Literal argument `'log'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/mail.php"
+code = "literal-named-argument"
+message = "Literal argument `2525` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/mail.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `'database'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `'database-uuids'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `'default'` should be passed as a named argument for clarity."
+count = 5
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `'https://sqs.us-east-1.amazonaws.com/your-account-id'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `'jobs'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `'localhost'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `'sqlite'` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `'us-east-1'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/queue.php"
+code = "literal-named-argument"
+message = "Literal argument `90` should be passed as a named argument for clarity."
+count = 3
+
+[[issues]]
+file = "config/queue.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/services.php"
+code = "literal-named-argument"
+message = "Literal argument `'us-east-1'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/services.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "config/session.php"
+code = "literal-named-argument"
+message = "Literal argument `'/'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/session.php"
+code = "literal-named-argument"
+message = "Literal argument `'database'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/session.php"
+code = "literal-named-argument"
+message = "Literal argument `'laravel'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/session.php"
+code = "literal-named-argument"
+message = "Literal argument `'lax'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/session.php"
+code = "literal-named-argument"
+message = "Literal argument `'sessions'` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/session.php"
+code = "literal-named-argument"
+message = "Literal argument `120` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/session.php"
+code = "literal-named-argument"
+message = "Literal argument `false` should be passed as a named argument for clarity."
+count = 3
+
+[[issues]]
+file = "config/session.php"
+code = "literal-named-argument"
+message = "Literal argument `true` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "config/session.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/factories/BookingFactory.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/factories/ClientFactory.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/factories/PackageFactory.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/factories/UserFactory.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/factories/UserFactory.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/0001_01_01_000000_create_users_table.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 3
+
+[[issues]]
+file = "database/migrations/0001_01_01_000000_create_users_table.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/0001_01_01_000001_create_cache_table.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "database/migrations/0001_01_01_000001_create_cache_table.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/0001_01_01_000002_create_jobs_table.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 3
+
+[[issues]]
+file = "database/migrations/0001_01_01_000002_create_jobs_table.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000001_create_catalog_tables.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000001_create_catalog_tables.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 4
+
+[[issues]]
+file = "database/migrations/2026_10_21_000001_create_catalog_tables.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000002_create_booking_tables.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 4
+
+[[issues]]
+file = "database/migrations/2026_10_21_000002_create_booking_tables.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000003_create_photo_tables.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "database/migrations/2026_10_21_000003_create_photo_tables.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000004_create_payment_and_log_tables.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "database/migrations/2026_10_21_000004_create_payment_and_log_tables.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000005_create_blocked_dates_table.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000005_create_blocked_dates_table.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000006_add_processing_columns_to_proof_photos.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000006_add_processing_columns_to_proof_photos.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000006_add_processing_columns_to_proof_photos.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000007_add_render_columns_to_edited_photos.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000007_add_render_columns_to_edited_photos.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_21_000007_add_render_columns_to_edited_photos.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "database/seeders/DatabaseSeeder.php"
+code = "no-empty-comment"
+message = "Empty comments are not allowed."
+count = 1
+
+[[issues]]
+file = "database/seeders/DatabaseSeeder.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "routes/console.php"
+code = "no-implicit-model-query"
+message = "Query-builder methods on a model should be reached through an explicit `query()` call."
+count = 1
+
+[[issues]]
+file = "routes/console.php"
+code = "no-redundant-use"
+message = "Unused import: `Inspiring`."
+count = 1
+
+[[issues]]
+file = "routes/console.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "routes/web.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 10
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/BookingLifecycleTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 9
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "too-many-methods"
+message = "Class has too many methods."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 11
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 12
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "literal-named-argument"
+message = "Literal argument `12` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "literal-named-argument"
+message = "Literal argument `5` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 5
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "too-many-methods"
+message = "Class has too many methods."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 8
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "literal-named-argument"
+message = "Literal argument `0` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "literal-named-argument"
+message = "Literal argument `255` should be passed as a named argument for clarity."
+count = 3
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "literal-named-argument"
+message = "Literal argument `800` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 5
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "literal-named-argument"
+message = "Literal argument `4` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "prefer-dedicated-status-assertion"
+message = "Use the dedicated `assertConflict()` assertion instead of `assertStatus(409)`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 2
+
+[[issues]]
+file = "tests/Feature/SelectionTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 12
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 6
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/TestCase.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Unit/DomainRulesTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 20
+
+[[issues]]
+file = "tests/Unit/DomainRulesTest.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "tests/Unit/DomainRulesTest.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "tests/Unit/DomainRulesTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Unit/SlotGridTest.php"
+code = "assertion-style"
+message = "Inconsistent assertions style."
+count = 14
+
+[[issues]]
+file = "tests/Unit/SlotGridTest.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
