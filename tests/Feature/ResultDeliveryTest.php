@@ -134,6 +134,21 @@ class ResultDeliveryTest extends TestCase
         $this->assertSame('DSC_4512_edit.jpg', $archive->getNameIndex(0));
     }
 
+    public function test_zip_keeps_every_file_when_names_clash(): void
+    {
+        $this->deliver();
+        foreach (['DSC_4512_edit.jpg', 'DSC_4512_edit-2.jpg'] as $name) {
+            $this->booking->results()->create(['filename' => $name, 'path' => $this->upload($name), 'size' => 1]);
+        }
+        $this->booking->payments()->create(['amount' => 1_000_000, 'paid_on' => today(), 'method' => 'transfer']);
+
+        $zip = $this->get("/lacak/{$this->booking->access_token}/hasil/zip")->assertOk();
+        $archive = new ZipArchive();
+        $archive->open($zip->baseResponse->getFile()->getPathname());
+
+        $this->assertSame(3, $archive->numFiles);
+    }
+
     public function test_result_of_another_booking_cannot_be_downloaded(): void
     {
         $this->deliver();

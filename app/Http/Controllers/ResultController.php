@@ -69,11 +69,13 @@ class ResultController extends Controller
     /** DSC_1.jpg, DSC_1-2.jpg, DSC_1-3.jpg, ... */
     private static function uniqueName(string $name, array &$seen): string
     {
-        $count = $seen[$name] = ($seen[$name] ?? 0) + 1;
+        $candidate = $name;
+        for ($i = 2; isset($seen[$candidate]); $i++) {
+            $candidate = pathinfo($name, PATHINFO_FILENAME) . "-{$i}." . pathinfo($name, PATHINFO_EXTENSION);
+        }
+        $seen[$candidate] = true;
 
-        return $count === 1
-            ? $name
-            : pathinfo($name, PATHINFO_FILENAME) . "-{$count}." . pathinfo($name, PATHINFO_EXTENSION);
+        return $candidate;
     }
 
     private function ensurePaid(Booking $booking): void

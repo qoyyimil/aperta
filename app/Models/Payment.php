@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\Rupiah;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,10 @@ class Payment extends Model
     {
         static::creating(fn(self $p) => $p->recorded_by ??= auth()->id());
         static::created(fn(self $p) => $p->booking->confirmIfDeposited());
+        static::deleted(fn(self $p) => $p->booking->log(
+            'payment',
+            reason: 'Pembayaran ' . Rupiah::format($p->amount) . ' dihapus',
+        ));
     }
 
     public function scopeThisMonth(Builder $query): void

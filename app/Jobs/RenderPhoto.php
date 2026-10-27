@@ -17,6 +17,7 @@ class RenderPhoto implements ShouldQueue
 
     public int $tries = 3;
     public int $timeout = 120;
+    public bool $deleteWhenMissingModels = true;
 
     public function __construct(
         public Model&Renderable $photo,

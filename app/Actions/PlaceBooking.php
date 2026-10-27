@@ -70,6 +70,7 @@ final class PlaceBooking
 
         $this->attachAddons($booking, $data['addons'] ?? []);
         $this->applyVoucher($booking, $data['voucher'] ?? null);
+        $booking->confirmIfDeposited(); // voucher 100% tidak perlu DP
 
         return $booking;
     }

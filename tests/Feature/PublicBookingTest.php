@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\BookingStatus;
 use App\Mail\BookingPlaced;
 use App\Models\Addon;
 use App\Models\BlockedDate;
@@ -69,6 +70,17 @@ class PublicBookingTest extends TestCase
         $this->assertSame(783_000, $booking->price()->total());
         $this->assertSame(1, Voucher::sole()->used);
         Mail::assertQueued(BookingPlaced::class);
+    }
+
+    public function test_free_booking_is_confirmed_without_deposit(): void
+    {
+        Voucher::create(['code' => 'GRATIS', 'type' => 'percent', 'value' => 100]);
+
+        $this->post('/booking', $this->payload(Package::factory()->create(['duration_minutes' => 60]), [
+            'voucher' => 'gratis',
+        ]))->assertRedirect();
+
+        $this->assertSame(BookingStatus::Confirmed, Booking::sole()->status);
     }
 
     public function test_checking_availability_does_not_use_up_the_booking_limit(): void

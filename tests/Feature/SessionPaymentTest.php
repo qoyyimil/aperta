@@ -38,6 +38,18 @@ class SessionPaymentTest extends TestCase
         $this->assertSame('2026-11-05 23:59', $tomorrow->depositDueAt()->format('Y-m-d H:i'));
     }
 
+    public function test_deleted_payment_is_kept_in_booking_history(): void
+    {
+        $booking = $this->booking();
+        $booking->payments()->create(['amount' => 500_000, 'paid_on' => today(), 'method' => 'transfer'])->delete();
+
+        $this->assertDatabaseHas('booking_logs', [
+            'booking_id' => $booking->id,
+            'action' => 'payment',
+            'reason' => 'Pembayaran Rp500.000 dihapus',
+        ]);
+    }
+
     public function test_session_cannot_be_marked_done_until_session_bill_is_paid(): void
     {
         $booking = $this->booking();
