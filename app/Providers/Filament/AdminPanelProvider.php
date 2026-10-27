@@ -43,12 +43,11 @@ class AdminPanelProvider extends PanelProvider
                 'gray' => Color::Stone,
             ])
             ->navigationGroups(['Katalog', 'Pengaturan'])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
+            ->discoverResources(in: app_path('Features'), for: 'App\Features')
             ->pages([
                 Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
+            ->discoverWidgets(in: app_path('Features'), for: 'App\Features')
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

@@ -15,12 +15,18 @@ baseline = "mago-lint-baseline.toml"
 baseline = "mago-analyze-baseline.toml"
 
 # Logika bisnis tidak boleh bergantung pada tampilan admin atau lapisan HTTP.
+# Domain (model, enum, support, akar folder fitur) tidak ada di daftar allow-from.
 [[guard.perimeter.restrictions]]
-dependency = "App\\Filament\\**"
-deny-from = ["App\\Models\\**", "App\\Support\\**", "App\\Actions\\**", "App\\Enums\\**"]
+dependency = 'App\Features\*\Filament\**'
+allow-from = ['App\Features\*\Filament\**', 'App\Providers\**', 'Tests\**']
 reason = "Domain tidak boleh memakai kelas Filament."
 
 [[guard.perimeter.restrictions]]
-dependency = "App\\Http\\**"
-deny-from = ["App\\Models\\**", "App\\Support\\**", "App\\Actions\\**", "App\\Enums\\**"]
+dependency = 'App\Features\*\Http\**'
+allow-from = ['App\Features\*\Http\**', 'App\Features\*\Mail\**', 'Tests\**', '@global']
 reason = "Domain tidak boleh memakai controller atau presenter."
+
+[[guard.perimeter.restrictions]]
+dependency = 'App\Http\**'
+allow-from = ['App\Http\**', 'App\Features\*\Http\**', 'App\Providers\**', 'Tests\**']
+reason = "Domain tidak boleh memakai middleware atau controller dasar."

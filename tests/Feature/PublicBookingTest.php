@@ -3,7 +3,8 @@
 namespace Tests\Feature;
 
 use App\Enums\BookingStatus;
-use App\Mail\BookingPlaced;
+use App\Features\Booking\Availability;
+use App\Features\Booking\Mail\BookingPlaced;
 use App\Models\Addon;
 use App\Models\BlockedDate;
 use App\Models\Booking;
@@ -11,7 +12,6 @@ use App\Models\Client;
 use App\Models\Package;
 use App\Models\Voucher;
 use App\Providers\AppServiceProvider;
-use App\Support\Availability;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;

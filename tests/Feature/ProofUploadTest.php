@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Actions\AddProofs;
 use App\Enums\BookingStatus;
 use App\Enums\UserRole;
 use App\Exceptions\InvalidStatusTransition;
+use App\Features\Proofs\AddProofs;
 use App\Jobs\RenderPhoto;
 use App\Models\Booking;
 use App\Models\User;

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Actions\AddResults;
 use App\Enums\BookingStatus;
+use App\Features\Delivery\AddResults;
 use App\Jobs\RenderPhoto;
 use App\Models\Booking;
 use App\Models\EditedPhoto;

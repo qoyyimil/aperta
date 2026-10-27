@@ -4,10 +4,10 @@ namespace Tests\Feature;
 
 use App\Enums\BookingStatus;
 use App\Enums\UserRole;
-use App\Filament\Resources\Bookings\BookingResource;
-use App\Filament\Resources\Bookings\Pages\EditBooking;
-use App\Filament\Resources\Bookings\Pages\ListBookings;
-use App\Filament\Resources\Packages\PackageResource;
+use App\Features\Booking\Filament\BookingResource;
+use App\Features\Booking\Filament\Pages\EditBooking;
+use App\Features\Booking\Filament\Pages\ListBookings;
+use App\Features\Catalog\Filament\Packages\PackageResource;
 use App\Models\Booking;
 use App\Models\User;
 use Filament\Actions\Testing\TestAction;

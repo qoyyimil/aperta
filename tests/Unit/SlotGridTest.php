@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Support\SlotGrid;
+use App\Features\Booking\SlotGrid;
 use PHPUnit\Framework\TestCase;
 
 class SlotGridTest extends TestCase

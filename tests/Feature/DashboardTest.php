@@ -4,9 +4,9 @@ namespace Tests\Feature;
 
 use App\Enums\BookingStatus;
 use App\Enums\UserRole;
-use App\Filament\Widgets\AgendaWidget;
-use App\Filament\Widgets\FinanceStatsWidget;
-use App\Filament\Widgets\MyQueueWidget;
+use App\Features\Dashboard\Filament\AgendaWidget;
+use App\Features\Dashboard\Filament\FinanceStatsWidget;
+use App\Features\Dashboard\Filament\MyQueueWidget;
 use App\Models\Booking;
 use App\Models\Package;
 use App\Models\User;

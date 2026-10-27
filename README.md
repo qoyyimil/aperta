@@ -297,20 +297,36 @@ Semua angka aturan ada di `config/aperta.php` dan bisa diubah lewat `.env` tanpa
 
 ## 10. Struktur kode
 
-| Lokasi                        | Isi                                                                                              |
-| ----------------------------- | ------------------------------------------------------------------------------------------------ |
-| `config/aperta.php`             | Angka aturan bisnis: DP, pelunasan, batas waktu, slot jam, kota                                  |
-| `app/Enums/BookingStatus.php` | Daftar status dan perpindahan yang sah. Mengubah alur cukup di sini.                             |
-| `app/Models/Booking.php`      | Pusat aturan booking: perpindahan status, harga, pembayaran, pilihan foto, hasil edit            |
-| `app/Support/`                | Kelas kecil tanpa database: `PriceBreakdown`, `SlotGrid`, `BookingCode`, `ProofImages`, `Rupiah` |
-| `app/Actions/`                | Satu kelas per proses: `PlaceBooking`, `AddProofs`, `AddResults`                                 |
-| `app/Jobs/RenderPhoto.php`    | Membuat pratinjau dan thumbnail di queue, untuk foto mentah maupun hasil edit                    |
-| `app/Http/Controllers/`       | Halaman portal klien                                                                             |
-| `app/Http/Presenters/`        | Menyiapkan data untuk halaman React                                                              |
-| `app/Filament/Resources/`     | Menu dashboard                                                                                   |
-| `app/Policies/`               | Siapa boleh melakukan apa                                                                        |
-| `resources/js/Pages/`         | Halaman React portal klien                                                                       |
-| `tests/`                      | Tes aturan bisnis dan alur lengkap                                                               |
+Kode dikelompokkan per fitur di `app/Features/<Fitur>/`. Di dalam tiap fitur:
+
+- **Akar folder:** aturan bisnis (action, trait `Booking*`, kelas pendukung). Tidak boleh memakai Filament atau Http, dan ini dicek oleh `mago guard`.
+- **`Http/`:** controller, request, dan presenter untuk portal klien.
+- **`Filament/`:** menu, aksi, dan widget dashboard.
+
+| Fitur                         | Isi                                                                                           |
+| ----------------------------- | --------------------------------------------------------------------------------------------- |
+| `Features/Booking/`           | Form booking, slot jam (`Availability`, `SlotGrid`), email booking, menu Booking di dashboard |
+| `Features/Tracking/`          | Halaman lacak booking dan info DP                                                             |
+| `Features/Payments/`          | Aturan DP, pelunasan, piutang (`BookingPayments`), tab Pembayaran                             |
+| `Features/Proofs/`            | Unggah dan publikasi proof (`AddProofs`, `BookingProofs`), tab Proof                          |
+| `Features/Selection/`         | Klien memilih foto (`BookingSelection`), galeri pilih                                         |
+| `Features/Delivery/`          | Hasil edit, unduhan, ZIP (`AddResults`, `BookingDelivery`), tab Hasil edit                    |
+| `Features/Catalog/`           | Menu Paket, Add-on, Voucher, Tanggal libur                                                    |
+| `Features/Team/`              | Menu Pengguna dan aksi Atur tim                                                               |
+| `Features/Dashboard/`         | Widget dashboard dan kueri antreannya (`BookingQueries`)                                      |
+
+Dipakai bersama oleh banyak fitur:
+
+| Lokasi                        | Isi                                                                                     |
+| ----------------------------- | --------------------------------------------------------------------------------------- |
+| `config/aperta.php`           | Angka aturan bisnis: DP, pelunasan, batas waktu, slot jam, kota                         |
+| `app/Models/`                 | Model. `Booking.php` berisi inti (relasi, status, harga) dan memakai trait dari fitur  |
+| `app/Enums/BookingStatus.php` | Daftar status dan perpindahan yang sah. Mengubah alur cukup di sini.                    |
+| `app/Support/`                | Kelas kecil umum: `PriceBreakdown`, `BookingCode`, `ProofImages`, `Rupiah`, `Turnstile` |
+| `app/Jobs/RenderPhoto.php`    | Membuat pratinjau dan thumbnail di queue, untuk proof maupun hasil edit                 |
+| `app/Policies/`               | Siapa boleh melakukan apa                                                               |
+| `resources/js/Pages/`         | Halaman React portal klien, juga dikelompokkan per fitur                                |
+| `tests/`                      | Tes aturan bisnis dan alur lengkap                                                      |
 
 ### Aturan menulis kode
 

@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\AvailabilityController;
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\ResultController;
-use App\Http\Controllers\SelectionController;
-use App\Http\Controllers\TrackController;
-use App\Http\Controllers\VoucherCheckController;
+use App\Features\Booking\Http\AvailabilityController;
+use App\Features\Booking\Http\BookingController;
+use App\Features\Booking\Http\VoucherCheckController;
+use App\Features\Delivery\Http\ResultController;
+use App\Features\Selection\Http\SelectionController;
+use App\Features\Tracking\Http\TrackController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BookingController::class, 'create'])->name('booking.create');
