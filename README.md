@@ -73,7 +73,7 @@ psql -U postgres -h 127.0.0.1
 ```
 
 ```sql
-CREATE USER aperta WITH PASSWORD 'ganti_password_ini';
+CREATE USER aperta WITH PASSWORD '<password-kuat>';
 CREATE DATABASE aperta OWNER aperta;
 CREATE DATABASE aperta_test OWNER aperta;
 \q
@@ -117,7 +117,7 @@ DB_HOST=127.0.0.1
 DB_PORT=5432
 DB_DATABASE=aperta
 DB_USERNAME=aperta
-DB_PASSWORD=ganti_password_ini
+DB_PASSWORD=<password-kuat>
 
 QUEUE_CONNECTION=database
 MAIL_MAILER=log
@@ -142,6 +142,26 @@ Di `phpunit.xml`, bagian `<php>`, pastikan:
 <env name="DB_DATABASE" value="aperta_test"/>
 ```
 
+### Checklist produksi
+
+Nilai di atas untuk lokal. Saat aplikasi dibuka untuk publik, ubah:
+
+```env
+APP_ENV=production
+APP_DEBUG=false          # wajib false di produksi
+APP_URL=https://domain-studio.com
+LOG_LEVEL=warning
+SESSION_SECURE_COOKIE=true
+
+TRUSTED_PROXIES=         # IP proxy di depan app
+TURNSTILE_SITE_KEY=      # captcha form booking, dari dashboard Cloudflare Turnstile
+TURNSTILE_SECRET_KEY=
+```
+
+- **`TRUSTED_PROXIES`**: wajib diisi kalau memakai Cloudflare atau reverse proxy, supaya rate limit memakai IP asli pengunjung. Isi `*` hanya kalau server cuma bisa diakses lewat proxy tersebut.
+- **`TURNSTILE_*`**: wajib diisi di produksi.
+- Setelah mengubah `.env`, jalankan `php artisan config:cache`.
+
 ---
 
 ## 5. Migrasi dan akun admin
@@ -159,6 +179,8 @@ php artisan aperta:admin EMAIL_TADI
 ```
 
 Akun tim berikutnya dibuat admin dari menu **Pengguna** di dashboard.
+
+Admin wajib memasang MFA. Saat login pertama, admin diminta memindai QR dengan aplikasi authenticator (Google Authenticator, Authy, dll.) dan menyimpan kode pemulihan. Kode pemulihan dipakai kalau HP hilang. MFA juga bisa diatur dari menu profil. Fotografer dan editor boleh memasangnya, tapi tidak wajib.
 
 ### Rekening dan WhatsApp admin
 

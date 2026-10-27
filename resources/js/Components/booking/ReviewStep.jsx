@@ -1,7 +1,8 @@
 import { longDate } from '../../lib/format';
 import { Row } from '../ui';
+import Captcha from './Captcha';
 
-export default function ReviewStep({ form, pkg }) {
+export default function ReviewStep({ form, pkg, captchaKey, attempt }) {
   const { data, setData, errors } = form;
 
   return (
@@ -19,6 +20,8 @@ export default function ReviewStep({ form, pkg }) {
         <span>Saya menyetujui kebijakan privasi dan syarat layanan studio, termasuk penyimpanan data saya untuk keperluan booking.</span>
       </label>
       {errors.consent && <p className="text-xs text-brick">{errors.consent}</p>}
+      {captchaKey && <Captcha siteKey={captchaKey} attempt={attempt} onToken={(token) => setData('captcha', token)} />}
+      {errors.captcha && <p className="text-xs text-brick">{errors.captcha}</p>}
     </div>
   );
 }

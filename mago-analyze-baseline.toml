@@ -1285,6 +1285,12 @@ message = 'Ambiguous method call to `firstWhere` on class `App\Models\Voucher`.'
 count = 1
 
 [[issues]]
+file = "app/Http/Middleware/RequireAdminMfa.php"
+code = "mixed-method-access"
+message = "Attempting to call method `isAdmin()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
 file = "app/Http/Presenters/GalleryView.php"
 code = "invalid-argument"
 message = 'Invalid argument type for argument #1 of `Illuminate\Database\Eloquent\Collection::map`: expected `(callable(Illuminate\Database\Eloquent\Model, int): array<array-key, mixed>)`, but found `(closure(App\Models\ProofPhoto): array<array-key, mixed>)`.'
@@ -2534,6 +2540,42 @@ count = 1
 
 [[issues]]
 file = "app/Models/User.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\User::getAppAuthenticationHolderName`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\User::getAppAuthenticationRecoveryCodes`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `App\Models\User::getAppAuthenticationSecret`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $app_authentication_recovery_codes on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $app_authentication_secret on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $email on class `App\Models\User`.'
+count = 1
+
+[[issues]]
+file = "app/Models/User.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $is_active on class `App\Models\User`.'
 count = 1
@@ -3074,12 +3116,6 @@ count = 1
 
 [[issues]]
 file = "tests/Feature/DashboardTest.php"
-code = "less-specific-return-statement"
-message = 'Returned type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific than the declared return type `App\Models\User` for function `Tests\Feature\DashboardTest::user`.'
-count = 1
-
-[[issues]]
-file = "tests/Feature/DashboardTest.php"
 code = "mixed-argument"
 message = 'Invalid argument type for argument #1 of `Tests\Feature\DashboardTest::proofs`: expected `App\Models\Booking`, but found `mixed`.'
 count = 1
@@ -3124,7 +3160,7 @@ count = 1
 file = "tests/Feature/DashboardTest.php"
 code = "mixed-method-access"
 message = "Attempting to call method `create()` on a non-object type (`mixed`)."
-count = 4
+count = 5
 
 [[issues]]
 file = "tests/Feature/DashboardTest.php"
@@ -3166,6 +3202,12 @@ count = 1
 file = "tests/Feature/DashboardTest.php"
 code = "mixed-return-statement"
 message = 'Could not infer a precise return type for function `Tests\Feature\DashboardTest::reason`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Tests\Feature\DashboardTest::user`. Saw type `mixed`.'
 count = 1
 
 [[issues]]
@@ -3220,6 +3262,12 @@ count = 2
 file = "tests/Feature/DashboardTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `withBilling` on class `App\Models\Booking`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/DashboardTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `withMfa` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
 count = 1
 
 [[issues]]
@@ -3393,6 +3441,12 @@ count = 2
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `App\Mail\BookingPlaced::__construct`: expected `App\Models\Booking`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>&static|Illuminate\Database\Eloquent\Model&static|null` is less specific.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "less-specific-argument"
 message = 'Argument type mismatch for argument #1 of `App\Mail\BookingPlaced::__construct`: expected `App\Models\Booking`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific.'
 count = 1
 
@@ -3400,7 +3454,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "less-specific-argument"
 message = 'Argument type mismatch for argument #1 of `Tests\Feature\PublicBookingTest::payload`: expected `App\Models\Package`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific.'
-count = 7
+count = 10
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3418,7 +3472,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "mixed-argument"
 message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
-count = 3
+count = 4
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3454,6 +3508,12 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "mixed-method-access"
 message = "Attempting to call method `total()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-method-access"
+message = "Attempting to call method `update()` on a non-object type (`mixed`)."
 count = 1
 
 [[issues]]
@@ -3508,7 +3568,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "mixed-property-access"
 message = "Attempting to access property `$whatsapp` on a non-object type (`mixed`)."
-count = 3
+count = 4
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3520,7 +3580,7 @@ count = 4
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `count` on class `App\Models\Booking`.'
-count = 2
+count = 3
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3586,37 +3646,37 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $access_token on class `Illuminate\Database\Eloquent\Collection`.'
-count = 2
+count = 3
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $access_token on class `Illuminate\Database\Eloquent\Model`.'
-count = 2
+count = 3
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Collection`.'
-count = 2
+count = 4
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Model`.'
-count = 2
+count = 4
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $code on class `Illuminate\Database\Eloquent\Collection`.'
-count = 4
+count = 5
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $code on class `Illuminate\Database\Eloquent\Model`.'
-count = 4
+count = 5
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3646,6 +3706,24 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $whatsapp on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "non-existent-method"
+message = 'Method `boot` does not exist on type `Illuminate\Support\ServiceProvider`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "possibly-null-argument"
+message = 'Argument #1 of method `App\Mail\BookingPlaced::__construct` is possibly `null`, but parameter type `App\Models\Booking` does not accept it.'
 count = 1
 
 [[issues]]
@@ -4040,21 +4118,15 @@ count = 1
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"
-code = "less-specific-nested-argument-type"
-message = '''Argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Factories\Factory::create`: expected `(callable(array<string, mixed>): array<string, mixed>)|array<string, mixed>`, but provided type `array{'role': enum(App\Enums\UserRole), ...}` is less specific.'''
-count = 1
-
-[[issues]]
-file = "tests/Feature/StudioAccessTest.php"
-code = "less-specific-return-statement"
-message = 'Returned type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific than the declared return type `App\Models\User` for function `Tests\Feature\StudioAccessTest::user`.'
-count = 1
+code = "mixed-method-access"
+message = "Attempting to call method `attach()` on a non-object type (`mixed`)."
+count = 2
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"
 code = "mixed-method-access"
-message = "Attempting to call method `attach()` on a non-object type (`mixed`)."
-count = 2
+message = "Attempting to call method `create()` on a non-object type (`mixed`)."
+count = 1
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"
@@ -4066,6 +4138,12 @@ count = 1
 file = "tests/Feature/StudioAccessTest.php"
 code = "mixed-property-access"
 message = "Attempting to access property `$email` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Tests\Feature\StudioAccessTest::user`. Saw type `mixed`.'
 count = 1
 
 [[issues]]
@@ -4112,6 +4190,12 @@ count = 1
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `withMfa` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $cancel_reason on class `Illuminate\Database\Eloquent\Collection`.'
 count = 1
@@ -4133,6 +4217,12 @@ file = "tests/Feature/StudioAccessTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Model`.'
 count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "possibly-invalid-argument"
+message = 'Possible argument type mismatch for argument #1 of `Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication::actingAs`: expected `Illuminate\Contracts\Auth\Authenticatable`, but possibly received `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model`.'
+count = 2
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"

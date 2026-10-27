@@ -625,6 +625,12 @@ message = "Missing `declare(strict_types=1);` statement at the beginning of the 
 count = 1
 
 [[issues]]
+file = "app/Http/Middleware/RequireAdminMfa.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
 file = "app/Http/Presenters/GalleryView.php"
 code = "literal-named-argument"
 message = "Literal argument `' '` should be passed as a named argument for clarity."
@@ -712,6 +718,12 @@ count = 1
 file = "app/Jobs/RenderPhoto.php"
 code = "strict-types"
 message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Mail/BookingPlaced.php"
+code = "literal-named-argument"
+message = '''Literal argument `'\\`*_[]()!|~#'` should be passed as a named argument for clarity.'''
 count = 1
 
 [[issues]]
@@ -898,7 +910,7 @@ count = 1
 file = "app/Models/User.php"
 code = "no-literal-password"
 message = "Literal passwords or sensitive data should not be stored in code."
-count = 1
+count = 2
 
 [[issues]]
 file = "app/Models/User.php"
@@ -993,6 +1005,12 @@ count = 1
 [[issues]]
 file = "app/Support/ProofImages.php"
 code = "literal-named-argument"
+message = "Literal argument `2` should be passed as a named argument for clarity."
+count = 2
+
+[[issues]]
+file = "app/Support/ProofImages.php"
+code = "literal-named-argument"
 message = "Literal argument `4` should be passed as a named argument for clarity."
 count = 1
 
@@ -1064,6 +1082,12 @@ count = 1
 
 [[issues]]
 file = "app/Support/SlotGrid.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Support/Turnstile.php"
 code = "strict-types"
 message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
 count = 1
@@ -1712,9 +1736,15 @@ count = 1
 
 [[issues]]
 file = "database/factories/UserFactory.php"
+code = "no-literal-password"
+message = "Literal passwords or sensitive data should not be stored in code."
+count = 1
+
+[[issues]]
+file = "database/factories/UserFactory.php"
 code = "prefer-static-closure"
 message = "This arrow function does not use `$this` and should be declared static."
-count = 1
+count = 2
 
 [[issues]]
 file = "database/factories/UserFactory.php"
@@ -1861,6 +1891,24 @@ message = "Missing `declare(strict_types=1);` statement at the beginning of the 
 count = 1
 
 [[issues]]
+file = "database/migrations/2026_10_27_000001_add_app_authentication_to_users.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_27_000001_add_app_authentication_to_users.php"
+code = "prefer-static-closure"
+message = "This closure does not use `$this` and should be declared static."
+count = 1
+
+[[issues]]
+file = "database/migrations/2026_10_27_000001_add_app_authentication_to_users.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
 file = "database/seeders/DatabaseSeeder.php"
 code = "no-empty-comment"
 message = "Empty comments are not allowed."
@@ -1954,7 +2002,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "assertion-style"
 message = "Inconsistent assertions style."
-count = 13
+count = 14
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -1972,7 +2020,13 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "literal-named-argument"
 message = "Literal argument `5` should be passed as a named argument for clarity."
-count = 2
+count = 3
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "no-literal-password"
+message = "Literal passwords or sensitive data should not be stored in code."
+count = 1
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"

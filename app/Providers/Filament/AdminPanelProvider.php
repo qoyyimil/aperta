@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\RequireAdminMfa;
+use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -33,6 +35,9 @@ class AdminPanelProvider extends PanelProvider
             ->renderHook(PanelsRenderHook::HEAD_START, fn() => view('partials.favicon'))
             ->globalSearch(false)
             ->login()
+            ->profile()
+            ->multiFactorAuthentication([AppAuthentication::make()->recoverable()], isRequired: true)
+            ->multiFactorAuthenticationRequiredMiddlewareName(RequireAdminMfa::class)
             ->colors([
                 'primary' => Color::hex('#E8912D'),
                 'gray' => Color::Stone,

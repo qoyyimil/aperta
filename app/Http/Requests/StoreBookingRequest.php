@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Models\Client;
+use App\Support\Turnstile;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class StoreBookingRequest extends FormRequest
 {
@@ -38,6 +40,14 @@ class StoreBookingRequest extends FormRequest
             'notes' => ['nullable', 'string', 'max:1000'],
             'consent' => ['accepted'],
         ];
+    }
+
+    /** Captcha dicek setelah isian valid, agar tokennya tidak terbuang. */
+    protected function passedValidation(): void
+    {
+        if (!Turnstile::passes($this->string('captcha')->value(), $this->ip())) {
+            throw ValidationException::withMessages(['captcha' => 'Verifikasi gagal. Centang ulang lalu kirim lagi.']);
+        }
     }
 
     public function messages(): array

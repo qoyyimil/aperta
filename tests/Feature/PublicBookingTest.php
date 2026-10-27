@@ -10,9 +10,11 @@ use App\Models\Booking;
 use App\Models\Client;
 use App\Models\Package;
 use App\Models\Voucher;
+use App\Providers\AppServiceProvider;
 use App\Support\Availability;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
@@ -81,6 +83,51 @@ class PublicBookingTest extends TestCase
         ]))->assertRedirect();
 
         $this->assertSame(BookingStatus::Confirmed, Booking::sole()->status);
+    }
+
+    public function test_booking_needs_a_valid_captcha_when_configured(): void
+    {
+        config(['services.turnstile.secret' => 'rahasia']);
+        Http::fake([
+            'challenges.cloudflare.com/*' => Http::sequence()->push(['success' => false])->push(['success' => true]),
+        ]);
+        $package = Package::factory()->create(['duration_minutes' => 60]);
+
+        $this->post('/booking', $this->payload($package))->assertSessionHasErrors('captcha');
+        $this->post('/booking', $this->payload($package, ['captcha' => 'palsu']))->assertSessionHasErrors('captcha');
+        $this->post('/booking', $this->payload($package, ['captcha' => 'asli']))->assertSessionHasNoErrors();
+
+        $this->assertSame(1, Booking::count());
+    }
+
+    public function test_client_input_in_email_cannot_become_a_link(): void
+    {
+        $booking = Booking::factory()->create(['location' => '[Bayar di sini](https://evil.test)']);
+        $booking->client->update(['name' => '[Klik](https://evil.test)']);
+
+        $mail = new BookingPlaced($booking->fresh());
+
+        $mail->assertSeeInHtml('[Klik](https://evil.test)', false);
+        $mail->assertDontSeeInHtml('href="https://evil.test"', false);
+    }
+
+    public function test_tracking_lockout_is_per_visitor_behind_a_proxy(): void
+    {
+        config(['aperta.trusted_proxies' => '*']);
+        $this->app->getProvider(AppServiceProvider::class)->boot();
+        $booking = Booking::factory()->create();
+
+        foreach (range(1, 5) as $_) {
+            $this->withHeader('X-Forwarded-For', '203.0.113.1')->post('/lacak', [
+                'code' => $booking->code,
+                'phone' => '0000',
+            ]);
+        }
+
+        $this
+            ->withHeader('X-Forwarded-For', '203.0.113.2')
+            ->post('/lacak', ['code' => $booking->code, 'phone' => substr($booking->client->whatsapp, -4)])
+            ->assertRedirect(route('track.show', $booking->access_token));
     }
 
     public function test_checking_availability_does_not_use_up_the_booking_limit(): void

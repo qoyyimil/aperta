@@ -29,6 +29,7 @@ class BookingController extends Controller
                 'max' => today()->addDays(config('aperta.booking_window_days'))->toDateString(),
             ],
             'fullPaymentDays' => config('aperta.full_payment_days_before'),
+            'captchaKey' => config('services.turnstile.site_key'),
         ]);
     }
 

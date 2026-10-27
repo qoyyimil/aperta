@@ -15,27 +15,36 @@ const STEPS = [
   { title: 'Data klien', view: ClientStep, fields: ['name', 'email', 'whatsapp', 'instagram', 'city', 'location', 'institution'], required: ['name', 'email', 'whatsapp', 'city'] },
   { title: 'Paket & jadwal', view: ScheduleStep, fields: ['package_id', 'session_date', 'starts_at'], required: ['package_id', 'session_date', 'starts_at'] },
   { title: 'Add-on & voucher', view: ExtrasStep, fields: ['addons', 'voucher', 'notes'], required: [] },
-  { title: 'Konfirmasi', view: ReviewStep, fields: ['consent'], required: ['consent'] },
+  { title: 'Konfirmasi', view: ReviewStep, fields: ['consent', 'captcha'], required: ['consent'] },
 ];
 
 const stepOfError = (errors) =>
   Math.max(0, STEPS.findIndex((s) => Object.keys(errors).some((key) => s.fields.includes(key.split('.')[0]))));
 
-export default function Create({ packages, addons, cities, window: range, depositPercent, fullPaymentDays }) {
+export default function Create({ packages, addons, cities, window: range, depositPercent, fullPaymentDays, captchaKey }) {
   const form = useForm({
     name: '', email: '', whatsapp: '', instagram: '', city: '', location: '', institution: '',
-    package_id: '', session_date: '', starts_at: '', addons: [], voucher: '', notes: '', consent: false,
+    package_id: '', session_date: '', starts_at: '', addons: [], voucher: '', notes: '', consent: false, captcha: '',
   });
   const [step, setStep] = useState(0);
+  const [attempt, setAttempt] = useState(0);
   const pkg = packages.find((p) => p.id === form.data.package_id);
   const voucher = useVoucher(totals(pkg, addons, form.data.addons).subtotal);
   const price = totals(pkg, addons, form.data.addons, voucher.discount);
 
   const { view: Step, required } = STEPS[step];
   const last = step === STEPS.length - 1;
-  const ready = required.every((field) => Boolean(form.data[field]));
+  const ready = required.every((field) => Boolean(form.data[field])) && !(last && captchaKey && !form.data.captcha);
 
-  const submit = () => form.post('/booking', { preserveScroll: true, onError: (errors) => setStep(stepOfError(errors)) });
+  // Token captcha hanya sekali pakai, jadi minta baru setelah tiap kirim.
+  const submit = () => form.post('/booking', {
+    preserveScroll: true,
+    onError: (errors) => setStep(stepOfError(errors)),
+    onFinish: () => {
+      form.setData('captcha', '');
+      setAttempt((n) => n + 1);
+    },
+  });
 
   return (
     <PublicLayout title="Booking jadwal">
@@ -52,7 +61,7 @@ export default function Create({ packages, addons, cities, window: range, deposi
 
       <div className="grid gap-6 md:grid-cols-[1fr_17rem]">
         <Card>
-          <Step {...{ form, packages, addons, cities, range, pkg, voucher }} />
+          <Step {...{ form, packages, addons, cities, range, pkg, voucher, captchaKey, attempt }} />
           <div className="mt-6 flex justify-between border-t border-ink/10 pt-4">
             <Button variant="ghost" disabled={step === 0} onClick={() => setStep(step - 1)}>Kembali</Button>
             {last ? (

@@ -33,6 +33,12 @@ class UserFactory extends Factory
         ];
     }
 
+    /** Sudah memasang aplikasi authenticator, syarat admin masuk panel. */
+    public function withMfa(): static
+    {
+        return $this->state(fn(array $attributes) => ['app_authentication_secret' => 'JBSWY3DPEHPK3PXP']);
+    }
+
     /**
      * Indicate that the model's email address should be unverified.
      */

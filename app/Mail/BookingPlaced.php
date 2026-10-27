@@ -28,9 +28,20 @@ class BookingPlaced extends Mailable implements ShouldQueue
 
     public function content(): Content
     {
+        $view = TrackView::of($this->booking);
+        foreach (['name', 'location'] as $typedByClient) {
+            $view[$typedByClient] = self::plainText((string) $view[$typedByClient]);
+        }
+
         return new Content(markdown: 'mail.booking-placed', with: [
-            'view' => TrackView::of($this->booking),
+            'view' => $view,
             'url' => route('track.show', $this->booking->access_token),
         ]);
+    }
+
+    /** Isian klien tampil apa adanya, tidak menjadi tautan atau format Markdown. */
+    private static function plainText(string $text): string
+    {
+        return addcslashes($text, '\\`*_[]()!|~#');
     }
 }

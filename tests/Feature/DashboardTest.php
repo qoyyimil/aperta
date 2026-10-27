@@ -26,7 +26,7 @@ class DashboardTest extends TestCase
 
     private function user(UserRole $role): User
     {
-        return User::factory()->create(['role' => $role]);
+        return User::factory()->withMfa()->create(['role' => $role]);
     }
 
     private function booking(BookingStatus $status, array $attrs = [], ?User $crew = null): Booking

@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\User;
 use App\Models\Voucher;
 use App\Policies\AdminOnlyPolicy;
+use Illuminate\Http\Middleware\TrustProxies;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +37,11 @@ class AppServiceProvider extends ServiceProvider
             BlockedDate::class,
         ] as $model) {
             Gate::policy($model, AdminOnlyPolicy::class);
+        }
+
+        $proxies = (string) config('aperta.trusted_proxies');
+        if ($proxies !== '') {
+            TrustProxies::at($proxies);
         }
     }
 }

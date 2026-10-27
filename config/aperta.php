@@ -28,5 +28,7 @@ return [
         ],
     ],
     'photo_disk' => env('APERTA_PHOTO_DISK', 'local'),
+    // IP proxy (Cloudflare/nginx) agar rate limit memakai IP asli pengunjung.
+    'trusted_proxies' => env('TRUSTED_PROXIES'),
     'watermark' => resource_path('aperta.png'),
 ];

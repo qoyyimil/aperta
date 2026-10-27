@@ -21,7 +21,21 @@ class StudioAccessTest extends TestCase
 
     private function user(UserRole $role, array $attrs = []): User
     {
-        return User::factory()->create(['role' => $role] + $attrs);
+        return User::factory()
+            ->withMfa()
+            ->create(['role' => $role] + $attrs);
+    }
+
+    public function test_admin_must_set_up_mfa_but_crew_does_not(): void
+    {
+        $this
+            ->actingAs(User::factory()->create(['role' => UserRole::Admin]))
+            ->get(PackageResource::getUrl())
+            ->assertRedirectContains('multi-factor-authentication');
+        $this
+            ->actingAs(User::factory()->create(['role' => UserRole::Photographer]))
+            ->get('/studio')
+            ->assertOk();
     }
 
     public function test_photographer_only_sees_assigned_bookings(): void
