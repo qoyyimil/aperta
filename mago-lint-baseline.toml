@@ -548,12 +548,6 @@ count = 1
 
 [[issues]]
 file = "app/Http/Controllers/ResultController.php"
-code = "no-multi-assignments"
-message = "Avoid multiple assignments in a single statement."
-count = 1
-
-[[issues]]
-file = "app/Http/Controllers/ResultController.php"
 code = "strict-types"
 message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
 count = 1
@@ -1960,7 +1954,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "assertion-style"
 message = "Inconsistent assertions style."
-count = 12
+count = 13
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -2002,7 +1996,7 @@ count = 1
 file = "tests/Feature/ResultDeliveryTest.php"
 code = "assertion-style"
 message = "Inconsistent assertions style."
-count = 8
+count = 9
 
 [[issues]]
 file = "tests/Feature/ResultDeliveryTest.php"

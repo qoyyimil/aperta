@@ -1094,12 +1094,6 @@ count = 1
 
 [[issues]]
 file = "app/Http/Controllers/ResultController.php"
-code = "mixed-assignment"
-message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
-count = 1
-
-[[issues]]
-file = "app/Http/Controllers/ResultController.php"
 code = "mixed-method-access"
 message = "Attempting to call method `path()` on a non-object type (`mixed`)."
 count = 1
@@ -1114,12 +1108,6 @@ count = 1
 file = "app/Http/Controllers/ResultController.php"
 code = "mixed-operand"
 message = "Invalid middle operand: type `mixed` cannot be reliably used in string concatenation."
-count = 1
-
-[[issues]]
-file = "app/Http/Controllers/ResultController.php"
-code = "mixed-operand"
-message = "Left operand in binary operation has type `mixed`."
 count = 1
 
 [[issues]]
@@ -2426,15 +2414,33 @@ count = 1
 
 [[issues]]
 file = "app/Models/Payment.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `App\Support\Rupiah::format`: expected `int`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Payment.php"
 code = "mixed-method-access"
 message = "Attempting to call method `confirmIfDeposited()` on a non-object type (`mixed`)."
 count = 1
 
 [[issues]]
 file = "app/Models/Payment.php"
+code = "mixed-method-access"
+message = "Attempting to call method `log()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Models/Payment.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $amount on class `App\Models\Payment`.'
+count = 1
+
+[[issues]]
+file = "app/Models/Payment.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $booking on class `App\Models\Payment`.'
-count = 1
+count = 2
 
 [[issues]]
 file = "app/Models/Payment.php"
@@ -3394,7 +3400,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "less-specific-argument"
 message = 'Argument type mismatch for argument #1 of `Tests\Feature\PublicBookingTest::payload`: expected `App\Models\Package`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific.'
-count = 6
+count = 7
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3489,6 +3495,12 @@ count = 1
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "mixed-property-access"
+message = "Attempting to access property `$status` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
 message = "Attempting to access property `$used` on a non-object type (`mixed`)."
 count = 1
 
@@ -3532,7 +3544,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `create` on class `App\Models\Voucher`.'
-count = 1
+count = 2
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3562,7 +3574,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `sole` on class `App\Models\Booking`.'
-count = 1
+count = 2
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3652,7 +3664,7 @@ count = 1
 file = "tests/Feature/ResultDeliveryTest.php"
 code = "mixed-argument"
 message = "Invalid argument type for argument #1 of `ZipArchive::open`: expected `string`, but found `mixed`."
-count = 1
+count = 2
 
 [[issues]]
 file = "tests/Feature/ResultDeliveryTest.php"
@@ -3676,7 +3688,7 @@ count = 2
 file = "tests/Feature/ResultDeliveryTest.php"
 code = "mixed-method-access"
 message = "Attempting to call method `getPathname()` on a non-object type (`mixed`)."
-count = 1
+count = 2
 
 [[issues]]
 file = "tests/Feature/ResultDeliveryTest.php"
@@ -3730,7 +3742,7 @@ count = 1
 file = "tests/Feature/ResultDeliveryTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $access_token on class `App\Models\Booking`.'
-count = 2
+count = 3
 
 [[issues]]
 file = "tests/Feature/ResultDeliveryTest.php"
@@ -3766,7 +3778,7 @@ count = 1
 file = "tests/Feature/ResultDeliveryTest.php"
 code = "non-existent-method"
 message = 'Method `getFile` does not exist on type `Symfony\Component\HttpFoundation\Response`.'
-count = 1
+count = 2
 
 [[issues]]
 file = "tests/Feature/ResultDeliveryTest.php"
@@ -3989,6 +4001,12 @@ file = "tests/Feature/SessionPaymentTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `forPackage` on class `Illuminate\Database\Eloquent\Factories\Factory`.'
 count = 2
+
+[[issues]]
+file = "tests/Feature/SessionPaymentTest.php"
+code = "non-documented-property"
+message = 'Ambiguous property access: $id on class `App\Models\Booking`.'
+count = 1
 
 [[issues]]
 file = "tests/Feature/SessionPaymentTest.php"

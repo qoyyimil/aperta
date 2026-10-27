@@ -70,7 +70,7 @@ class ResultController extends Controller
     private static function uniqueName(string $name, array &$seen): string
     {
         $candidate = $name;
-        for ($i = 2; isset($seen[$candidate]); $i++) {
+        for ($i = 2; array_key_exists($candidate, $seen); $i++) {
             $candidate = pathinfo($name, PATHINFO_FILENAME) . "-{$i}." . pathinfo($name, PATHINFO_EXTENSION);
         }
         $seen[$candidate] = true;
