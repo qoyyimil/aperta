@@ -19,6 +19,7 @@ return [
         'Bandung',
     ],
     'deposit_hours' => 24, // batas bayar DP sejak booking dibuat
+    'max_unpaid_bookings' => 3, // per nomor WhatsApp, agar slot tidak ditimbun
     // Data contoh, ganti dengan rekening dan nomor WA admin studio.
     'payment' => [
         'whatsapp' => '6281234567890',

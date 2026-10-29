@@ -26,6 +26,12 @@ class Client extends Model
         return Attribute::set(fn(string $value) => self::normalizePhone($value));
     }
 
+    /** Huruf kecil, agar pencocokan klien publik tidak peka huruf besar. */
+    protected function email(): Attribute
+    {
+        return Attribute::set(static fn(?string $value) => $value === null ? null : mb_strtolower(trim($value)));
+    }
+
     /** Simpan nomor dalam satu format (08xx) agar klien yang sama dikenali. */
     public static function normalizePhone(string $raw): string
     {

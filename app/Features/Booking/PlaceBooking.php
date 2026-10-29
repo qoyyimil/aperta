@@ -38,10 +38,10 @@ final class PlaceBooking
 
     private function create(array $data, Package $package, Carbon $date): Booking
     {
-        // Data klien lama tidak ditimpa dari form publik.
+        // Klien lama dipakai hanya jika nomor dan email cocok; nomor saja bisa diketahui orang lain.
         $client = Client::firstOrCreate(
-            ['whatsapp' => $data['whatsapp']], // sudah 08xx dari StoreBookingRequest
-            Arr::only($data, ['name', 'email', 'instagram']),
+            ['whatsapp' => $data['whatsapp'], 'email' => mb_strtolower((string) $data['email'])],
+            Arr::only($data, ['name', 'instagram']),
         );
 
         $booking = new Booking(Arr::only($data, [

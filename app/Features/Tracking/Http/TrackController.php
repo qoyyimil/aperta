@@ -26,7 +26,9 @@ class TrackController extends Controller
     public function lookup(Request $request): RedirectResponse
     {
         $data = $request->validate(['code' => ['required', 'string', 'max:20'], 'phone' => ['required', 'digits:4']]);
-        $key = 'track:' . $request->ip();
+        $code = BookingCode::normalize($data['code']);
+        // Per kode, agar sukses di booking sendiri tidak mereset tebakan ke booking lain.
+        $key = 'track:' . (string) $request->ip() . ':' . $code;
 
         if (RateLimiter::tooManyAttempts($key, self::MAX_FAILURES)) {
             $minutes = ceil(RateLimiter::availableIn($key) / 60);
@@ -35,7 +37,7 @@ class TrackController extends Controller
             ]);
         }
 
-        $booking = Booking::with('client')->firstWhere('code', BookingCode::normalize($data['code']));
+        $booking = Booking::with('client')->firstWhere('code', $code);
 
         if (!$booking?->client->whatsappMatches($data['phone'])) {
             RateLimiter::hit($key, self::LOCK_SECONDS);

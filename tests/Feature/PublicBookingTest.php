@@ -12,6 +12,7 @@ use App\Models\Client;
 use App\Models\Package;
 use App\Models\Voucher;
 use App\Providers\AppServiceProvider;
+use App\Support\Turnstile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
@@ -100,6 +101,29 @@ class PublicBookingTest extends TestCase
         $this->assertSame(1, Booking::count());
     }
 
+    public function test_captcha_without_a_key_is_skipped_only_outside_production(): void
+    {
+        config(['services.turnstile.secret' => '']);
+        $this->assertTrue(Turnstile::passes('', '127.0.0.1'));
+
+        // Lupa mengisi key di produksi tidak boleh mematikan captcha.
+        $this->app['env'] = 'production';
+        $this->assertFalse(Turnstile::passes('', '127.0.0.1'));
+    }
+
+    public function test_one_number_cannot_hold_many_unpaid_slots(): void
+    {
+        $client = Client::factory()->create(['whatsapp' => '081234567890', 'email' => 'thalia@example.com']);
+        Booking::factory()->count(config('aperta.max_unpaid_bookings'))->for($client)->create();
+
+        $this->post(
+            '/booking',
+            $this->payload(Package::factory()->create(['duration_minutes' => 60])),
+        )->assertSessionHasErrors('whatsapp');
+
+        $this->assertSame(config('aperta.max_unpaid_bookings'), Booking::count());
+    }
+
     public function test_client_input_in_email_cannot_become_a_link(): void
     {
         $booking = Booking::factory()->create(['location' => '[Bayar di sini](https://evil.test)']);
@@ -109,6 +133,25 @@ class PublicBookingTest extends TestCase
 
         $mail->assertSeeInHtml('[Klik](https://evil.test)', false);
         $mail->assertDontSeeInHtml('href="https://evil.test"', false);
+    }
+
+    public function test_own_successful_lookup_does_not_reset_guessing_another_booking(): void
+    {
+        $mine = Booking::factory()->create();
+        $victim = Booking::factory()->create();
+
+        // 4 tebakan salah lalu 1 pencarian sah milik sendiri, diulang 3 kali.
+        foreach (range(1, 3) as $_) {
+            foreach (range(1, 4) as $_) {
+                $this->post('/lacak', ['code' => $victim->code, 'phone' => '0000']);
+            }
+            $this->post('/lacak', ['code' => $mine->code, 'phone' => substr($mine->client->whatsapp, -4)]);
+        }
+
+        $this->post('/lacak', [
+            'code' => $victim->code,
+            'phone' => substr($victim->client->whatsapp, -4),
+        ])->assertSessionHasErrors(['code' => 'Terlalu banyak percobaan. Coba lagi dalam 15 menit.']);
     }
 
     public function test_tracking_lockout_is_per_visitor_behind_a_proxy(): void
@@ -153,9 +196,32 @@ class PublicBookingTest extends TestCase
         $this->assertSame('thalia@example.com', Booking::first()->client->email);
     }
 
+    public function test_booking_with_someone_elses_number_does_not_reveal_or_mail_them(): void
+    {
+        $victim = Client::factory()->create([
+            'name' => 'Nama Korban',
+            'whatsapp' => '081234567890',
+            'email' => 'korban@example.com',
+        ]);
+
+        // Nomor yang sama dengan korban, tapi email berbeda.
+        $this->post('/booking', ['name' => 'Orang Lain', 'email' => 'lain@example.com']
+        + $this->payload(Package::factory()->create(['duration_minutes' => 60])))->assertRedirect();
+
+        $booking = Booking::sole();
+        $this->assertNotSame($victim->id, $booking->client_id);
+        Mail::assertQueued(
+            BookingPlaced::class,
+            fn(BookingPlaced $mail) => $mail->hasTo('lain@example.com') && !$mail->hasTo('korban@example.com'),
+        );
+        $this->get(route('track.show', $booking->access_token))->assertInertia(
+            fn(Assert $page) => $page->where('booking.name', 'Orang Lain'),
+        );
+    }
+
     public function test_phone_format_is_the_same_from_admin_and_public_form(): void
     {
-        $client = Client::factory()->create(['whatsapp' => '+62 812-3456-7890']);
+        $client = Client::factory()->create(['whatsapp' => '+62 812-3456-7890', 'email' => 'Thalia@Example.com']);
         $this->assertSame('081234567890', $client->whatsapp);
 
         $this->post(

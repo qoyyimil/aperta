@@ -1135,6 +1135,12 @@ message = "Missing `declare(strict_types=1);` statement at the beginning of the 
 count = 1
 
 [[issues]]
+file = "app/Support/ImageTooLarge.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
 file = "app/Support/PriceBreakdown.php"
 code = "strict-types"
 message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
@@ -2086,7 +2092,31 @@ count = 1
 file = "tests/Feature/ProofUploadTest.php"
 code = "assertion-style"
 message = "Inconsistent assertions style."
-count = 11
+count = 15
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "literal-named-argument"
+message = "Literal argument `16` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "literal-named-argument"
+message = "Literal argument `1` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "literal-named-argument"
+message = "Literal argument `8` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "prefer-static-closure"
+message = "This arrow function does not use `$this` and should be declared static."
+count = 1
 
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
@@ -2098,7 +2128,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "assertion-style"
 message = "Inconsistent assertions style."
-count = 14
+count = 18
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -2110,6 +2140,18 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "literal-named-argument"
 message = "Literal argument `12` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "literal-named-argument"
+message = "Literal argument `3` should be passed as a named argument for clarity."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "literal-named-argument"
+message = "Literal argument `4` should be passed as a named argument for clarity."
 count = 1
 
 [[issues]]
@@ -2128,7 +2170,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "prefer-static-closure"
 message = "This arrow function does not use `$this` and should be declared static."
-count = 5
+count = 7
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"

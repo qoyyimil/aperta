@@ -17,6 +17,8 @@ final class ProofImages
 {
     public const PREVIEW = 2048;
     public const THUMB = 480;
+    // 50 MP ≈ 200 MB bitmap; kamera 45 MP masih lolos.
+    public const MAX_PIXELS = 50_000_000;
 
     public function __construct(
         private ImageManagerInterface $images,
@@ -27,9 +29,18 @@ final class ProofImages
         return new self(ImageManager::usingDriver(Driver::class));
     }
 
-    /** @return array{preview: string, thumb: string} isi file JPEG */
+    /**
+     * @return array{preview: string, thumb: string} isi file JPEG
+     *
+     * @throws ImageTooLarge resolusi di atas MAX_PIXELS, dicek dari header sebelum didekode
+     */
     public function render(string $binary, ?string $watermarkPath = null): array
     {
+        $size = getimagesizefromstring($binary);
+        if ($size !== false && ($size[0] * $size[1]) > self::MAX_PIXELS) {
+            throw new ImageTooLarge("Resolusi {$size[0]}x{$size[1]} terlalu besar.");
+        }
+
         $image = $this->images->decodeBinary($binary)->orient()->scaleDown(self::PREVIEW, self::PREVIEW);
 
         if ($watermarkPath && is_file($watermarkPath)) {

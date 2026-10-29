@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Contracts\Renderable;
+use App\Support\ImageTooLarge;
 use App\Support\ProofImages;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +28,17 @@ class RenderPhoto implements ShouldQueue
     {
         $disk = Storage::disk(config('aperta.photo_disk'));
         $base = $this->photo->renderBase();
-        $images = ProofImages::make()->render($disk->get($this->photo->sourcePath()), config('aperta.watermark'));
+
+        try {
+            $images = ProofImages::make()->render($disk->get($this->photo->sourcePath()), config('aperta.watermark'));
+        } catch (ImageTooLarge) {
+            // Tidak dicoba ulang: hasilnya akan sama.
+            $this->photo->update([
+                'error' => 'Resolusi foto terlalu besar (maks. 50 megapiksel). Perkecil lalu unggah ulang.',
+            ]);
+
+            return;
+        }
 
         $disk->put("{$base}-preview.jpg", $images['preview']);
         $disk->put("{$base}-thumb.jpg", $images['thumb']);

@@ -10,12 +10,12 @@ final class Turnstile
 {
     private const VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
-    /** Tanpa secret key (lokal/tes) pemeriksaan dilewati; gangguan jaringan dianggap gagal. */
+    /** Tanpa secret key hanya dilewati di luar produksi; gangguan jaringan dianggap gagal. */
     public static function passes(#[SensitiveParameter] string $token, ?string $ip): bool
     {
         $secret = (string) config('services.turnstile.secret');
         if ($secret === '') {
-            return true;
+            return !app()->isProduction();
         }
 
         return $token !== ''

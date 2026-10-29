@@ -45,7 +45,9 @@ final class ProofActions
                     ->panelLayout('grid')
                     // Nama asli dipertahankan; folder acak per file mencegah file saling menimpa.
                     ->directory(fn() => 'proof-uploads/' . Str::ulid())
-                    ->preserveFilenames(),
+                    ->preserveFilenames()
+                    // State dikendalikan klien; tolak path yang bukan hasil upload modal ini.
+                    ->preventFilePathTampering(),
             ])
             ->action(function (Booking $record, array $data, AddProofs $add) {
                 ['added' => $added, 'skipped' => $skipped] = $add->handle($record, $data['files']);

@@ -5,14 +5,18 @@ namespace Tests\Feature;
 use App\Enums\BookingStatus;
 use App\Enums\UserRole;
 use App\Exceptions\InvalidStatusTransition;
+use App\Features\Booking\Filament\Pages\ViewBooking;
 use App\Features\Proofs\AddProofs;
+use App\Features\Proofs\Filament\ProofsRelationManager;
 use App\Jobs\RenderPhoto;
 use App\Models\Booking;
 use App\Models\User;
+use Filament\Actions\Testing\TestAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class ProofUploadTest extends TestCase
@@ -104,5 +108,73 @@ class ProofUploadTest extends TestCase
         $this->assertTrue($photographer->can('manageProofs', $booking->fresh()));
         $this->assertFalse($editor->can('manageProofs', $booking->fresh()));
         $this->assertDatabaseHas('booking_logs', ['booking_id' => $booking->id, 'action' => 'crew']);
+    }
+
+    public function test_huge_image_is_rejected_before_decoding(): void
+    {
+        Storage::fake('local');
+        $image = imagecreatetruecolor(1, 1);
+        ob_start();
+        imagepng($image);
+        // Header PNG mengaku 20000x20000 (400 MP) walau isinya kecil.
+        $bomb = substr_replace((string) ob_get_clean(), pack('NN', 20_000, 20_000), 16, 8);
+        Storage::disk('local')->put('proof-uploads/x/BOM.PNG', $bomb);
+        $proof = $this
+            ->shotBooking()
+            ->proofs()
+            ->create([
+                'frame' => 1,
+                'filename' => 'BOM.PNG',
+                'source_path' => 'proof-uploads/x/BOM.PNG',
+            ]);
+
+        new RenderPhoto($proof)->handle();
+
+        $this->assertStringContainsString('terlalu besar', (string) $proof->fresh()->error);
+        $this->assertFalse($proof->fresh()->isReady());
+    }
+
+    public function test_upload_cannot_take_over_files_of_another_booking(): void
+    {
+        Storage::fake('local');
+        Queue::fake();
+        $photographer = User::factory()->create(['role' => UserRole::Photographer]);
+        $mine = $this->shotBooking();
+        $mine->crew()->attach($photographer);
+        $foreign = 'results/' . Booking::factory()->create()->id . '/renders/1-preview.jpg';
+        Storage::disk('local')->put($foreign, 'foto booking lain');
+
+        // Path file lain dikirim langsung sebagai state, tanpa upload sungguhan.
+        Livewire::actingAs($photographer)
+            ->test(ViewBooking::class, ['record' => $mine->getRouteKey()])
+            ->callAction('uploadProofs', ['files' => ['x' => $foreign]]);
+
+        $this->assertSame(0, $mine->proofs()->count());
+        Storage::disk('local')->assertExists($foreign);
+
+        $mine->forceFill(['status' => BookingStatus::Editing])->save();
+        Livewire::actingAs($photographer)
+            ->test(ViewBooking::class, ['record' => $mine->getRouteKey()])
+            ->callAction('uploadResults', ['files' => ['x' => $foreign]]);
+
+        $this->assertSame(0, $mine->results()->count());
+    }
+
+    public function test_only_the_assigned_photographer_can_delete_proofs(): void
+    {
+        $booking = $this->shotBooking();
+        $proof = $booking
+            ->proofs()
+            ->create(['frame' => 1, 'filename' => 'A.JPG', 'preview_path' => 'p', 'thumb_path' => 't']);
+        $photographer = User::factory()->create(['role' => UserRole::Photographer]);
+        $editor = User::factory()->create(['role' => UserRole::Editor]);
+        $booking->crew()->attach([$photographer->id, $editor->id]);
+        $proofsTab = fn(User $user) => Livewire::actingAs($user)->test(ProofsRelationManager::class, [
+            'ownerRecord' => $booking,
+            'pageClass' => ViewBooking::class,
+        ]);
+
+        $proofsTab($editor)->assertActionHidden(TestAction::make('delete')->table($proof));
+        $proofsTab($photographer)->assertActionVisible(TestAction::make('delete')->table($proof));
     }
 }

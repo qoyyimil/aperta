@@ -39,7 +39,9 @@ final class DeliveryActions
                     ->visibility('private')
                     ->panelLayout('grid')
                     ->directory(fn(Booking $record) => "results/{$record->id}/" . Str::ulid())
-                    ->preserveFilenames(),
+                    ->preserveFilenames()
+                    // State dikendalikan klien; tolak path yang bukan hasil upload modal ini.
+                    ->preventFilePathTampering(),
             ])
             ->action(function (Booking $record, array $data, AddResults $add) {
                 ['added' => $added, 'matched' => $matched] = $add->handle($record, $data['files']);

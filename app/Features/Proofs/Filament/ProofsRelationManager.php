@@ -26,7 +26,11 @@ class ProofsRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
-        $editable = fn() => $this->getOwnerRecord()->status === BookingStatus::Shot;
+        // ProofPhoto tanpa policy, jadi hak hapus dicek di sini.
+        $editable = fn() => (
+            $this->getOwnerRecord()->status === BookingStatus::Shot
+            && auth()->user()->can('manageProofs', $this->getOwnerRecord())
+        );
 
         return $table
             ->columns([

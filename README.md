@@ -159,7 +159,7 @@ TURNSTILE_SECRET_KEY=
 ```
 
 - **`TRUSTED_PROXIES`**: wajib diisi kalau memakai Cloudflare atau reverse proxy, supaya rate limit memakai IP asli pengunjung. Isi `*` hanya kalau server cuma bisa diakses lewat proxy tersebut.
-- **`TURNSTILE_*`**: wajib diisi di produksi.
+- **`TURNSTILE_*`**: wajib diisi di produksi. Kalau kosong saat `APP_ENV=production`, semua booking publik ditolak.
 - Setelah mengubah `.env`, jalankan `php artisan config:cache`.
 
 ---
@@ -184,7 +184,7 @@ Admin wajib memasang MFA. Saat login pertama, admin diminta memindai QR dengan a
 
 ### Rekening dan WhatsApp admin
 
-Setelah booking, klien melihat rekening tujuan DP dan tombol konfirmasi via WhatsApp di halaman lacak dan di email. Ganti data contoh di `config/aperta.php` bagian `payment`. Batas bayar DP diatur lewat `deposit_hours` (bawaan 24 jam). Booking yang lewat batas tidak dibatalkan otomatis, tapi muncul di antrean "Perlu tindakan" admin.
+Setelah booking, klien melihat rekening tujuan DP dan tombol konfirmasi via WhatsApp di halaman lacak dan di email. Ganti data contoh di `config/aperta.php` bagian `payment`. Batas bayar DP diatur lewat `deposit_hours` (bawaan 24 jam). Booking yang lewat batas tidak dibatalkan otomatis, tapi muncul di antrean "Perlu tindakan" admin. Supaya slot tidak ditimbun, satu nomor WhatsApp hanya boleh punya `max_unpaid_bookings` booking yang belum DP (bawaan 3).
 
 ### Watermark (opsional)
 

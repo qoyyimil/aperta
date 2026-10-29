@@ -2,8 +2,11 @@
 
 namespace App\Features\Booking\Http;
 
+use App\Enums\BookingStatus;
+use App\Models\Booking;
 use App\Models\Client;
 use App\Support\Turnstile;
+use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -23,7 +26,7 @@ class StoreBookingRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:150'],
-            'whatsapp' => ['required', 'regex:/^08\d{8,13}$/'],
+            'whatsapp' => ['required', 'regex:/^08\d{8,13}$/', $this->notHoldingTooManyUnpaid(...)],
             'instagram' => ['nullable', 'string', 'max:60'],
             'city' => ['required', Rule::in(config('aperta.cities'))],
             'location' => ['nullable', 'string', 'max:255'],
@@ -40,6 +43,21 @@ class StoreBookingRequest extends FormRequest
             'notes' => ['nullable', 'string', 'max:1000'],
             'consent' => ['accepted'],
         ];
+    }
+
+    /** Booking belum DP tetap menahan slot, jadi jumlahnya dibatasi per nomor. */
+    private function notHoldingTooManyUnpaid(string $attribute, mixed $value, Closure $fail): void
+    {
+        $unpaid = Booking::query()
+            ->where('status', BookingStatus::New)
+            ->whereRelation('client', 'whatsapp', (string) $value)
+            ->count();
+
+        if ($unpaid >= (int) config('aperta.max_unpaid_bookings')) {
+            $fail(
+                'Nomor ini masih punya booking yang belum dibayar DP. Selesaikan pembayarannya dulu atau hubungi admin.',
+            );
+        }
     }
 
     /** Captcha dicek setelah isian valid, agar tokennya tidak terbuang. */

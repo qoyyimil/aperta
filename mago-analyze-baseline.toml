@@ -1713,6 +1713,12 @@ count = 2
 [[issues]]
 file = "app/Features/Proofs/Filament/ProofsRelationManager.php"
 code = "mixed-method-access"
+message = "Attempting to call method `can()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "app/Features/Proofs/Filament/ProofsRelationManager.php"
+code = "mixed-method-access"
 message = "Attempting to call method `exists()` on a non-object type (`mixed`)."
 count = 1
 
@@ -1721,6 +1727,12 @@ file = "app/Features/Proofs/Filament/ProofsRelationManager.php"
 code = "mixed-method-access"
 message = "Attempting to call method `whereNull()` on a non-object type (`mixed`)."
 count = 2
+
+[[issues]]
+file = "app/Features/Proofs/Filament/ProofsRelationManager.php"
+code = "mixed-operand"
+message = "Right operand in `&&` operation has `mixed` type."
+count = 1
 
 [[issues]]
 file = "app/Features/Proofs/Filament/ProofsRelationManager.php"
@@ -1744,6 +1756,12 @@ count = 2
 file = "app/Features/Proofs/Filament/ProofsRelationManager.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $status on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "app/Features/Proofs/Filament/ProofsRelationManager.php"
+code = "non-existent-method"
+message = 'Method `user` does not exist on type `Illuminate\Contracts\Auth\Factory`.'
 count = 1
 
 [[issues]]
@@ -1984,12 +2002,6 @@ count = 1
 file = "app/Features/Tracking/Http/TrackController.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $client on class `App\Models\Booking`.'
-count = 1
-
-[[issues]]
-file = "app/Features/Tracking/Http/TrackController.php"
-code = "possibly-null-operand"
-message = "Possibly null right operand used in string concatenation (type `null|string`)."
 count = 1
 
 [[issues]]
@@ -3374,6 +3386,12 @@ count = 1
 
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
+code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `{closure:tests/Feature/ProofUploadTest.php:172:22}`: expected `App\Models\User`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
 code = "mixed-argument"
 message = 'Invalid argument type for argument #1 of `Illuminate\Contracts\Filesystem\Filesystem::get`: expected `string`, but found `mixed`.'
 count = 2
@@ -3400,6 +3418,12 @@ count = 1
 file = "tests/Feature/ProofUploadTest.php"
 code = "mixed-method-access"
 message = "Attempting to call method `transitionTo()` on a non-object type (`mixed`)."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "mixed-operand"
+message = "Invalid middle operand: type `mixed` cannot be reliably used in string concatenation."
 count = 1
 
 [[issues]]
@@ -3436,7 +3460,7 @@ count = 3
 file = "tests/Feature/ProofUploadTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `isReady` on class `Illuminate\Database\Eloquent\Model`.'
-count = 1
+count = 2
 
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
@@ -3465,6 +3489,12 @@ count = 1
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
 code = "non-documented-property"
+message = 'Ambiguous property access: $error on class `Illuminate\Database\Eloquent\Model`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-documented-property"
 message = 'Ambiguous property access: $extra_photo_price on class `App\Models\Booking`.'
 count = 1
 
@@ -3472,13 +3502,13 @@ count = 1
 file = "tests/Feature/ProofUploadTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Collection`.'
-count = 3
+count = 6
 
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Model`.'
-count = 3
+count = 6
 
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
@@ -3507,8 +3537,20 @@ count = 1
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
 code = "non-existent-method"
+message = 'Method `assertExists` does not exist on type `Illuminate\Contracts\Filesystem\Filesystem`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "non-existent-method"
 message = 'Method `assertMissing` does not exist on type `Illuminate\Contracts\Filesystem\Filesystem`.'
 count = 2
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "possible-method-access-on-null"
+message = "Attempting to call a method on `null`."
+count = 1
 
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
@@ -3520,13 +3562,19 @@ count = 1
 file = "tests/Feature/ProofUploadTest.php"
 code = "possibly-invalid-argument"
 message = 'Possible argument type mismatch for argument #1 of `App\Jobs\RenderPhoto::__construct`: expected `Illuminate\Database\Eloquent\Model&App\Models\Contracts\Renderable`, but possibly received `Illuminate\Database\Eloquent\Model`.'
-count = 1
+count = 2
 
 [[issues]]
 file = "tests/Feature/ProofUploadTest.php"
 code = "possibly-null-argument"
 message = "Argument #1 of function `getimagesizefromstring` is possibly `null`, but parameter type `string` does not accept it."
 count = 2
+
+[[issues]]
+file = "tests/Feature/ProofUploadTest.php"
+code = "possibly-null-property-access"
+message = "Attempting to access a property on a possibly `null` value."
+count = 1
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3544,7 +3592,13 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "less-specific-argument"
 message = 'Argument type mismatch for argument #1 of `Tests\Feature\PublicBookingTest::payload`: expected `App\Models\Package`, but provided type `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model` is less specific.'
-count = 10
+count = 12
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Illuminate\Database\Eloquent\Factories\Factory::count`: expected `int|null`, but found `mixed`.'
+count = 1
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3562,7 +3616,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "mixed-argument"
 message = "Invalid argument type for argument #1 of `substr`: expected `string`, but found `mixed`."
-count = 4
+count = 6
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3580,7 +3634,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "mixed-assignment"
 message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
-count = 3
+count = 4
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3610,6 +3664,12 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "mixed-property-access"
 message = "Attempting to access property `$access_token` on a non-object type (`mixed`)."
+count = 2
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$client_id` on a non-object type (`mixed`)."
 count = 1
 
 [[issues]]
@@ -3658,19 +3718,19 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "mixed-property-access"
 message = "Attempting to access property `$whatsapp` on a non-object type (`mixed`)."
-count = 4
+count = 6
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `assertInertia` on class `Illuminate\Testing\TestResponse`.'
-count = 4
+count = 5
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `count` on class `App\Models\Booking`.'
-count = 3
+count = 4
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3724,7 +3784,7 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `sole` on class `App\Models\Booking`.'
-count = 2
+count = 3
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3748,25 +3808,25 @@ count = 3
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Collection`.'
-count = 4
+count = 6
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $client on class `Illuminate\Database\Eloquent\Model`.'
-count = 4
+count = 6
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $code on class `Illuminate\Database\Eloquent\Collection`.'
-count = 5
+count = 7
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $code on class `Illuminate\Database\Eloquent\Model`.'
-count = 5
+count = 7
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3778,13 +3838,13 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Collection`.'
-count = 4
+count = 5
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
 code = "non-documented-property"
 message = 'Ambiguous property access: $id on class `Illuminate\Database\Eloquent\Model`.'
-count = 4
+count = 5
 
 [[issues]]
 file = "tests/Feature/PublicBookingTest.php"
@@ -3808,6 +3868,12 @@ count = 1
 file = "tests/Feature/PublicBookingTest.php"
 code = "possible-method-access-on-null"
 message = "Attempting to call a method on `null`."
+count = 1
+
+[[issues]]
+file = "tests/Feature/PublicBookingTest.php"
+code = "possibly-invalid-argument"
+message = 'Possible argument type mismatch for argument #1 of `Illuminate\Database\Eloquent\Factories\Factory::for`: expected `Illuminate\Database\Eloquent\Factories\Factory<Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model`, but possibly received `Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>|Illuminate\Database\Eloquent\Model`.'
 count = 1
 
 [[issues]]
