@@ -2224,7 +2224,7 @@ count = 1
 file = "tests/Feature/StudioAccessTest.php"
 code = "assertion-style"
 message = "Inconsistent assertions style."
-count = 10
+count = 11
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"

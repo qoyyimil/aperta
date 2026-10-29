@@ -11,11 +11,14 @@ use App\Features\Catalog\Filament\Addons\ManageAddons;
 use App\Features\Catalog\Filament\BlockedDates\ManageBlockedDates;
 use App\Features\Catalog\Filament\Packages\ManagePackages;
 use App\Features\Catalog\Filament\Packages\PackageResource;
+use App\Features\Catalog\Filament\Vouchers\ManageVouchers;
+use App\Features\Team\Filament\ManageUsers;
 use App\Models\Addon;
 use App\Models\BlockedDate;
 use App\Models\Booking;
 use App\Models\Package;
 use App\Models\User;
+use App\Models\Voucher;
 use Filament\Actions\Testing\TestAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -96,6 +99,25 @@ class StudioAccessTest extends TestCase
             ->assertSee('750.000')
             ->assertDontSee('750.000,00')
             ->assertSee('120 menit');
+    }
+
+    public function test_voucher_and_user_menus_keep_their_own_rules(): void
+    {
+        $admin = $this->user(UserRole::Admin);
+        $this->actingAs($admin);
+        $voucher = Voucher::create(['code' => 'A10', 'type' => 'percent', 'value' => 10]);
+
+        Livewire::test(ManageVouchers::class)
+            ->assertCanSeeTableRecords([$voucher])
+            ->assertSee('10%')
+            ->callAction('create', ['code' => 'b20', 'type' => 'fixed', 'value' => 20_000])
+            ->assertHasNoFormErrors();
+        $this->assertTrue(Voucher::query()->where('code', 'B20')->exists());
+
+        Livewire::test(ManageUsers::class)
+            ->assertCanSeeTableRecords([$admin])
+            ->assertActionVisible(TestAction::make('edit')->table($admin))
+            ->assertActionDoesNotExist(TestAction::make('delete')->table($admin));
     }
 
     public function test_only_assigned_photographer_can_mark_session_done(): void
