@@ -138,8 +138,8 @@ class StudioAccessTest extends TestCase
         $this->actingAs($this->user(UserRole::Admin));
 
         Livewire::test(EditBooking::class, ['record' => $booking->getRouteKey()])
-            ->assertFormFieldVisible('client_id')
-            ->assertFormFieldHidden('package_id')
+            ->assertSchemaComponentVisible('client_id')
+            ->assertSchemaComponentHidden('package_id')
             ->callAction(TestAction::make('editOption')->schemaComponent('client_id'), [
                 'name' => 'Thalia Putri',
                 'email' => 'benar@example.com',

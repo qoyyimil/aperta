@@ -2146,7 +2146,7 @@ count = 1
 file = "tests/Feature/ResultDeliveryTest.php"
 code = "assertion-style"
 message = "Inconsistent assertions style."
-count = 9
+count = 12
 
 [[issues]]
 file = "tests/Feature/ResultDeliveryTest.php"
@@ -2163,8 +2163,8 @@ count = 3
 [[issues]]
 file = "tests/Feature/ResultDeliveryTest.php"
 code = "literal-named-argument"
-message = "Literal argument `800` should be passed as a named argument for clarity."
-count = 1
+message = "Literal argument `true` should be passed as a named argument for clarity."
+count = 2
 
 [[issues]]
 file = "tests/Feature/ResultDeliveryTest.php"
@@ -2176,6 +2176,12 @@ count = 1
 file = "tests/Feature/ResultDeliveryTest.php"
 code = "strict-types"
 message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "tests/Feature/ResultDeliveryTest.php"
+code = "too-many-methods"
+message = "Class has too many methods."
 count = 1
 
 [[issues]]

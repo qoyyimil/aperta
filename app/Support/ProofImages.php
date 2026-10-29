@@ -33,10 +33,9 @@ final class ProofImages
         $image = $this->images->decodeBinary($binary)->orient()->scaleDown(self::PREVIEW, self::PREVIEW);
 
         if ($watermarkPath && is_file($watermarkPath)) {
-            $this->tile(
-                $image,
-                $this->images->decodePath($watermarkPath)->scaleDown(width: intdiv($image->width(), 4)),
-            );
+            // trim() membuang margin transparan logo, agar jarak antar-logo sesuai bagian yang terlihat.
+            $mark = $this->images->decodePath($watermarkPath)->scaleDown(width: max(1, intdiv($image->width(), 4)));
+            $this->tile($image, $mark->trim());
         }
 
         return [
@@ -48,8 +47,8 @@ final class ProofImages
     /** Watermark berulang selang-seling, agar tidak bisa dibuang dengan crop. */
     private function tile(ImageInterface $image, ImageInterface $mark): void
     {
-        $stepX = intdiv($mark->width() * 3, 2);
-        $stepY = $mark->height() * 2;
+        $stepX = max(1, intdiv($mark->width() * 3, 2));
+        $stepY = max(1, $mark->height());
 
         for ($y = 0, $row = 0; $y < $image->height(); $y += $stepY, $row++) {
             for ($x = ($row % 2) * intdiv($stepX, 2); $x < $image->width(); $x += $stepX) {

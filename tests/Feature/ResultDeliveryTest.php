@@ -89,13 +89,8 @@ class ResultDeliveryTest extends TestCase
 
     public function test_render_job_keeps_original_for_download(): void
     {
-        // Gambar putih, karena watermark hitam tidak terlihat di gambar palsu yang hitam.
-        $image = imagecreatetruecolor(1200, 800);
-        imagefill($image, 0, 0, imagecolorallocate($image, 255, 255, 255));
-        ob_start();
-        imagejpeg($image);
         $path = 'results/' . uniqid() . '/DSC_4513_edit.jpg';
-        Storage::disk('local')->put($path, ob_get_clean());
+        Storage::disk('local')->put($path, self::whiteJpeg(1200, 800));
         $result = $this->booking->results()->create(['filename' => 'DSC_4513_edit.jpg', 'path' => $path, 'size' => 1]);
 
         new RenderPhoto($result)->handle();
@@ -108,6 +103,59 @@ class ResultDeliveryTest extends TestCase
         $preview = Storage::disk('local')->get($result->fresh()->preview_path);
         $this->assertSame(ProofImages::make()->render($original, config('aperta.watermark'))['preview'], $preview);
         $this->assertNotSame(ProofImages::make()->render($original)['preview'], $preview);
+    }
+
+    public function test_watermark_leaves_no_clean_strip_to_crop(): void
+    {
+        foreach ([[1200, 800], [800, 1200]] as [$width, $height]) {
+            $render = ProofImages::make()->render(self::whiteJpeg($width, $height), config('aperta.watermark'));
+            $preview = imagecreatefromstring($render['preview']);
+            $this->assertNotFalse($preview);
+
+            // Baris dan kolom yang sama sekali tidak tersentuh watermark.
+            $rows = array_fill(0, $height, true);
+            $cols = array_fill(0, $width, true);
+            for ($y = 0; $y < $height; $y++) {
+                for ($x = 0; $x < $width; $x++) {
+                    if ((imagecolorat($preview, $x, $y) & 0xFF) >= 200) {
+                        continue;
+                    }
+                    $rows[$y] = false;
+                    $cols[$x] = false;
+                }
+            }
+
+            $this->assertLessThan(
+                $height / 20,
+                self::longestRun($rows),
+                "Pita horizontal bersih di {$width}x{$height}",
+            );
+            $this->assertLessThan($width / 20, self::longestRun($cols), "Pita vertikal bersih di {$width}x{$height}");
+        }
+    }
+
+    /** Gambar putih, karena watermark gelap tidak terlihat di gambar palsu yang hitam. */
+    private static function whiteJpeg(int $width, int $height): string
+    {
+        $image = imagecreatetruecolor($width, $height);
+        self::assertNotFalse($image);
+        imagefill($image, 0, 0, (int) imagecolorallocate($image, 255, 255, 255));
+        ob_start();
+        imagejpeg($image);
+
+        return (string) ob_get_clean();
+    }
+
+    private static function longestRun(array $clean): int
+    {
+        $best = 0;
+        $run = 0;
+        foreach ($clean as $isClean) {
+            $run = $isClean ? $run + 1 : 0;
+            $best = max($best, $run);
+        }
+
+        return $best;
     }
 
     public function test_results_are_visible_after_delivery_but_downloads_need_full_payment(): void
