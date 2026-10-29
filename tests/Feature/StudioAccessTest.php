@@ -7,8 +7,14 @@ use App\Enums\UserRole;
 use App\Features\Booking\Filament\BookingResource;
 use App\Features\Booking\Filament\Pages\EditBooking;
 use App\Features\Booking\Filament\Pages\ListBookings;
+use App\Features\Catalog\Filament\Addons\ManageAddons;
+use App\Features\Catalog\Filament\BlockedDates\ManageBlockedDates;
+use App\Features\Catalog\Filament\Packages\ManagePackages;
 use App\Features\Catalog\Filament\Packages\PackageResource;
+use App\Models\Addon;
+use App\Models\BlockedDate;
 use App\Models\Booking;
+use App\Models\Package;
 use App\Models\User;
 use Filament\Actions\Testing\TestAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -62,6 +68,34 @@ class StudioAccessTest extends TestCase
             ->actingAs($this->user(UserRole::Admin, ['is_active' => false]))
             ->get(PackageResource::getUrl())
             ->assertForbidden();
+    }
+
+    public function test_simple_resource_handles_create_edit_and_delete(): void
+    {
+        $this->actingAs($this->user(UserRole::Admin));
+        $page = Livewire::test(ManageAddons::class);
+
+        $page->callAction('create', ['name' => 'Cetak 10R', 'price' => 60_000, 'max_qty' => 5, 'is_active' => true]);
+        $addon = Addon::sole();
+        $this->assertSame('Cetak 10R', $addon->name);
+
+        $page->callAction(TestAction::make('edit')->table($addon), ['name' => 'Cetak 12R']);
+        $this->assertSame('Cetak 12R', $addon->fresh()->name);
+
+        $page->callAction(TestAction::make('delete')->table($addon));
+        $this->assertSame(0, Addon::count());
+
+        $holidays = Livewire::test(ManageBlockedDates::class);
+        $holidays->callAction('create', ['date' => '2026-12-25'])->assertHasNoFormErrors();
+        $holidays->callAction('create', ['date' => '2026-12-25'])->assertHasFormErrors(['date' => 'unique']);
+        $this->assertSame(1, BlockedDate::count());
+
+        $package = Package::factory()->create(['price' => 750_000, 'duration_minutes' => 120]);
+        Livewire::test(ManagePackages::class)
+            ->assertCanSeeTableRecords([$package])
+            ->assertSee('750.000')
+            ->assertDontSee('750.000,00')
+            ->assertSee('120 menit');
     }
 
     public function test_only_assigned_photographer_can_mark_session_done(): void

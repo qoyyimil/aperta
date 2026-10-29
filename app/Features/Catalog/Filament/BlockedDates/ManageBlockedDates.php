@@ -2,15 +2,9 @@
 
 namespace App\Features\Catalog\Filament\BlockedDates;
 
-use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ManageRecords;
+use App\Filament\ManageSimpleRecords;
 
-class ManageBlockedDates extends ManageRecords
+class ManageBlockedDates extends ManageSimpleRecords
 {
     protected static string $resource = BlockedDateResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [CreateAction::make()];
-    }
 }

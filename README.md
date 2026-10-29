@@ -328,6 +328,79 @@ Dipakai bersama oleh banyak fitur:
 | `resources/js/Pages/`         | Halaman React portal klien, juga dikelompokkan per fitur                                |
 | `tests/`                      | Tes aturan bisnis dan alur lengkap                                                      |
 
+### Menambah menu sederhana di dashboard
+
+Menu Katalog dan Pengaturan memakai kelas dasar `App\Filament\SimpleResource`. Tabel, tombol Tambah, Edit, dan Hapus, grup menu, serta batasan hanya untuk admin sudah otomatis. Setiap baris `Field` sekaligus menjadi isian form dan kolom tabel.
+
+Contoh menu "Lokasi studio":
+
+1. Buat model dan tabelnya: `php artisan make:model Location -m`, isi kolom di migration, lalu `php artisan migrate`.
+2. Salin folder `app/Features/Catalog/Filament/Addons/` menjadi `Locations/`, lalu ganti nama dan isinya:
+
+```php
+// Locations/LocationResource.php
+class LocationResource extends SimpleResource
+{
+    protected static ?string $model = Location::class;
+    protected static ?string $modelLabel = 'lokasi';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMapPin;
+    protected static string $managePage = ManageLocations::class;
+
+    protected static function fields(): array
+    {
+        return [
+            Field::text('name', 'Nama')->required()->searchable(),
+            Field::text('address', 'Alamat'),
+            Field::money('fee', 'Biaya transport'),
+            Field::active(),
+        ];
+    }
+}
+
+// Locations/ManageLocations.php
+class ManageLocations extends ManageSimpleRecords
+{
+    protected static string $resource = LocationResource::class;
+}
+```
+
+Menu langsung muncul di grup Katalog.
+
+**Jenis kolom**
+
+| Tulis                              | Di form                    | Di tabel                   |
+| ---------------------------------- | -------------------------- | -------------------------- |
+| `Field::text('name', 'Nama')`      | Kotak teks                 | Teks                       |
+| `Field::number('qty', 'Jumlah')`   | Kotak angka                | Angka                      |
+| `Field::money('price', 'Harga')`   | Angka berawalan Rp         | Rp750.000                  |
+| `Field::date('date', 'Tanggal')`   | Pilih tanggal              | Kam, 25 Des 2026           |
+| `Field::active()`                  | Sakelar Aktif              | Sakelar yang bisa diklik   |
+
+**Pengaturan tambahan** (boleh digabung, mis. `->required()->searchable()`)
+
+| Tulis                         | Artinya                                              |
+| ----------------------------- | ---------------------------------------------------- |
+| `->required()`                | Wajib diisi                                          |
+| `->unique()`                  | Tidak boleh sama dengan data lain                    |
+| `->searchable()`              | Bisa dicari di tabel                                 |
+| `->sortable()`                | Tabel bisa diurutkan dengan klik judul kolom         |
+| `->min(1)`                    | Angka paling kecil                                   |
+| `->unit('menit')`             | Satuan di belakang angka                             |
+| `->hint('Mis. Jl. Darmo 1')`  | Contoh isian samar di dalam kotak                    |
+| `->suggestions(['A', 'B'])`   | Saran saat mengetik, isian lain tetap boleh          |
+| `->default(10)`               | Nilai awal saat menambah data                        |
+
+**Pengaturan menu** (tambahkan di bawah `$managePage`)
+
+| Tulis                                                   | Artinya                              |
+| ------------------------------------------------------- | ------------------------------------ |
+| `protected static ?string $sortBy = 'name';`            | Urutan tabel saat dibuka             |
+| `protected static bool $newestFirst = true;`            | Urutkan dari terbesar/terbaru        |
+| `protected static int $formColumns = 2;`                | Form dua kolom                       |
+| `protected static string\|UnitEnum\|null $navigationGroup = 'Pengaturan';` | Pindah ke grup Pengaturan |
+
+Butuh isian yang belum ada di daftar, atau aturan khusus (mis. isian berubah sesuai pilihan lain)? Tulis komponen Filament langsung di `form()` dan `table()`. Contohnya ada di `VoucherResource` dan `UserResource`. Menu dengan banyak halaman, tab, atau tombol khusus memakai `Resource` biasa seperti menu Booking.
+
 ### Aturan menulis kode
 
 - Status booking **hanya** berubah lewat `$booking->transitionTo(...)`, yang otomatis memeriksa aturan dan mencatat riwayat.

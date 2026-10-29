@@ -22,6 +22,11 @@ allow-from = ['App\Features\*\Filament\**', 'App\Providers\**', 'Tests\**']
 reason = "Domain tidak boleh memakai kelas Filament."
 
 [[guard.perimeter.restrictions]]
+dependency = 'App\Filament\**'
+allow-from = ['App\Filament\**', 'App\Features\*\Filament\**', 'App\Providers\**', 'Tests\**']
+reason = "Domain tidak boleh memakai kelas Filament."
+
+[[guard.perimeter.restrictions]]
 dependency = 'App\Features\*\Http\**'
 allow-from = ['App\Features\*\Http\**', 'App\Features\*\Mail\**', 'Tests\**', '@global']
 reason = "Domain tidak boleh memakai controller atau presenter."

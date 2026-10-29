@@ -733,12 +733,6 @@ message = "Assigning `mixed` type to a variable may lead to unexpected behavior.
 count = 3
 
 [[issues]]
-file = "app/Features/Catalog/Filament/Packages/PackageResource.php"
-code = "non-documented-property"
-message = 'Ambiguous property access: $service on class `App\Models\Package`.'
-count = 1
-
-[[issues]]
 file = "app/Features/Catalog/Filament/Vouchers/VoucherResource.php"
 code = "mixed-argument"
 message = "Invalid argument type for argument #1 of `number_format`: expected `float`, but found `mixed`."
@@ -4214,6 +4208,12 @@ count = 1
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
 code = "mixed-method-access"
 message = "Attempting to call method `attach()` on a non-object type (`mixed`)."
 count = 2
@@ -4228,13 +4228,19 @@ count = 1
 file = "tests/Feature/StudioAccessTest.php"
 code = "mixed-method-access"
 message = "Attempting to call method `fresh()` on a non-object type (`mixed`)."
-count = 1
+count = 2
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"
 code = "mixed-property-access"
 message = "Attempting to access property `$email` on a non-object type (`mixed`)."
 count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "mixed-property-access"
+message = "Attempting to access property `$name` on a non-object type (`mixed`)."
+count = 2
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"
@@ -4245,7 +4251,31 @@ count = 1
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"
 code = "non-documented-method"
+message = 'Ambiguous method call to `assertDontSee` on class `Livewire\Features\SupportTesting\Testable`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
 message = 'Ambiguous method call to `assertHasNoErrors` on class `Livewire\Features\SupportTesting\Testable`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `assertSee` on class `Livewire\Features\SupportTesting\Testable`.'
+count = 2
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `count` on class `App\Models\Addon`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `count` on class `App\Models\BlockedDate`.'
 count = 1
 
 [[issues]]
@@ -4264,6 +4294,12 @@ count = 2
 file = "tests/Feature/StudioAccessTest.php"
 code = "non-documented-method"
 message = 'Ambiguous method call to `getRouteKey` on class `Illuminate\Database\Eloquent\Collection`.'
+count = 1
+
+[[issues]]
+file = "tests/Feature/StudioAccessTest.php"
+code = "non-documented-method"
+message = 'Ambiguous method call to `sole` on class `App\Models\Addon`.'
 count = 1
 
 [[issues]]

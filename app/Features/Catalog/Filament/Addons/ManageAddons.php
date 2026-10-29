@@ -2,15 +2,9 @@
 
 namespace App\Features\Catalog\Filament\Addons;
 
-use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ManageRecords;
+use App\Filament\ManageSimpleRecords;
 
-class ManageAddons extends ManageRecords
+class ManageAddons extends ManageSimpleRecords
 {
     protected static string $resource = AddonResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [CreateAction::make()];
-    }
 }

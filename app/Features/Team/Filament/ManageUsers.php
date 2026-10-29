@@ -2,15 +2,9 @@
 
 namespace App\Features\Team\Filament;
 
-use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ManageRecords;
+use App\Filament\ManageSimpleRecords;
 
-class ManageUsers extends ManageRecords
+class ManageUsers extends ManageSimpleRecords
 {
     protected static string $resource = UserResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [CreateAction::make()];
-    }
 }

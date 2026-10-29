@@ -350,12 +350,6 @@ count = 1
 
 [[issues]]
 file = "app/Features/Catalog/Filament/Packages/PackageResource.php"
-code = "prefer-static-closure"
-message = "This arrow function does not use `$this` and should be declared static."
-count = 1
-
-[[issues]]
-file = "app/Features/Catalog/Filament/Packages/PackageResource.php"
 code = "strict-types"
 message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
 count = 1
@@ -842,6 +836,36 @@ count = 3
 
 [[issues]]
 file = "app/Features/Tracking/Http/TrackView.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Field.php"
+code = "halstead"
+message = "Method has a high halstead difficulty"
+count = 1
+
+[[issues]]
+file = "app/Filament/Field.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/Field.php"
+code = "too-many-methods"
+message = "Class has too many methods."
+count = 1
+
+[[issues]]
+file = "app/Filament/ManageSimpleRecords.php"
+code = "strict-types"
+message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
+count = 1
+
+[[issues]]
+file = "app/Filament/SimpleResource.php"
 code = "strict-types"
 message = "Missing `declare(strict_types=1);` statement at the beginning of the file."
 count = 1
@@ -2200,7 +2224,7 @@ count = 1
 file = "tests/Feature/StudioAccessTest.php"
 code = "assertion-style"
 message = "Inconsistent assertions style."
-count = 6
+count = 10
 
 [[issues]]
 file = "tests/Feature/StudioAccessTest.php"

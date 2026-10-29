@@ -3,13 +3,13 @@
 namespace App\Features\Team\Filament;
 
 use App\Enums\UserRole;
+use App\Filament\SimpleResource;
 use App\Models\User;
 use BackedEnum;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\IconColumn;
@@ -18,17 +18,19 @@ use Filament\Tables\Table;
 use UnitEnum;
 
 /** Pengguna tidak dihapus, hanya dinonaktifkan, agar riwayatnya tetap utuh (USR-3). */
-class UserResource extends Resource
+class UserResource extends SimpleResource
 {
     protected static ?string $model = User::class;
     protected static ?string $modelLabel = 'pengguna';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
     protected static string|UnitEnum|null $navigationGroup = 'Pengaturan';
+    protected static string $managePage = ManageUsers::class;
+    protected static int $formColumns = 2;
 
+    // Kata sandi hanya wajib saat menambah, jadi isiannya ditulis langsung.
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->columns(2)
+        return parent::form($schema)
             ->components([
                 TextInput::make('name')->label('Nama')->required(),
                 TextInput::make('email')->email()->required()->unique(ignoreRecord: true),
@@ -47,16 +49,17 @@ class UserResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table->columns([
-            TextColumn::make('name')->label('Nama')->searchable(),
-            TextColumn::make('email')->searchable(),
-            TextColumn::make('role')->label('Peran')->badge(),
-            IconColumn::make('is_active')->label('Aktif')->boolean(),
-        ])->recordActions([EditAction::make()]);
+        return parent::table($table)
+            ->columns([
+                TextColumn::make('name')->label('Nama')->searchable(),
+                TextColumn::make('email')->searchable(),
+                TextColumn::make('role')->label('Peran')->badge(),
+                IconColumn::make('is_active')->label('Aktif')->boolean(),
+            ]);
     }
 
-    public static function getPages(): array
+    protected static function rowActions(): array
     {
-        return ['index' => ManageUsers::route('/')];
+        return [EditAction::make()];
     }
 }

@@ -2,15 +2,9 @@
 
 namespace App\Features\Catalog\Filament\Packages;
 
-use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ManageRecords;
+use App\Filament\ManageSimpleRecords;
 
-class ManagePackages extends ManageRecords
+class ManagePackages extends ManageSimpleRecords
 {
     protected static string $resource = PackageResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [CreateAction::make()];
-    }
 }
